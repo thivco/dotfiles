@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "Launching Waybar. Check the launch.sh file to change the style and content of the bar."
+
 # Kills the previous bar
 killall waybarkillall waybar
 
