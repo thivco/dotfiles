@@ -14,6 +14,6 @@ alias lab="cd ~/workshop/lab"
 alias ws="cd ~/workshop"
 alias ebash="nvim ~/workshop/lab/dotfiles/.bashrc && source ~/.bashrc"
 alias ehc="nvim ~/workshop/lab/dotfiles/hypr/hyprland.conf"
-alias enix="sudo nvim /etc/nixos/configuration.nix && sudo nixos-rebuild switch"
+alias enix="sudo nvim /etc/nixos/configuration.nix && rm -rf ~/workshop/lab/dotfiles/nixos/ && cp -r /etc/nixos/ ~/workshop/lab/dotfiles/ && sudo nixos-rebuild switch"
 pfetch
 echo "I just need to configure..."
