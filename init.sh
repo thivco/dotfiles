@@ -26,8 +26,7 @@ rm -rf ~/dotfiles
 
 # cp ./hyprland/hyprland.conf ~/.config/hypr/hyprland.conf
 echo "Linking the hyprland.conf file"
-rm ~/.config/hypr/hyprland.conf && ln -s ./hyprland/hyprland.conf ~/.config/hypr/hyprland.conf
-# Commented symlink as am not too sure if it works
+rm ~/.config/hypr/hyprland.conf && ln -s ~/workshop/lab/dotfiles/hyprland/hyprland.conf ~/.config/hypr/hyprland.conf
 
 echo "Linking bashrc"
-rm ~/.bashrc && ln -s ./.bashrc ~/.bashrc && source ~/.bashrc
+rm ~/.bashrc && ln -s ~/workshop/lab/dotfiles/.bashrc ~/.bashrc && source ~/.bashrc
