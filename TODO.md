@@ -1,0 +1,5 @@
+- [ ] Waybar
+- [ ] Alacritty config
+- [ ] File manager with icons
+- [ ] Pywal to edit colors
+- [ ] Hyprpaper

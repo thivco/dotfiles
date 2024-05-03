@@ -26,6 +26,11 @@
     xkbVariant = "dvorak";
   };
 
+  # Fonts
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "ComicShannsMono" "Iosevka"]; })
+  ];
+
 
   # Enable sound using Pipewire
 
