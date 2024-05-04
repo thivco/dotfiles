@@ -128,7 +128,9 @@
      spotify
      grim
      plasma-pa
+     hyprpaper
      pavucontrol
+     pywal
    ];
 
 	  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
