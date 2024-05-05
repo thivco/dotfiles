@@ -16,6 +16,14 @@
 
   # Enable Hyprland
   programs.hyprland.enable = true;
+  
+  # Enable Steam
+#  programs.steam {
+#    enable = true;
+#    remotePlay.openFirewall = true;
+#    dedicatedServer.openFirewall = true;
+#  };
+  programs.steam.enable = true;
 
   # Allows Unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -132,7 +140,6 @@
      killall
      swaylock
      dolphin
-     steam
      spotify
      grim
      plasma-pa
