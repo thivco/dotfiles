@@ -7,8 +7,12 @@
 {
   imports =
     [ # Include the results of the hardware scan.
+      ./passthrough.nix
       ./hardware-configuration.nix
     ];
+
+  # Trying to enable XDG Portal
+  xdg.portal.enable = true;
 
   # Enable Hyprland
   programs.hyprland.enable = true;
@@ -16,6 +20,11 @@
   # Allows Unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Allows insecure packages
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-25.9.0"
+  ];
+           
   # Enable SDDM
   services.xserver.enable = true;
   services.xserver.displayManager.sddm.enable = true;
@@ -110,7 +119,6 @@
      kitty
      vim
      waybar
-     hyprpaper
      (waybar.overrideAttrs (oldAttrs: {
 	mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true"];
 })
@@ -131,12 +139,16 @@
      hyprpaper
      pavucontrol
      pywal
+     go
+     obsidian
+     fzf
+     mako
    ];
 
 	  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "steam"
     "steam-original"
-    "steam-run"
+   "steam-run"
     "spotify"
   ];
 
