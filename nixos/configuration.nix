@@ -143,14 +143,16 @@
      obsidian
      fzf
      mako
+     cliphist
+     wl-clipboard
    ];
 
-	  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "steam"
-    "steam-original"
-   "steam-run"
-    "spotify"
-  ];
+#	  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+#    "steam"
+#    "steam-original"
+#   "steam-run"
+#    "spotify"
+#  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
