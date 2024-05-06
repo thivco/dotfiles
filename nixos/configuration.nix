@@ -149,9 +149,10 @@
      go
      obsidian
      fzf
-     mako
+     # mako
      cliphist
      wl-clipboard
+     python3
    ];
 
 #	  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [

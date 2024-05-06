@@ -20,6 +20,16 @@ alias nv="nvim"
 alias gc="git commit -am"
 alias gp="git push"
 
+function laz() {
+   local message="$1"
+   echo "Commit Message: $message"
+   git add .
+   git commit -m "$message"
+   git push 
+}
+
+
+
 # Things that look nice
 pfetch
 echo "I just need to configure..."
