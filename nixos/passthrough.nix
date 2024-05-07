@@ -20,12 +20,12 @@ in { pkgs, lib, config, ... }: {
 	"amdgpu"
       ];
 
-      kernelParams = [
-        # enable IOMMU
-        "amd_iommu=on" "iommu=pt"
-      ] ++ lib.optional cfg.enable
-        # isolate the GPU
-        ("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs);
+#      kernelParams = [
+#        # enable IOMMU
+#        "amd_iommu=on" "iommu=pt"
+#      ] ++ lib.optional cfg.enable
+#        # isolate the GPU
+#        ("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs);
     };
 
     hardware.opengl.enable = true;

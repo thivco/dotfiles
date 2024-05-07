@@ -1,13 +1,14 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
+# This is  a comment so that it regenerates a new config AND STOPS CRASHING
 
 { config, lib, pkgs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./passthrough.nix
+#      ./passthrough.nix
       ./hardware-configuration.nix
     ];
 
@@ -25,6 +26,11 @@
 #  };
   programs.steam.enable = true;
 
+  boot.kernelParams = [ "amd_iommu=on" ];
+  boot.blacklistedKernelModules = ["amdgpu" "radeon"];
+  boot.kernelModules = [ "vfio_virqfd" "vfio_pci" "vfio_iommu_type1" "vfio"];
+  boot.extraModprobeConfig = "options vfio-pci ids=1002:744c,1002:ab30";
+  
   # Allows Unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -141,6 +147,7 @@
      swaylock
      dolphin
      spotify
+     bun
      grim
      plasma-pa
      hyprpaper
@@ -153,6 +160,7 @@
      cliphist
      wl-clipboard
      python3
+     vscode
    ];
 
 #	  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
