@@ -144,6 +144,7 @@
      pfetch
      rofi
      killall
+     vlc
      swaylock
      dolphin
      spotify
@@ -160,6 +161,7 @@
      cliphist
      wl-clipboard
      python3
+     vlc
      vscode
    ];
 
