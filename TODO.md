@@ -4,3 +4,4 @@
 - [ ] Pywal to edit colors
 - [ ] Hyprpaper
 - [ ] Notifications
+- [ ] I3W ?
