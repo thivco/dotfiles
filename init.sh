@@ -2,13 +2,15 @@
 
 echo "Salut mec, on relance encore son installe ? Ah, pas serieux ca..."
 
-# Install essential tools
+# Check if the computer is using Arch
+# TODO : Might be better to get the distro as a parameter and make ethe installation accordingly
+if [ -f "/etc/arch-release" ]; then
+    echo "Installing the apps"
+    sudo pacman -S spotify
 
-# sudo pacman -S spotify
-
-# Install javascript related tools
-
-# sudo pacman -S npm bun
+    echo "Installing the code stuff"
+    sudo pacman -S npm bun
+fi
 
 # Config files
 # Starting with hyprland itself
