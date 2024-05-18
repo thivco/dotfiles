@@ -28,8 +28,6 @@ function laz() {
    git push 
 }
 
-
-
 # Things that look nice
 pfetch
 echo "I just need to configure..."

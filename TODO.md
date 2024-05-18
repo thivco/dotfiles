@@ -5,3 +5,4 @@
 - [ ] Hyprpaper
 - [ ] Notifications
 - [ ] I3W ?
+- [ ] Create something more practical to install all tools on non-nix distros
