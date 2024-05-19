@@ -62,12 +62,20 @@
   sound.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
-    enable = true;
+    enable = false;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
   };
+
+  # Enabling with Pulseaudio as well to check bluetooth integration
+  hardware.pulseaudio.enable = true;
+
+  # Bluetooth configuration
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  services.blueman.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.efi.canTouchEfiVariables = true;
@@ -133,7 +141,6 @@
      alacritty
      keepassxc
      kitty
-     vim
      waybar
      (waybar.overrideAttrs (oldAttrs: {
 	mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true"];
