@@ -13,6 +13,7 @@
     ];
 
   # Trying to enable XDG Portal
+  # Note for future-self, PLEASE WRITE DOWN THE REASON YOU'VE INSTALLED THIS :) (:
   xdg.portal.enable = true;
 
   # Enable Hyprland
@@ -26,10 +27,11 @@
 #  };
   programs.steam.enable = true;
 
-  boot.kernelParams = [ "amd_iommu=on" ];
-  boot.blacklistedKernelModules = ["amdgpu" "radeon"];
-  boot.kernelModules = [ "vfio_virqfd" "vfio_pci" "vfio_iommu_type1" "vfio"];
-  boot.extraModprobeConfig = "options vfio-pci ids=1002:744c,1002:ab30";
+  # Virtualization (one day...)
+  #boot.kernelParams = [ "amd_iommu=on" ];
+  #boot.blacklistedKernelModules = ["amdgpu" "radeon"];
+  #boot.kernelModules = [ "vfio_virqfd" "vfio_pci" "vfio_iommu_type1" "vfio"];
+  #boot.extraModprobeConfig = "options vfio-pci ids=1002:744c,1002:ab30";
   
   # Allows Unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -116,7 +118,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.users.thib = {
      isNormalUser = true;
-     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+     extraGroups = [ "wheel" ]; # Enables ‘sudo’ for the user.
      packages = with pkgs; [
        firefox
        tree
