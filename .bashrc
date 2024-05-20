@@ -21,11 +21,14 @@ alias gc="git commit -am"
 alias gp="git push"
 
 function laz() {
+   current_location = $(PWD)
+   dot
    local message="$1"
    echo "Commit Message: $message"
    git add .
    git commit -m "$message"
-   git push 
+   git push
+   cd $current_location
 }
 
 # Things that look nice

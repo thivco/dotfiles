@@ -183,6 +183,8 @@
      vlc
      vscode
      steamcmd
+     virt-manager
+     bat
    ];
 
 #	  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [

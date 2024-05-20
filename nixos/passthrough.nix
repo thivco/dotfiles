@@ -20,12 +20,13 @@ in { pkgs, lib, config, ... }: {
 	"amdgpu"
       ];
 
-#      kernelParams = [
-#        # enable IOMMU
-#        "amd_iommu=on" "iommu=pt"
-#      ] ++ lib.optional cfg.enable
-#        # isolate the GPU
-#        ("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs);
+      kernelParams = [
+        # enable IOMMU
+        "amd_iommu=on"
+        "iommu=pt"
+      ] ++ lib.optional cfg.enable
+        # isolate the GPU
+        ("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs);
     };
 
     hardware.opengl.enable = true;
@@ -37,11 +38,16 @@ in { pkgs, lib, config, ... }: {
       pciutils
     ];
 
-    virtualisation.libvirtd.enable = true;
-    virtualisation.libvirtd.qemuPackage = pkgs.qemu_kvm;
+    virtualisation.libvirtd = {
+    enable = true;
+    qemu.package = pkgs.qemu_kvm;
+    qemu.ovmf.enable = true;
+    qemu.runAsRoot = false;
+    onBoot = "ignore";
+    onShutdown = "shutdown";
+    };
 
     users.groups.libvirtd.members = [ "thib" "root" ];
-
 
   };
 }
