@@ -8,7 +8,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-#      ./passthrough.nix
+      ./passthrough.nix
       ./hardware-configuration.nix
     ];
 
@@ -28,15 +28,20 @@
   programs.steam.enable = true;
 
   # Virtualization (one day...)
-  boot.kernelParams = [
-    "iommu=pt"
-    "amd_iommu=on"
-    "vfio-pci.ids='1002:744c,1002:ab30'"
-  ];
+  #boot.kernelParams = [
+  #  "iommu=pt"
+  #  "amd_iommu=on"
+  #  "vfio-pci.ids='1002:744c,1002:ab30'"
+  #];
   #boot.blacklistedKernelModules = ["amdgpu" "radeon"];
   #boot.kernelModules = [ "vfio_virqfd" "vfio_pci" "vfio_iommu_type1" "vfio"];
   #boot.extraModprobeConfig = "options vfio-pci ids=1002:744c,1002:ab30";
-  
+  specialisation."VFIO".configuration = {
+  system.nixos.tags = [ "with-vfio" ];
+  vfio.enable = true;
+  };
+
+
   # Allows Unfree packages
   nixpkgs.config.allowUnfree = true;
 
