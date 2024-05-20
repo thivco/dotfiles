@@ -28,7 +28,11 @@
   programs.steam.enable = true;
 
   # Virtualization (one day...)
-  #boot.kernelParams = [ "amd_iommu=on" ];
+  boot.kernelParams = [
+    "iommu=pt"
+    "amd_iommu=on"
+    "vfio-pci.ids='1002:744c,1002:ab30'"
+  ];
   #boot.blacklistedKernelModules = ["amdgpu" "radeon"];
   #boot.kernelModules = [ "vfio_virqfd" "vfio_pci" "vfio_iommu_type1" "vfio"];
   #boot.extraModprobeConfig = "options vfio-pci ids=1002:744c,1002:ab30";
