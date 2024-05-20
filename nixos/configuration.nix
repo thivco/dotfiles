@@ -56,6 +56,8 @@
     (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "ComicShannsMono" "Iosevka"]; })
   ];
 
+  # Installing Nautilus
+  services.gvfs.enable = true;
 
   # Enable sound using Pipewire
 
@@ -153,7 +155,6 @@
      pfetch
      rofi
      killall
-     vlc
      swaylock
      dolphin
      spotify
@@ -172,6 +173,7 @@
      python3
      vlc
      vscode
+     steamcmd
    ];
 
 #	  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
