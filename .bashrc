@@ -19,6 +19,8 @@ alias enix="sudo nvim /etc/nixos/configuration.nix && rm -rf ~/workshop/lab/dotf
 alias nv="nvim"
 alias gc="git commit -am"
 alias gp="git push"
+alias cat="bat"
+
 
 function laz() {
    current_location = $(PWD)
