@@ -17,6 +17,7 @@
   xdg.portal.enable = true;
 
   # Enable Hyprland
+
   programs.hyprland.enable = true;
   
   # Enable Steam
@@ -40,7 +41,6 @@
   system.nixos.tags = [ "with-vfio" ];
   vfio.enable = true;
   };
-
 
   # Allows Unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -183,9 +183,10 @@
      vlc
      vscode
      steamcmd
-     virt-manager
      bat
-   ];
+     gnome3.adwaita-icon-theme
+     glib
+];
 
 #	  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
 #    "steam"
