@@ -150,6 +150,7 @@
      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
      wget
      alacritty
+     xrdp
      keepassxc
      kitty
      networkmanager
@@ -190,6 +191,7 @@
      gnome3.adwaita-icon-theme
      glib
      kitty
+     freerdp
 ];
 
 #	  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
