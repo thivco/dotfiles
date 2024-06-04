@@ -4,5 +4,8 @@
 - [ ] Pywal to edit colors
 - [ ] Hyprpaper
 - [ ] Notifications
-- [ ] I3W ?
+- [ ] Sway
 - [ ] Create something more practical to install all tools on non-nix distros
+- [ ] EWW Bar and widgets
+- [ ] Hyprlock or better lock
+- [ ] Passthrough : Access VM through RDP, launch at boot
