@@ -2,6 +2,8 @@
 # ~/.bashrc
 #
 eval "$(starship init bash)"
+source "$(fzf-share)/key-bindings.bash"
+source "$(fzf-share)/completion.bash"
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 

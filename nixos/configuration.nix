@@ -154,6 +154,8 @@
      kitty
      networkmanager
      waybar
+     grim
+     slurp
      (waybar.overrideAttrs (oldAttrs: {
 	mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true"];
 })
