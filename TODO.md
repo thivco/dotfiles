@@ -11,3 +11,4 @@
 - [ ] Passthrough : Access VM through RDP, launch at boot, add sound, remove stuttering
 - [ ] Bluetooth
 - [ ] Play pause button
+- [ ] Cliphist to support images
