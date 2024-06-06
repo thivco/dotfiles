@@ -9,6 +9,6 @@
 - [ ] EWW Bar and widgets
 - [ ] Hyprlock or better lock
 - [ ] Passthrough : Access VM through RDP, launch at boot, add sound, remove stuttering
-- [ ] Bluetooth
+- [ ] Bluetooth (Change BT version ? https://www.reddit.com/r/linuxquestions/comments/17id05z/dualshock_4_bluetooth_issues_on_arch_linux/)
 - [ ] Play pause button
 - [ ] Cliphist to support images
