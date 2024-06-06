@@ -6,7 +6,7 @@ let
   ];
 in { pkgs, lib, config, ... }: {
   options.vfio.enable = with lib;
-    mkEnableOption "Configure the machine for VFIO";
+    mkEnableOption "TEST __ GPU Detachable";
 
   config = let cfg = config.vfio;
   in {

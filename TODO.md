@@ -1,5 +1,5 @@
 - [ ] Waybar
-- [ ] Alacritty config
+- [/] Alacritty config
 - [ ] File manager with icons
 - [ ] Pywal to edit colors
 - [ ] Hyprpaper
@@ -8,4 +8,5 @@
 - [ ] Create something more practical to install all tools on non-nix distros
 - [ ] EWW Bar and widgets
 - [ ] Hyprlock or better lock
-- [ ] Passthrough : Access VM through RDP, launch at boot
+- [ ] Passthrough : Access VM through RDP, launch at boot, add sound, remove stuttering
+- [ ] Bluetooth
