@@ -8,7 +8,8 @@
 - [ ] Create something more practical to install all tools on non-nix distros
 - [ ] EWW Bar and widgets
 - [ ] Hyprlock or better lock
-- [ ] Passthrough : Access VM through RDP, launch at boot, add sound, remove stuttering
+- [X] Passthrough : Access VM through RDP, launch at boot, add sound, remove stuttering
+- [ ] Passthrough : Remaining stuff (Some stutter, audio, binds and SUPER key)
 - [ ] Bluetooth (Change BT version ? https://www.reddit.com/r/linuxquestions/comments/17id05z/dualshock_4_bluetooth_issues_on_arch_linux/)
 - [ ] Play pause button
 - [ ] Cliphist to support images
