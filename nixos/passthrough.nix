@@ -5,7 +5,7 @@ let
     "1002:ab30" # Audio
   ];
 in { pkgs, lib, config, ... }: {
-  options.vfio.enable = with lib;
+  options.vfio.enable = with lib; 
     mkEnableOption "TEST __ GPU Detachable";
 
   config = let cfg = config.vfio;

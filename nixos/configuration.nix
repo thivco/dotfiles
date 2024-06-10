@@ -37,7 +37,7 @@
   #boot.blacklistedKernelModules = ["amdgpu" "radeon"];
   #boot.kernelModules = [ "vfio_virqfd" "vfio_pci" "vfio_iommu_type1" "vfio"];
   #boot.extraModprobeConfig = "options vfio-pci ids=1002:744c,1002:ab30";
-  specialisation."VFIO".configuration = {
+  specialisation."GPU on Linux".configuration = {
   system.nixos.tags = [ "with-vfio" ];
   vfio.enable = true;
   };
@@ -193,6 +193,7 @@
      kitty
      pamixer
      freerdp
+     looking-glass-client
 ];
 
 #	  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
