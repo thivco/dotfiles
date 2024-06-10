@@ -12,6 +12,8 @@ alias l='ls -lah --color=auto'
 alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$ '
 
+# Create a dedicated virt bash script to run at boot
+
 alias dot="cd ~/workshop/lab/dotfiles"
 alias lab="cd ~/workshop/lab"
 alias ws="cd ~/workshop"
@@ -36,6 +38,3 @@ function laz() {
    cd $current_location
 }
 
-# Things that look nice
-pfetch
-echo "I just need to configure..."
