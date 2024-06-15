@@ -27,7 +27,9 @@
 #    dedicatedServer.openFirewall = true;
 #  };
   programs.steam.enable = true;
-
+  programs.kdeconnect.enable = true;
+  programs.thunar.enable = true;
+  programs.xfconf.enable = true;
   # Virtualization (one day...)
   #boot.kernelParams = [
   #  "iommu=pt"
