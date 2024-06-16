@@ -19,7 +19,7 @@ alias lab="cd ~/workshop/lab"
 alias ws="cd ~/workshop"
 alias ebash="nvim ~/workshop/lab/dotfiles/.bashrc && source ~/.bashrc"
 alias ehc="nvim ~/workshop/lab/dotfiles/hypr/hyprland.conf"
-alias enix="sudo nvim /etc/nixos/configuration.nix && rm -rf ~/workshop/lab/dotfiles/nixos/ && cp -r /etc/nixos/ ~/workshop/lab/dotfiles/ && sudo nixos-rebuild switch"
+alias enix="sudo nvim /etc/nixos/configuration.nix && rm -rf ~/workshop/lab/dotfiles/nixos/ && cp -r /etc/nixos/ ~/workshop/lab/dotfiles/"
 alias nv="nvim"
 alias vi="nvim"
 alias gc="git commit -am"
@@ -38,3 +38,15 @@ function laz() {
    cd $current_location
 }
 
+function nixbuild() {
+#set -e
+pushd ~/workshop/lab/dotfiles
+enix
+git diff -U0 *.nix
+echo "NixOS Rebuilding..."
+sudo nixos-rebuild switch &>nixos-switch.log || (
+cat nixos-switch.log | grep --color error && false)
+gen=$(nixos-rebuild list-generations | grep current)
+git commit -am "$gen"
+popd
+}
