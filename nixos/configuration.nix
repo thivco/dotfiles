@@ -149,45 +149,59 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
    environment.systemPackages = with pkgs; [
+     (waybar.overrideAttrs (oldAttrs: {
+	mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true"];
+})
+)
+     #terminal
+     kitty
+     starship
+     # Hyprland related
+     hyprpaper
+     pywal
+     # Virtualization
+     looking-glass-client
+     xrdp
+     # File managers
+     dolphin
+     nautilus
+     # Browsing
+     
+     # Dev
+     vscode
+     go
+     # CLI tools
+     # Games
+     steamcmd
+     # Tools
+     syncthing
+     spotify
+     obsidian
+     # Misc
+
      wget
-     alacritty
      xrdp
      keepassxc
-     kitty
      vim
      networkmanager
      waybar
      grim
      slurp
-     (waybar.overrideAttrs (oldAttrs: {
-	mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true"];
-})
-)
-     syncthing
-     starship
      git
      neovim
      pfetch
      rofi
      killall
      swaylock
-     dolphin
-     spotify
      bun
      grim
      plasma-pa
-     hyprpaper
      pavucontrol
-     pywal
-     go
-     obsidian
      fzf
-     # mako
      cliphist
      wl-clipboard
      python3
      vlc
-     vscode
      steamcmd
      bat
      gnome3.adwaita-icon-theme
@@ -195,7 +209,6 @@
      kitty
      pamixer
      freerdp
-     looking-glass-client
 ];
 
 #	  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
