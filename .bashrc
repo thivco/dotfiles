@@ -42,11 +42,12 @@ function nixbuild() {
 #set -e
 pushd ~/workshop/lab/dotfiles
 enix
+local msg="$1"
 git diff -U0 *.nix
 echo "NixOS Rebuilding..."
 sudo nixos-rebuild switch &>nixos-switch.log || (
 cat nixos-switch.log | grep --color error && false)
-gen=$(nixos-rebuild list-generations | grep current)
+gen=$($msg || nixos-rebuild list-generations | grep current)
 git commit -am "$gen"
 popd
 }

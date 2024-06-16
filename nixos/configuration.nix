@@ -174,6 +174,7 @@
      bun
      # CLI tools
      vim
+     btop
      neovim
      fzf
      # Games
@@ -182,6 +183,7 @@
      syncthing
      spotify
      obsidian
+
      grim
      slurp
      # Misc
