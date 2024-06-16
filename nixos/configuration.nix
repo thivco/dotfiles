@@ -157,7 +157,10 @@
      kitty
      starship
      alacritty
-     # Hyprland related
+     # Linux tools
+     waybar
+     pfetch
+     rofi
      hyprpaper
      pywal
      # Virtualization
@@ -191,9 +194,6 @@
      xrdp
      keepassxc
      networkmanager
-     waybar
-     pfetch
-     rofi
      killall
      swaylock
      plasma-pa
