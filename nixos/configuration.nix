@@ -156,6 +156,7 @@
      #terminal
      kitty
      starship
+     alacritty
      # Hyprland related
      hyprpaper
      pywal
@@ -164,45 +165,40 @@
      xrdp
      # File managers
      dolphin
-     nautilus
      # Browsing
-     
      # Dev
      vscode
      go
+     python3
+     git
+     bun
      # CLI tools
+     vim
+     neovim
+     fzf
      # Games
      steamcmd
      # Tools
      syncthing
      spotify
      obsidian
+     grim
+     slurp
      # Misc
-
      wget
      xrdp
      keepassxc
-     vim
      networkmanager
      waybar
-     grim
-     slurp
-     git
-     neovim
      pfetch
      rofi
      killall
      swaylock
-     bun
-     grim
      plasma-pa
      pavucontrol
-     fzf
      cliphist
      wl-clipboard
-     python3
      vlc
-     steamcmd
      bat
      gnome3.adwaita-icon-theme
      glib
