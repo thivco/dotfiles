@@ -28,7 +28,7 @@ alias cat="bat"
 
 
 function laz() {
-   current_location = $(pwd)
+   current_location=$(pwd)
    dot
    local message="$1"
    echo "Commit Message: $message"
