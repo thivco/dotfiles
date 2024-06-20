@@ -186,7 +186,6 @@
      neovim
      fzf
      # Games
-     steamcmd
      # Tools
      syncthing
      spotify
@@ -209,6 +208,7 @@
      kitty
      pamixer
      freerdp
+     lm_sensors
 ];
 
 #	  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
