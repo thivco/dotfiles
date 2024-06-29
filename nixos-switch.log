@@ -1,7 +1,89 @@
+error:
+       … while evaluating the attribute 'config'
+
+         at /nix/store/g6lpf4xczkpim2n0ng1c2ixaz62lng9c-nixos-23.11/nixos/lib/modules.nix:320:9:
+
+          319|         options = checked options;
+          320|         config = checked (removeAttrs config [ "_module" ]);
+             |         ^
+          321|         _module = checked (config._module);
+
+       … while calling the 'seq' builtin
+
+         at /nix/store/g6lpf4xczkpim2n0ng1c2ixaz62lng9c-nixos-23.11/nixos/lib/modules.nix:320:18:
+
+          319|         options = checked options;
+          320|         config = checked (removeAttrs config [ "_module" ]);
+             |                  ^
+          321|         _module = checked (config._module);
+
+       (stack trace truncated; use '--show-trace' to show the full trace)
+
+       error: syntax error, unexpected ID, expecting '.' or '='
+
+       at /etc/nixos/configuration.nix:54:3:
+
+           53|   # Allows Unfree packages
+           54|   nixpkgs.config.allowUnfree = true;
+             |   ^
+           55|
 building Nix...
+error:
+       … while evaluating the attribute 'config'
+
+         at /nix/store/g6lpf4xczkpim2n0ng1c2ixaz62lng9c-nixos-23.11/nixos/lib/modules.nix:320:9:
+
+          319|         options = checked options;
+          320|         config = checked (removeAttrs config [ "_module" ]);
+             |         ^
+          321|         _module = checked (config._module);
+
+       … while calling the 'seq' builtin
+
+         at /nix/store/g6lpf4xczkpim2n0ng1c2ixaz62lng9c-nixos-23.11/nixos/lib/modules.nix:320:18:
+
+          319|         options = checked options;
+          320|         config = checked (removeAttrs config [ "_module" ]);
+             |                  ^
+          321|         _module = checked (config._module);
+
+       (stack trace truncated; use '--show-trace' to show the full trace)
+
+       error: syntax error, unexpected ID, expecting '.' or '='
+
+       at /etc/nixos/configuration.nix:54:3:
+
+           53|   # Allows Unfree packages
+           54|   nixpkgs.config.allowUnfree = true;
+             |   ^
+           55|
 building the system configuration...
-this derivation will be built:
-  /nix/store/8hr6281fa2232xdbgz8vx2a6xmmjzkjr-nixos-system-nixos-23.11.6869.651b4702e27a.drv
-building '/nix/store/8hr6281fa2232xdbgz8vx2a6xmmjzkjr-nixos-system-nixos-23.11.6869.651b4702e27a.drv'...
-ln: target 'Linux': No such file or directory
-error: builder for '/nix/store/8hr6281fa2232xdbgz8vx2a6xmmjzkjr-nixos-system-nixos-23.11.6869.651b4702e27a.drv' failed with exit code 1
+error:
+       … while evaluating the attribute 'config.system.build.toplevel'
+
+         at /nix/store/g6lpf4xczkpim2n0ng1c2ixaz62lng9c-nixos-23.11/nixos/lib/modules.nix:320:9:
+
+          319|         options = checked options;
+          320|         config = checked (removeAttrs config [ "_module" ]);
+             |         ^
+          321|         _module = checked (config._module);
+
+       … while calling the 'seq' builtin
+
+         at /nix/store/g6lpf4xczkpim2n0ng1c2ixaz62lng9c-nixos-23.11/nixos/lib/modules.nix:320:18:
+
+          319|         options = checked options;
+          320|         config = checked (removeAttrs config [ "_module" ]);
+             |                  ^
+          321|         _module = checked (config._module);
+
+       (stack trace truncated; use '--show-trace' to show the full trace)
+
+       error: syntax error, unexpected ID, expecting '.' or '='
+
+       at /etc/nixos/configuration.nix:54:3:
+
+           53|   # Allows Unfree packages
+           54|   nixpkgs.config.allowUnfree = true;
+             |   ^
+           55|

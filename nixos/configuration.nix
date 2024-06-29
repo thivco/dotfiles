@@ -47,6 +47,9 @@
   vfio.enable = true;
   };
 
+  # Enable memtest to test memory at boot
+  boot.loader.systemd-boot.memtest86.enable
+
   # Allows Unfree packages
   nixpkgs.config.allowUnfree = true;
 
