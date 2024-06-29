@@ -48,7 +48,7 @@
   };
 
   # Enable memtest to test memory at boot
-  boot.loader.systemd-boot.memtest86.enable
+  boot.loader.systemd-boot.memtest86.enable = true;
 
   # Allows Unfree packages
   nixpkgs.config.allowUnfree = true;
