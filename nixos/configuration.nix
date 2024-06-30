@@ -186,6 +186,7 @@
      # CLI tools
      vim
      btop
+     htop
      neovim
      fzf
      # Games
