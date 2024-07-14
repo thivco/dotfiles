@@ -12,11 +12,10 @@ in { pkgs, lib, config, ... }: {
   in {
     boot = {
       initrd.kernelModules = [
-        "vfio_pci"
         "vfio"
+        "vfio_pci"
         "vfio_iommu_type1"
-        "vfio_virqfd"
-	
+        "vfio_virqfd"	
 	"amdgpu"
       ];
 
@@ -24,6 +23,7 @@ in { pkgs, lib, config, ... }: {
         # enable IOMMU
         "amd_iommu=on"
         "iommu=pt"
+	"loglevel=3"
       ] ++ lib.optional cfg.enable
         # isolate the GPU
         ("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs);

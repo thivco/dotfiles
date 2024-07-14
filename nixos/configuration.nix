@@ -160,6 +160,7 @@
 })
 )
      #terminal
+     discord
      kitty
      starship
      alacritty
