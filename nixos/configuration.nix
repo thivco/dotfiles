@@ -212,6 +212,7 @@
      kitty
      pamixer
      freerdp
+     simplescreenrecorder
      lm_sensors
 ];
 
