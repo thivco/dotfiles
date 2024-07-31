@@ -1,10 +1,4 @@
 # Hi, this is thibault's config
-# Not working so far..
-# This is a new test
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-# This is  a comment so that it regenerates a new config AND STOPS CRASHING
 
 { config, lib, pkgs, ... }:
 
@@ -16,33 +10,19 @@
     ];
 
   # Trying to enable XDG Portal
-  # Note for future-self, PLEASE WRITE DOWN THE REASON YOU'VE INSTALLED THIS :) (:
   xdg.portal.enable = true;
 
   # Enable Hyprland
-
   programs.hyprland.enable = true;
+  programs.hyprland.xwayland.enable = true; 
   
-  # Enable Steam
-#  programs.steam {
-#    enable = true;
-#    remotePlay.openFirewall = true;
-#    dedicatedServer.openFirewall = true;
-#  };
   programs.steam.enable = true;
   programs.kdeconnect.enable = true;
   programs.thunar.enable = true;
   programs.xfconf.enable = true;
-  # Virtualization (one day...)
-  #boot.kernelParams = [
-  #  "iommu=pt"
-  #  "amd_iommu=on"
-  #  "vfio-pci.ids='1002:744c,1002:ab30'"
-  #];
-  #boot.blacklistedKernelModules = ["amdgpu" "radeon"];
-  #boot.kernelModules = [ "vfio_virqfd" "vfio_pci" "vfio_iommu_type1" "vfio"];
-  #boot.extraModprobeConfig = "options vfio-pci ids=1002:744c,1002:ab30";
-  specialisation."GPU on Linux".configuration = {
+
+  # Don't put spaces in the specialisation name, it prevents rebuilds
+  specialisation."GPU_on_Linux".configuration = {
   system.nixos.tags = [ "with-vfio" ];
   vfio.enable = true;
   };
@@ -126,18 +106,12 @@
   # services.xserver.enable = true;
 
 
-  
-
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
-
-  # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -159,10 +133,11 @@
 	mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true"];
 })
 )
-     #terminal
+     # terminal
      kitty
      starship
      alacritty
+     
      # Linux tools
      waybar
      pfetch
@@ -171,57 +146,56 @@
      pywal
      grim
      slurp
+     cliphist
+     wl-clipboard
+     
      # Virtualization
      looking-glass-client
      xrdp
-     # File managers
-     dolphin
      # Browsing
+     
      # Dev
      vscode
      go
      python3
      git
      bun
+     
      # CLI tools
      vim
      btop
      htop
      neovim
      fzf
+     bat
+     killall
+     pkill
+     wget
+     
      # Games
+     
      # Tools
      syncthing
      spotify
      obsidian
+     signal-desktop
      keepassxc
+     
      # Misc
-     wget
      xrdp
      networkmanager
-     killall
      swaylock
      plasma-pa
      pavucontrol
-     cliphist
-     wl-clipboard
      vlc
-     bat
      gnome3.adwaita-icon-theme
      glib
-     kitty
      pamixer
      freerdp
-     simplescreenrecorder
      lm_sensors
+     obs-studio
+     webcord
 ];
-
-#	  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-#    "steam"
-#    "steam-original"
-#   "steam-run"
-#    "spotify"
-#  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
