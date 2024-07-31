@@ -152,6 +152,7 @@
      # Virtualization
      looking-glass-client
      xrdp
+     
      # Browsing
      
      # Dev
@@ -240,4 +241,5 @@
   system.stateVersion = "23.11"; # Did you read the comment?
 
 }
+
 
