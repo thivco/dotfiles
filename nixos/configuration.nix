@@ -9,6 +9,9 @@
       ./hardware-configuration.nix
     ];
 
+  # Here we go... FLAKES ENABLED !
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # Trying to enable XDG Portal
   xdg.portal.enable = true;
 
@@ -22,7 +25,7 @@
   programs.xfconf.enable = true;
 
   # Don't put spaces in the specialisation name, it prevents rebuilds
-  specialisation."GPU_on_Linux".configuration = {
+  specialisation."Windows_Mode".configuration = {
   system.nixos.tags = [ "with-vfio" ];
   vfio.enable = true;
   };
@@ -170,7 +173,6 @@
      fzf
      bat
      killall
-     pkill
      wget
      
      # Games
