@@ -61,7 +61,7 @@
 
   # Enable sound using Pipewire
 
-  sound.enable = true;
+  # sound.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = false;
