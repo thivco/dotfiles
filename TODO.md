@@ -14,3 +14,5 @@
 - [ ] Play pause button
 - [ ] Cliphist to support images
 - [ ] Change SDDM to Wayland
+- [ ] Modularize
+- [ ] Home manager
