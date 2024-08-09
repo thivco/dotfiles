@@ -25,7 +25,7 @@ alias vi="nvim"
 alias gc="git commit -am"
 alias gp="git push"
 alias cat="bat"
-
+alias hm='cd ~/workshop/lab/dotfiles/nix && nvim home.nix && home-manager switch --flake .'
 
 function laz() {
    current_location=$(pwd)
