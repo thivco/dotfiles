@@ -1,5 +1,5 @@
 {
-  description = "Main flake, fancy :D";
+  description = "First fla";
 
   inputs = {
     # NixOS official package source, using the nixos unstable branch here

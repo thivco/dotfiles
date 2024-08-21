@@ -22,6 +22,10 @@
   programs.hyprland.enable = true;
   programs.hyprland.xwayland.enable = true; 
   
+  # Detect ext drives
+  services.udisks2.enable = true;
+  boot.supportedFilesystems = [ "ntfs" ];
+
   programs.steam.enable = true;
   programs.kdeconnect.enable = true;
   programs.thunar.enable = true;
@@ -177,6 +181,7 @@
      bat
      killall
      wget
+     ntfs3g
      
      # Games
      

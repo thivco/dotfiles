@@ -16,3 +16,6 @@
 - [ ] Change SDDM to Wayland
 - [ ] Modularize
 - [ ] Home manager
+- [ ] Set the bashrc with the aliases in home manager
+- [ ] Create new aliases to rebuild home manager and flake
+- [ ] Split the config file into multiple flakes
