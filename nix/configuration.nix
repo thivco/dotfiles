@@ -50,12 +50,12 @@
            
   # Enable SDDM
   services.xserver.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
+  services.displayManager.sddm.enable = true;
 
   # Keyboard
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "dvorak";
+    variant = "dvorak";
   };
 
   # Fonts
@@ -112,19 +112,6 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
-
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
    users.users.thib = {
      isNormalUser = true;
@@ -164,7 +151,8 @@
      xrdp
      
      # Browsing
-     
+     chromium
+
      # Dev
      vscode
      go
@@ -207,19 +195,6 @@
      obs-studio
      webcord
 ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
