@@ -161,6 +161,7 @@
      
      # Browsing
      
+     chromium
      # Dev
      vscode
      go
