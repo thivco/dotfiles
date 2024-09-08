@@ -13,7 +13,7 @@ alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$ '
 
 # Env variables ?
-dotfiles_location="~/workshop/lab/dotfiles"
+DOTFILES_LOC=~/workshop/lab/dotfiles
 
 # Create a dedicated virt bash script to run at boot
 
@@ -29,7 +29,7 @@ alias gc="git commit -am"
 alias gp="git push"
 alias cat="bat"
 alias hm='cd ~/workshop/lab/dotfiles/nix && nvim home.nix && home-manager switch --flake .'
-alias flake="sudo nixos-rebuild switch --flake $dotfiles_location/nix"
+alias flake="sudo nixos-rebuild switch --flake $DOTFILES_LOC/nix"
 
 function laz() {
 	current_location=$(pwd)

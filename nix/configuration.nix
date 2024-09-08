@@ -12,6 +12,8 @@
   # Here we go... FLAKES ENABLED !
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+
+
   # Enable ssh
   services.openssh.enable = true;
 
@@ -170,6 +172,7 @@
      killall
      wget
      ntfs3g
+     devenv
      
      # Games
      
