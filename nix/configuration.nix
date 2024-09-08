@@ -71,7 +71,7 @@
   # sound.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
-    enable = false;
+    enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
@@ -79,7 +79,7 @@
   };
 
   # Enabling with Pulseaudio as well to check bluetooth integration
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.enable = false;
 
   # Bluetooth configuration
   hardware.bluetooth.enable = true; # enables support for Bluetooth
@@ -98,7 +98,7 @@
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
   # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
+  time.timeZone = "Europe/Amsterdam";
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
