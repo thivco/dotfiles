@@ -28,21 +28,22 @@ rm -rf ~/dotfiles
 
 # cp ./hyprland/hyprland.conf ~/.config/hypr/hyprland.conf
 echo "Linking the hyprland.conf file"
-rm ~/.config/hypr/hyprland.conf && ln -s ~/workshop/lab/dotfiles/hyprland/hyprland.conf ~/.config/hypr/hyprland.conf
+rm ~/.config/hypr/hyprland.conf && ln ~/workshop/lab/dotfiles/hyprland/hyprland.conf ~/.config/hypr/hyprland.conf
 
 echo "Linking bashrc"
-rm ~/.bashrc && ln -s ~/workshop/lab/dotfiles/.bashrc ~/.bashrc 
+rm ~/.bashrc && ln ~/workshop/lab/dotfiles/.bashrc ~/.bashrc 
 source ~/.bashrc
 
 # If we're using NixOS, add the config file to /etc/nixos
 if [ -f /etc/nixos ]; then
     echo "Adding the custom config to nixOS directory"
-    sudo rm -rf ~/etc/nixos/configuration.nix && mv ~/workshop/lab/dotfiles/nixos/ /etc/nixos/configuration.nix
+    # sudo rm -rf ~/etc/nixos/configuration.nix && mv ~/workshop/lab/dotfiles/nixos/ /etc/nixos/configuration.nix
     echo "Rebuild immediatly ?"
     read rebuild_immediatly_bool
     if [ "$rebuild_immediatly_bool" = "Y" -o "$rebuild_immediatly_bool" = "y" ]; then
-        echo "Rebuilding the nixOS config"
-        sudo nixos-rebuild switch
+        echo "Rebuilding the nixOS config from flake"
+        cd ~/workshop/lab/dotfiles/nix
+        sudo nixos-rebuild switch --flake .
     fi
     echo "nixOS config done"
 fi
