@@ -12,10 +12,10 @@
 - [ ] Passthrough : Remaining stuff (Some stutter, audio, binds and SUPER key)
 - [ ] Bluetooth (Change BT version ? https://www.reddit.com/r/linuxquestions/comments/17id05z/dualshock_4_bluetooth_issues_on_arch_linux/)
 - [ ] Play pause button
-- [ ] Cliphist to support images
+- [x] Cliphist to support images
 - [ ] Change SDDM to Wayland
 - [ ] Modularize
-- [ ] Home manager
-- [ ] Set the bashrc with the aliases in home manager
-- [ ] Create new aliases to rebuild home manager and flake
+- [x] Home manager
+- [-] Set the bashrc with the aliases in home manager
+- [x] Create new aliases to rebuild home manager and flake
 - [ ] Split the config file into multiple flakes
