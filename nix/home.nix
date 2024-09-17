@@ -11,17 +11,20 @@ home.stateVersion = "24.05"; # Please read the comment before changing.
 
 programs.direnv.enable = true;
 
+# Enabling nnn because why not
+programs.nnn.enable = true;
+
 programs.bash = {
-    enable = true;
-    initExtra = "
-      if [ -f $HOME/workshop/lab/dotfiles/.bashrc ];
-      then
-        source $HOME/workshop/lab/dotfiles/.bashrc
-      fi
+  enable = true;
+  initExtra = "
+  if [ -f $HOME/workshop/lab/dotfiles/.bashrc ];
+  then
+  source $HOME/workshop/lab/dotfiles/.bashrc
+  fi
 ";
 };
 
-        nixpkgs.config.allowUnfree = true;
+nixpkgs.config.allowUnfree = true;
 # The home.packages option allows you to install Nix packages into your
 # environment.
 
