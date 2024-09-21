@@ -30,6 +30,7 @@ alias gp="git push"
 alias cat="bat"
 alias hm='cd ~/workshop/lab/dotfiles/nix && nvim home.nix && home-manager switch --flake .'
 alias flake="sudo nixos-rebuild switch --flake $DOTFILES_LOC/nix"
+alias icat="kitten icat"
 
 function laz() {
 	current_location=$(pwd)
