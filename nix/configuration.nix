@@ -158,7 +158,7 @@
 
      # Dev
      vscode
-     go
+     #go
      python3
      git
      bun

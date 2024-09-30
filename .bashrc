@@ -7,9 +7,7 @@ source "$(fzf-share)/completion.bash"
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
-alias l='ls -lah --color=auto'
-alias grep='grep --color=auto'
+#alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
 # Env variables ?
@@ -17,20 +15,28 @@ DOTFILES_LOC=~/workshop/lab/dotfiles
 
 # Create a dedicated virt bash script to run at boot
 
+# Aliases to access various directories
 alias dot="cd ~/workshop/lab/dotfiles"
 alias lab="cd ~/workshop/lab"
 alias ws="cd ~/workshop"
+
+# Aliases to edit config files
 alias ebash="nvim ~/workshop/lab/dotfiles/.bashrc && source ~/workshop/lab/dotfiles/.bashrc"
 alias ehc="nvim ~/workshop/lab/dotfiles/hypr/hyprland.conf"
 alias enix="sudo nvim ~/workshop/lab/dotfiles/nix/configuration.nix"
+alias hm="nvim $DOTFILES_LOC/nix/home.nix && home-manager switch --flake $DOTFILES_LOC/nix"
+alias flake="sudo nixos-rebuild switch --flake $DOTFILES_LOC/nix"
+
+# QOL alias
 alias nv="nvim"
 alias vi="nvim"
 alias gc="git commit -am"
 alias gp="git push"
 alias cat="bat"
-alias hm='cd ~/workshop/lab/dotfiles/nix && nvim home.nix && home-manager switch --flake .'
-alias flake="sudo nixos-rebuild switch --flake $DOTFILES_LOC/nix"
 alias icat="kitten icat"
+alias ls="eza -lAh"
+alias l='ls -lah --color=auto'
+alias grep='grep --color=auto'
 
 function laz() {
 	current_location=$(pwd)

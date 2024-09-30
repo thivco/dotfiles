@@ -31,6 +31,7 @@ nixpkgs.config.allowUnfree = true;
 home.packages = [
   pkgs.wofi
   pkgs.postman
+  pkgs.eza
 ];
 
 # Home Manager is pretty good at managing dotfiles. The primary way to manage
