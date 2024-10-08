@@ -186,6 +186,7 @@
      
      # Misc
      xrdp
+     xwayland
      networkmanager
      swaylock
      plasma-pa
