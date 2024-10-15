@@ -184,6 +184,9 @@
      signal-desktop
      keepassxc
      
+     # Web tools
+     deno
+
      # Misc
      xrdp
      xwayland
@@ -198,6 +201,7 @@
      freerdp
      lm_sensors
      obs-studio
+     thefuck
      webcord
 ];
 

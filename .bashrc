@@ -2,6 +2,8 @@
 # ~/.bashrc
 #
 eval "$(starship init bash)"
+eval "$(thefuck --alias)"
+eval "$(thefuck --alias fk)"
 source "$(fzf-share)/key-bindings.bash"
 source "$(fzf-share)/completion.bash"
 # If not running interactively, don't do anything
@@ -37,6 +39,7 @@ alias icat="kitten icat"
 alias ls="eza -lAh"
 alias l='ls -lah --color=auto'
 alias grep='grep --color=auto'
+alias fk='thefuck --alias'
 
 function laz() {
 	current_location=$(pwd)
