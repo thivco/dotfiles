@@ -186,6 +186,8 @@
      
      # Web tools
      deno
+     atlas #MongoDB tool
+     mongosh
 
      # Misc
      xrdp
