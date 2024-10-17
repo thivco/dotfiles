@@ -12,9 +12,6 @@
   # Here we go... FLAKES ENABLED !
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Testing mongo here
-  services.mongodb.enable = true;
-
   # Enable ssh
   services.openssh.enable = true;
 
@@ -168,7 +165,7 @@
      vim
      btop
      htop
-     neovim
+     #neovim
      fzf
      bat
      killall
