@@ -5,9 +5,9 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./passthrough.nix
-      ./hardware-configuration.nix
-    ];
+    ./passthrough.nix
+    ./hardware-configuration.nix
+  ];
 
   # Here we go... FLAKES ENABLED !
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -21,7 +21,7 @@
   # Enable Hyprland
   programs.hyprland.enable = true;
   programs.hyprland.xwayland.enable = true; 
-  
+
   # Detect ext drives
   services.udisks2.enable = true;
   boot.supportedFilesystems = [ "ntfs" ];
@@ -33,8 +33,8 @@
 
   # Don't put spaces in the specialisation name, it prevents rebuilds
   specialisation."Windows_Mode".configuration = {
-  system.nixos.tags = [ "with-vfio" ];
-  vfio.enable = true;
+    system.nixos.tags = [ "with-vfio" ];
+    vfio.enable = true;
   };
 
   # Enable memtest to test memory at boot
@@ -47,7 +47,7 @@
   nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0"
   ];
-           
+
   # Enable SDDM
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
@@ -114,28 +114,28 @@
   # };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-   users.users.thib = {
-     isNormalUser = true;
-     extraGroups = [ "wheel" ]; # Enables ‘sudo’ for the user.
-     openssh.authorizedKeys.keys = ["AAAAC3NzaC1lZDI1NTE5AAAAIDAcczjaWc2NHGIBFxArYGkivl4lzC27N5IXlXoiZD0N"];
-     packages = with pkgs; [
-       firefox
-       tree
-     ];
-   };
+  users.users.thib = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ]; # Enables ‘sudo’ for the user.
+    openssh.authorizedKeys.keys = ["AAAAC3NzaC1lZDI1NTE5AAAAIDAcczjaWc2NHGIBFxArYGkivl4lzC27N5IXlXoiZD0N"];
+    packages = with pkgs; [
+      firefox
+      tree
+    ];
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-   environment.systemPackages = with pkgs; [
-     (waybar.overrideAttrs (oldAttrs: {
-	mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true"];
-})
-)
+  environment.systemPackages = with pkgs; [
+    (waybar.overrideAttrs (oldAttrs: {
+      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true"];
+    })
+    )
      # terminal
      kitty
      starship
      alacritty
-     
+
      # Linux tools
      waybar
      pfetch
@@ -146,11 +146,11 @@
      slurp
      cliphist
      wl-clipboard
-     
+
      # Virtualization
      looking-glass-client
      xrdp
-     
+
      # Browsing
      chromium
 
@@ -160,7 +160,7 @@
      python3
      git
      bun
-     
+
      # CLI tools
      vim
      btop
@@ -179,6 +179,7 @@
      syncthing
      spotify
      obsidian
+     nginx
      signal-desktop
      keepassxc
      
