@@ -15,6 +15,21 @@
   # Enable ssh
   services.openssh.enable = true;
 
+  # Enable nginx
+  services.nginx.enable = true;
+  services.nginx.virtualHosts."local.host" = {
+    addSSL = true;
+    enableACME = true;
+    root = "/var/www/local.host";
+  };
+
+
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "foo@bar.com";
+  };
+
+
   # Trying to enable XDG Portal
   xdg.portal.enable = true;
 
@@ -172,9 +187,9 @@
      wget
      ntfs3g
      devenv
-     
+
      # Games
-     
+
      # Tools
      syncthing
      spotify
@@ -182,7 +197,7 @@
      nginx
      signal-desktop
      keepassxc
-     
+
      # Web tools
      deno
      atlas #MongoDB tool
@@ -204,7 +219,7 @@
      obs-studio
      thefuck
      webcord
-];
+   ];
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
