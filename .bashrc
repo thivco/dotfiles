@@ -1,6 +1,8 @@
 #
 # ~/.bashrc
 #
+wal -i ~/workshop/lab/dotfiles/wallpaper/polaris_fatalism.jpg -q
+
 eval "$(starship init bash)"
 eval "$(thefuck --alias)"
 eval "$(thefuck --alias fk)"

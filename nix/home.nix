@@ -9,6 +9,9 @@ home.homeDirectory = "/home/thib";
 
 home.stateVersion = "24.05"; # Please read the comment before changing.
 
+# Enabling dconf to customize GTK theme
+#programs.dconf.enable = true;
+
 programs.direnv.enable = true;
 
 # Enabling nnn because why not
@@ -31,9 +34,11 @@ nixpkgs.config.allowUnfree = true;
 home.packages = [
   pkgs.wofi
   #pkgs.neovim
+  pkgs.pywal
   pkgs.postman
   pkgs.hyprlock
   pkgs.eza
+  pkgs.gnome.adwaita-icon-theme
 ];
 
 # Home Manager is pretty good at managing dotfiles. The primary way to manage
