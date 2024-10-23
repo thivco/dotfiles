@@ -1,13 +1,13 @@
 - [ ] Waybar
 - [/] Alacritty config
 - [ ] File manager with icons
-- [ ] Pywal to edit colors
-- [ ] Hyprpaper
-- [ ] Notifications
-- [ ] Sway
+- [ ] Pywal to edit colors (rand with hyprpaper, or something less aggressive ?)
+- [x] Hyprpaper
+- [ ] Notifications waylandnc je crois
+- [/] Sway
 - [ ] Create something more practical to install all tools on non-nix distros
 - [ ] EWW Bar and widgets
-- [ ] Hyprlock or better lock
+- [x] Hyprlock or better lock
 - [X] Passthrough : Access VM through RDP, launch at boot, add sound, remove stuttering
 - [ ] Passthrough : Remaining stuff (Some stutter, audio, binds and SUPER key)
 - [ ] Bluetooth (Change BT version ? https://www.reddit.com/r/linuxquestions/comments/17id05z/dualshock_4_bluetooth_issues_on_arch_linux/)
