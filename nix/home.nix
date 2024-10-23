@@ -32,6 +32,7 @@ home.packages = [
   pkgs.wofi
   #pkgs.neovim
   pkgs.postman
+  pkgs.hyprlock
   pkgs.eza
 ];
 
