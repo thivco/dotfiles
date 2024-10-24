@@ -31,14 +31,14 @@ nixpkgs.config.allowUnfree = true;
 # The home.packages option allows you to install Nix packages into your
 # environment.
 
-home.packages = [
-  pkgs.wofi
+home.packages = with pkgs; [
+  wofi
   #pkgs.neovim
-  pkgs.pywal
-  pkgs.postman
-  pkgs.hyprlock
-  pkgs.eza
-  pkgs.gnome.adwaita-icon-theme
+  pywal
+  postman
+  hyprlock
+  eza
+  gnome.adwaita-icon-theme
 ];
 
 # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -70,8 +70,14 @@ programs.neovim = {
   vimAlias = true;
   vimdiffAlias = true;
 
+  extraPackages = with pkgs; [
+    xclip
+    wl-clipboard
+  ];
+
   plugins = with pkgs.vimPlugins; [
     nvim-lspconfig
+    nvim-treesitter
     telescope-nvim
     telescope-fzf-native-nvim
     (nvim-treesitter.withPlugins (p: [
