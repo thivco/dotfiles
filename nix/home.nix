@@ -32,12 +32,17 @@ nixpkgs.config.allowUnfree = true;
 # environment.
 
 home.packages = with pkgs; [
+  #GUI tools
   wofi
-  #pkgs.neovim
-  pywal
   postman
-  hyprlock
+  #CLI tools
+  fastfetch
+  pywal
   eza
+  #hyprland tools
+  hyprlock
+  hypridle
+
   gnome.adwaita-icon-theme
 ];
 
