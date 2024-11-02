@@ -30,6 +30,7 @@ alias ehc="nvim ~/workshop/lab/dotfiles/hypr/hyprland.conf"
 alias enix="sudo nvim ~/workshop/lab/dotfiles/nix/configuration.nix"
 alias hm="nvim $DOTFILES_LOC/nix/home.nix && home-manager switch --flake $DOTFILES_LOC/nix"
 alias flake="sudo nixos-rebuild switch --flake $DOTFILES_LOC/nix"
+alias sass="npx sass --watch *.scss style.css"
 
 # QOL alias
 alias nv="nvim"
