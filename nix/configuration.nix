@@ -15,6 +15,10 @@
   # Enable ssh
   services.openssh.enable = true;
 
+  # This should enable binaries but I have no clues...
+  programs.nix-ld.enable = true;
+  #programs.nix-ld.libraries = with pkgs; []
+
   # Enable nginx
   services.nginx.enable = true;
   services.nginx.virtualHosts."local.host" = {
@@ -211,7 +215,7 @@
      plasma-pa
      pavucontrol
      vlc
-     gnome3.adwaita-icon-theme
+     gnome.adwaita-icon-theme
      glib
      pamixer
      freerdp
