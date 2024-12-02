@@ -6,7 +6,6 @@
 home.username = "thib";
 home.homeDirectory = "/home/thib";
 
-
 home.stateVersion = "24.05"; # Please read the comment before changing.
 
 # Enabling dconf to customize GTK theme
@@ -35,6 +34,7 @@ home.packages = with pkgs; [
   #GUI tools
   wofi
   postman
+  google-chrome
   #CLI tools
   fastfetch
   pywal

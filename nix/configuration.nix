@@ -20,13 +20,14 @@
   #programs.nix-ld.libraries = with pkgs; []
 
   # Enable nginx
-  services.nginx.enable = true;
-  services.nginx.virtualHosts."local.host" = {
-    addSSL = true;
-    enableACME = true;
-    root = "/var/www/local.host";
-  };
-
+  # Or disable it because of this dumb certificate issue which I will conveniently ignore
+  services.nginx.enable = false;
+#  services.nginx.virtualHosts."local.host" = {
+#    addSSL = true;
+#    enableACME = true;
+#    root = "/var/www/local.host";
+#  };
+#
 
   security.acme = {
     acceptTerms = true;
