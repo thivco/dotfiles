@@ -10,12 +10,13 @@
 - [x] Hyprlock or better lock
 - [X] Passthrough : Access VM through RDP, launch at boot, add sound, remove stuttering
 - [ ] Passthrough : Remaining stuff (Some stutter, audio, binds and SUPER key)
-- [ ] Bluetooth (Change BT version ? https://www.reddit.com/r/linuxquestions/comments/17id05z/dualshock_4_bluetooth_issues_on_arch_linux/)
+- [x] Bluetooth (Change BT version ? https://www.reddit.com/r/linuxquestions/comments/17id05z/dualshock_4_bluetooth_issues_on_arch_linux/) (just reboot l0l)
 - [ ] Play pause button
 - [x] Cliphist to support images
-- [ ] Change SDDM to Wayland
+- [ ] Change SDDM to hyprlock on boot, remove occasionnal TTY boot
 - [ ] Modularize
 - [x] Home manager
 - [-] Set the bashrc with the aliases in home manager
 - [x] Create new aliases to rebuild home manager and flake
 - [ ] Split the config file into multiple flakes
+- [ ] waybar : add wofi power menu
