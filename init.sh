@@ -21,19 +21,23 @@ if [ ! -f workshop ]; then
 fi
 
 echo "Moving the dotfiles"
+cd ../
 mv ../dotfiles ~/workshop/lab/dotfiles
 
 echo "Cleaning up"
-rm -rf ~/dotfiles
+rm -rf dotfiles
 
 # cp ./hyprland/hyprland.conf ~/.config/hypr/hyprland.conf
 echo "Linking the hyprland.conf file"
+
+
 rm ~/.config/hypr/hyprland.conf && ln ~/workshop/lab/dotfiles/hyprland/hyprland.conf ~/.config/hypr/hyprland.conf
 
 echo "Linking bashrc"
 rm ~/.bashrc && ln ~/workshop/lab/dotfiles/.bashrc ~/.bashrc 
 source ~/.bashrc
 
+# Check if we're running on laptop or desktop. Take the config from the selected directory
 # If we're using NixOS, add the config file to /etc/nixos
 if [ -f /etc/nixos ]; then
     echo "Adding the custom config to nixOS directory"
@@ -47,3 +51,8 @@ if [ -f /etc/nixos ]; then
     fi
     echo "nixOS config done"
 fi
+
+# Install home manager
+# Set the bashrc (or do it from home manager)
+# Link the hypr config files (hyprland, hyprlock, hyprpaper, hypridle...)
+# Make the hyprland conf file dynamic regarding the peripherals (monitor...)
