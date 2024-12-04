@@ -72,3 +72,5 @@ function nixbuild() {
 	git commit -am "$msg"
 	popd
 }
+
+alias wayboar=waybar

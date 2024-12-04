@@ -42,7 +42,7 @@ home.packages = with pkgs; [
   #hyprland tools
   hyprlock
   hypridle
-
+  waycorner
   gnome.adwaita-icon-theme
 ];
 
