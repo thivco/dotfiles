@@ -2,6 +2,9 @@
 # ~/.bashrc
 #
 #wal -i ~/workshop/lab/dotfiles/wallpaper/polaris_fatalism.jpg -q
+(wal -r &)
+#(bash /home/thib/workshop/lab/dotfiles/.config/set_wallpaper.sh &)
+clear
 
 eval "$(starship init bash)"
 eval "$(thefuck --alias)"
