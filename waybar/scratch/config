@@ -1,0 +1,13 @@
+{
+  "layer": "top",
+  "position" : "top",
+    "modules-center": [
+      "clock"
+    ],
+    "clock": {
+      "interval": 60,
+      "format": "{:%H:%M}",
+      "max-length": 25
+    },
+
+}
