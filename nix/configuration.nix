@@ -192,6 +192,7 @@
      wget
      ntfs3g
      devenv
+     gcc
 
      # Games
 

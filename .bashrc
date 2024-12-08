@@ -30,10 +30,11 @@ alias ws="cd ~/workshop"
 # Aliases to edit config files
 alias ebash="nvim ~/workshop/lab/dotfiles/.bashrc && source ~/workshop/lab/dotfiles/.bashrc"
 alias ehc="nvim ~/workshop/lab/dotfiles/hypr/hyprland.conf"
-alias enix="sudo nvim ~/workshop/lab/dotfiles/nix/configuration.nix"
+alias enix="nvim ~/workshop/lab/dotfiles/nix/configuration.nix"
 alias hm="nvim $DOTFILES_LOC/nix/home.nix && home-manager switch --flake $DOTFILES_LOC/nix"
 alias flake="sudo nixos-rebuild switch --flake $DOTFILES_LOC/nix"
 alias sass="npx sass --watch *.scss style.css"
+alias nvim_config="rm -rf ~/workshop/lab/dotfiles/.config/nvim/ && cp -r ~/.config/nvim/ ~/workshop/lab/dotfiles/.config/nvim/"
 
 # QOL alias
 alias nv="nvim"
