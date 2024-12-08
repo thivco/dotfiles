@@ -2,5 +2,6 @@
   "cyberdream.nvim": { "branch": "main", "commit": "731290012f435e06e4d5d64ed7c09cec49df2663" },
   "lazy.nvim": { "branch": "main", "commit": "014d1d6d78df4e58f962158e6e00261d8632612c" },
   "mini.nvim": { "branch": "main", "commit": "2435d0de00174a45d6b352fefeaa6008ebe9f23b" },
+  "nvim-lspconfig": { "branch": "master", "commit": "47f236c058f0511702286a21ba53bbf42abbd8a8" },
   "nvim-treesitter": { "branch": "master", "commit": "3b8dee4293567b0b9a87360842af14669f60dd13" }
 }
