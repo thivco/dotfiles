@@ -69,32 +69,34 @@ home.file = {
 #  /etc/profiles/per-user/thib/etc/profile.d/hm-session-vars.sh
 #
 
-programs.neovim = {
-  enable = true;
-  viAlias = true;
-  vimAlias = true;
-  vimdiffAlias = true;
+programs.neovim.enable = true;
 
-  extraPackages = with pkgs; [
-    xclip
-    wl-clipboard
-  ];
-
-  plugins = with pkgs.vimPlugins; [
-    nvim-lspconfig
-    nvim-treesitter
-    telescope-nvim
-    telescope-fzf-native-nvim
-    (nvim-treesitter.withPlugins (p: [
-      p.tree-sitter-nix
-      p.tree-sitter-vim
-      p.tree-sitter-bash
-      p.tree-sitter-json
-    ]))
-
-    vim-nix
-  ];
-};
+#programs.neovim = {
+#  enable = true;
+#  viAlias = true;
+#  vimAlias = true;
+#  vimdiffAlias = true;
+#
+#  extraPackages = with pkgs; [
+#    xclip
+#    wl-clipboard
+#  ];
+#
+#  plugins = with pkgs.vimPlugins; [
+#    nvim-lspconfig
+#    nvim-treesitter
+#    telescope-nvim
+#    telescope-fzf-native-nvim
+#    (nvim-treesitter.withPlugins (p: [
+#      p.tree-sitter-nix
+#      p.tree-sitter-vim
+#      p.tree-sitter-bash
+#      p.tree-sitter-json
+#    ]))
+#
+#    vim-nix
+#  ];
+#};
 
 home.sessionVariables = {
 };
