@@ -39,6 +39,7 @@ home.packages = with pkgs; [
   fastfetch
   pywal
   eza
+  playerctl
   #hyprland tools
   hyprlock
   hypridle

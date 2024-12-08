@@ -1,13 +1,25 @@
 {
   "layer": "top",
-  "position" : "top",
+    "position" : "top",
+    "modules-left":[
+      "custom/rofi",
+    ],
     "modules-center": [
-      "clock"
+      "hyprland/window",
+    ],
+    "modules-right":[
+      "clock",
+    "network",
+    "volume",
+    "custom/weather",
+
     ],
     "clock": {
-      "interval": 60,
-      "format": "{:%H:%M}",
-      "max-length": 25
+      "interval": 1,
+      "format": "{:%H:%M:%S}"
     },
-
+    "custom/rofi":{
+      "format":"󱄅",
+      "on-click":"rofi -show drun",
+    },
 }
