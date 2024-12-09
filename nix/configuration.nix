@@ -6,21 +6,21 @@
   imports =
     [ # Include the results of the hardware scan.
     ./passthrough.nix
-    ./hardware-configuration.nix
-  ];
+      ./hardware-configuration.nix
+    ];
 
-  # Here we go... FLAKES ENABLED !
+# Here we go... FLAKES ENABLED !
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Enable ssh
+# Enable ssh
   services.openssh.enable = true;
 
-  # This should enable binaries but I have no clues...
+# This should enable binaries but I have no clues...
   programs.nix-ld.enable = true;
-  #programs.nix-ld.libraries = with pkgs; []
+#programs.nix-ld.libraries = with pkgs; []
 
-  # Enable nginx
-  # Or disable it because of this dumb certificate issue which I will conveniently ignore
+# Enable nginx
+# Or disable it because of this dumb certificate issue which I will conveniently ignore
   services.nginx.enable = false;
 #  services.nginx.virtualHosts."local.host" = {
 #    addSSL = true;
@@ -35,14 +35,14 @@
   };
 
 
-  # Trying to enable XDG Portal
+# Trying to enable XDG Portal
   xdg.portal.enable = true;
 
-  # Enable Hyprland
+# Enable Hyprland
   programs.hyprland.enable = true;
   programs.hyprland.xwayland.enable = true; 
 
-  # Detect ext drives
+# Detect ext drives
   services.udisks2.enable = true;
   boot.supportedFilesystems = [ "ntfs" ];
 
@@ -51,44 +51,44 @@
   programs.thunar.enable = true;
   programs.xfconf.enable = true;
 
-  # Don't put spaces in the specialisation name, it prevents rebuilds
+# Don't put spaces in the specialisation name, it prevents rebuilds
   specialisation."Windows_Mode".configuration = {
     system.nixos.tags = [ "with-vfio" ];
     vfio.enable = true;
   };
 
-  # Enable memtest to test memory at boot
+# Enable memtest to test memory at boot
   boot.loader.systemd-boot.memtest86.enable = true;
 
-  # Allows Unfree packages
+# Allows Unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # Allows insecure packages
+# Allows insecure packages
   nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0"
   ];
 
-  # Enable SDDM
+# Enable SDDM
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
 
-  # Keyboard
+# Keyboard
   services.xserver.xkb = {
     layout = "us";
     variant = "dvorak";
   };
 
-  # Fonts
+# Fonts
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "ComicShannsMono" "Iosevka"]; })
   ];
 
-  # Installing Nautilus
+# Installing Nautilus
   services.gvfs.enable = true;
 
-  # Enable sound using Pipewire
+# Enable sound using Pipewire
 
-  # sound.enable = true;
+# sound.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -99,161 +99,163 @@
     wireplumber.enable = true;
   };
 
-  # Enabling with Pulseaudio as well to check bluetooth integration
+# Enabling with Pulseaudio as well to check bluetooth integration
   hardware.pulseaudio.enable = false;
 
-  # Bluetooth configuration
+# Bluetooth configuration
   hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-  services.blueman.enable = true;
+    hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+    services.blueman.enable = true;
 
-  # Use the systemd-boot EFI boot loader.
+# Use the systemd-boot EFI boot loader.
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.device = "nodev";
   boot.loader.grub.useOSProber = true;
   boot.loader.grub.efiSupport = true;
 
-  # networking.hostName = "nixos"; # Define your hostname.
-  # Pick only one of the below networking options.
-  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+# networking.hostName = "nixos"; # Define your hostname.
+# Pick only one of the below networking options.
+#networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
-  # Set your time zone.
-  time.timeZone = "Europe/Amsterdam";
+# Set your time zone.
+    time.timeZone = "Europe/Amsterdam";
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+# Configure network proxy if necessary
+# networking.proxy.default = "http://user:password@proxy:port/";
+# networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkb.options in tty.
-  # };
+# Select internationalisation properties.
+# i18n.defaultLocale = "en_US.UTF-8";
+# console = {
+#   font = "Lat2-Terminus16";
+#   keyMap = "us";
+#   useXkbConfig = true; # use xkb.options in tty.
+# };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+# Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.thib = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enables ‘sudo’ for the user.
-    openssh.authorizedKeys.keys = ["AAAAC3NzaC1lZDI1NTE5AAAAIDAcczjaWc2NHGIBFxArYGkivl4lzC27N5IXlXoiZD0N"];
+      openssh.authorizedKeys.keys = ["AAAAC3NzaC1lZDI1NTE5AAAAIDAcczjaWc2NHGIBFxArYGkivl4lzC27N5IXlXoiZD0N"];
     packages = with pkgs; [
       firefox
-      tree
+	tree
     ];
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+# List packages installed in system profile. To search, run:
+# $ nix search wget
+
+
   environment.systemPackages = with pkgs; [
     (waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true"];
-    })
+			   mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true"];
+			   })
     )
-     # terminal
-     kitty
-     starship
-     alacritty
+# terminal
+      kitty
+      starship
+      alacritty
 
-     # Linux tools
-     waybar
-     pfetch
-     rofi
-     hyprpaper
-     pywal
-     grim
-     slurp
-     cliphist
-     wl-clipboard
+# Linux tools
+      waybar
+      pfetch
+      rofi
+      hyprpaper
+      pywal
+      grim
+      slurp
+      cliphist
+      wl-clipboard
 
-     # Virtualization
-     looking-glass-client
-     xrdp
+# Virtualization
+      looking-glass-client
+      xrdp
 
-     # Browsing
-     chromium
+# Browsing
+      chromium
 
-     # Dev
-     vscode
-     #go
-     python3
-     git
-     bun
+# Dev
+      vscode
+#go
+      python3
+      git
+      bun
 
-     # CLI tools
-     vim
-     btop
-     htop
-     #neovim
-     fzf
-     bat
-     killall
-     wget
-     ntfs3g
-     devenv
-     gcc
+# CLI tools
+      vim
+      btop
+      htop
+#neovim
+      fzf
+      bat
+      killall
+      wget
+      ntfs3g
+      devenv
+      gcc
 
-     # Games
+# Games
 
-     # Tools
-     syncthing
-     spotify
-     obsidian
-     nginx
-     signal-desktop
-     keepassxc
+# Tools
+      syncthing
+      spotify
+      obsidian
+      nginx
+      signal-desktop
+      keepassxc
 
-     # Web tools
-     deno
-     atlas #MongoDB tool
-     mongosh
+# Web tools
+      deno
+      atlas #MongoDB tool
+      mongosh
 
-     # Misc
-     xrdp
-     xwayland
-     networkmanager
-     swaylock
-     plasma-pa
-     pavucontrol
-     vlc
-     gnome.adwaita-icon-theme
-     glib
-     pamixer
-     freerdp
-     lm_sensors
-     obs-studio
-     thefuck
-     webcord
-   ];
+# Misc
+      xrdp
+      xwayland
+      networkmanager
+      swaylock
+      plasma-pa
+      pavucontrol
+      vlc
+      gnome.adwaita-icon-theme
+      glib
+      pamixer
+      freerdp
+      lm_sensors
+      obs-studio
+      thefuck
+      webcord
+      ];
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+# Open ports in the firewall.
+# networking.firewall.allowedTCPPorts = [ ... ];
+# networking.firewall.allowedUDPPorts = [ ... ];
+# Or disable the firewall altogether.
+# networking.firewall.enable = false;
 
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  # system.copySystemConfiguration = true;
+# Copy the NixOS configuration file and link it from the resulting system
+# (/run/current-system/configuration.nix). This is useful in case you
+# accidentally delete configuration.nix.
+# system.copySystemConfiguration = true;
 
-  # This option defines the first version of NixOS you have installed on this particular machine,
-  # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
-  #
-  # Most users should NEVER change this value after the initial install, for any reason,
-  # even if you've upgraded your system to a new NixOS release.
-  #
-  # This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
-  # so changing it will NOT upgrade your system.
-  #
-  # This value being lower than the current NixOS release does NOT mean your system is
-  # out of date, out of support, or vulnerable.
-  #
-  # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
-  # and migrated your data accordingly.
-  #
-  # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
+# This option defines the first version of NixOS you have installed on this particular machine,
+# and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
+#
+# Most users should NEVER change this value after the initial install, for any reason,
+# even if you've upgraded your system to a new NixOS release.
+#
+# This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
+# so changing it will NOT upgrade your system.
+#
+# This value being lower than the current NixOS release does NOT mean your system is
+# out of date, out of support, or vulnerable.
+#
+# Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
+# and migrated your data accordingly.
+#
+# For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "23.11"; # Did you read the comment?
 
 }
