@@ -1,3 +1,4 @@
+print("testing")
 require("config.lazy")
 local set = vim.opt
 --using set instead of calling the vim.opt every time

@@ -78,7 +78,7 @@
     variant = "dvorak";
   };
 
-console.keyMap = "dvorak";
+  console.keyMap = "dvorak";
 
 # Fonts
   fonts.packages = with pkgs; [
@@ -236,8 +236,10 @@ console.keyMap = "dvorak";
       nodePackages.typescript
       nodePackages.typescript-language-server
       lua-language-server
-      
-
+      bash-language-server
+      vue-language-server
+      dockerfile-language-server-nodejs
+      javascript-typescript-langserver
       ];
 
 # Open ports in the firewall.
