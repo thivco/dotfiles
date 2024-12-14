@@ -78,6 +78,8 @@
     variant = "dvorak";
   };
 
+console.keyMap = "dvorak";
+
 # Fonts
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "ComicShannsMono" "Iosevka"]; })
@@ -210,6 +212,7 @@
       deno
       atlas #MongoDB tool
       mongosh
+      nodejs
 
 # Misc
       xrdp
@@ -218,6 +221,7 @@
       swaylock
       plasma-pa
       pavucontrol
+      scrcpy
       vlc
       gnome.adwaita-icon-theme
       glib
@@ -227,6 +231,13 @@
       obs-studio
       thefuck
       webcord
+
+# Language server protocol
+      nodePackages.typescript
+      nodePackages.typescript-language-server
+      lua-language-server
+      
+
       ];
 
 # Open ports in the firewall.
