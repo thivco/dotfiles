@@ -4,7 +4,6 @@
 #wal -i ~/workshop/lab/dotfiles/wallpaper/polaris_fatalism.jpg -q
 (wal -r &)
 #(bash /home/thib/workshop/lab/dotfiles/.config/set_wallpaper.sh &)
-clear
 
 eval "$(starship init bash)"
 eval "$(thefuck --alias)"
@@ -35,7 +34,8 @@ alias hm="nvim $DOTFILES_LOC/nix/home.nix && home-manager switch --flake $DOTFIL
 alias flake="sudo nixos-rebuild switch --flake $DOTFILES_LOC/nix"
 alias sass="npx sass --watch *.scss style.css"
 alias nvim_config="rm -rf ~/workshop/lab/dotfiles/.config/nvim/ && cp -r ~/.config/nvim/ ~/workshop/lab/dotfiles/.config/nvim/"
-alias envim="pushd $DOTFILES_LOC/.config/nvim && nvim . && popd" 
+alias envim="pushd ~/.config/nvim && nvim . && popd" 
+
 # QOL alias
 alias nv="nvim"
 alias vi="nvim"
@@ -75,3 +75,5 @@ function nixbuild() {
 }
 
 alias wayboar=waybar
+
+clear
