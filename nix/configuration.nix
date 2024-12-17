@@ -28,6 +28,8 @@
 #    root = "/var/www/local.host";
 #  };
 #
+# Test installing font thank you mr llm
+
 
   security.acme = {
     acceptTerms = true;
@@ -82,7 +84,8 @@
 
 # Fonts
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "ComicShannsMono" "Iosevka"]; })
+    fira-code
+#    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" "ComicShannsMono" "Iosevka"]; })
   ];
 
 # Installing Nautilus
@@ -231,6 +234,9 @@
       obs-studio
       thefuck
       webcord
+
+      #Fonts
+      jetbrains-mono
 
 # Language server protocol
       nodePackages.typescript
