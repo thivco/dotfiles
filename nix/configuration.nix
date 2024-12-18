@@ -36,6 +36,10 @@
     defaults.email = "foo@bar.com";
   };
 
+#testing emulation
+  virtualisation.waydroid.enable = true;
+  virtualisation.lxd.enable = true;
+
 
 # Trying to enable XDG Portal
   xdg.portal.enable = true;
