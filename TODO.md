@@ -3,6 +3,7 @@
 - [ ] File manager with icons
 - [ ] Pywal to edit colors (rand with hyprpaper, or something less aggressive ?)
 - [x] Hyprpaper
+- [ ] swww with scripts instead of hyprpaper
 - [ ] Notifications waylandnc je crois
 - [/] Sway
 - [ ] Create something more practical to install all tools on non-nix distros
