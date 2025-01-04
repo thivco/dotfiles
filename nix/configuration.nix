@@ -196,6 +196,7 @@
       vim
       btop
       htop
+      ripgrep
 #neovim
       fzf
       bat
