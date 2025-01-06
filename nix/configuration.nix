@@ -177,6 +177,7 @@
       slurp
       cliphist
       wl-clipboard
+      hyprcursor
 
 # Virtualization
       looking-glass-client
@@ -215,6 +216,7 @@
       nginx
       signal-desktop
       keepassxc
+      steamcmd
 
 # Web tools
       deno
@@ -231,7 +233,6 @@
       pavucontrol
       scrcpy
       vlc
-      gnome.adwaita-icon-theme
       glib
       pamixer
       freerdp

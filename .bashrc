@@ -56,7 +56,7 @@ function laz() {
 	git add .
 	git commit -m "$message"
 	git push
-	cd $current_location
+         	cd $current_location
 }
 
 function nixbuild() {
