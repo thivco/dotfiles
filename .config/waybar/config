@@ -2,11 +2,12 @@
   "layer": "top",
     "position" : "top",
     "modules-left": [
-      "custom/rofi"
+      "custom/rofi",
+    "custom/layout"
     ],
     "modules-center": [
       "hyprland/window",
-      "mpris"
+    "mpris"
     ],
     "modules-right": [
       "clock",
@@ -23,27 +24,34 @@
       "format": "󱄅",
       "on-click": "rofi -show drun"
     },
+    "custom/layout":{
+      "exec": "grep 'kb_layout' ~/.config/hypr/hyprland.conf | awk '{print $3}'",
+      "interval": 1,
+      "format": "{}",
+      "tooltip": "Click to toggle keyboard layout",
+      "on-click": "~/workshop/lab/dotfiles/.config/change_keyboard_layout.sh"
+    },
     "network": {
       "format-wifi": "",
-      "format-ethernet": "",
-      "format-disconnected": "",
+      "format-ethernet": "󰈀",
+      "format-disconnected": "󰈂",
       "tooltip-format-disconnected": "Error",
       "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
       "tooltip-format-ethernet": "{ifname} 🖧",
       "on-click": "kitty nmtui"
     },
-  "mpris": {
-        "interval": 1,
-        "format": "{status_icon} {title} - {artist}",
-        "tooltip-format": "Album: {album}\n\n{position} / {length}",
-        "status-icons": {
-            "playing": "",
-            "paused": "",
-            "stopped": "󱓻"
-        },
-        "ignored-players": ["firefox"]
+    "mpris": {
+      "interval": 1,
+      "format": "{status_icon} {title} - {artist}",
+      "tooltip-format": "Album: {album}\n\n{position} / {length}",
+      "status-icons": {
+	"playing": "",
+	"paused": "",
+	"stopped": "󱓻"
+      },
+      "ignored-players": ["firefox"]
     },
-  "custom/volume":{
+    "custom/volume":{
       "exec": "pamixer --get-volume-human",
       "interval": 1,
       "format": "{}",
