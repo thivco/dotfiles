@@ -1,0 +1,10 @@
+#waybar {
+  font-family : "JetBrainsMono Nerd Font", sans-serif;
+}
+#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
+  padding: 0 3px;
+  margin: 0 2px;
+}
+#clock {
+  font-weight: bold;
+}

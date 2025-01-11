@@ -178,6 +178,7 @@
       cliphist
       wl-clipboard
       hyprcursor
+      swww
 
 # Virtualization
       looking-glass-client
@@ -243,6 +244,7 @@
 
       #Fonts
       jetbrains-mono
+      font-awesome
 
 # Language server protocol
       nodePackages.typescript
