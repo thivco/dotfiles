@@ -5,6 +5,10 @@
 (wal -r &)
 #(bash /home/thib/workshop/lab/dotfiles/.config/set_wallpaper.sh &)
 
+if [[ $(tty) == "/dev/tty1" ]]; then
+  exec Hyprland
+fi
+
 eval "$(starship init bash)"
 eval "$(thefuck --alias)"
 eval "$(thefuck --alias fk)"
