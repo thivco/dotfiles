@@ -218,6 +218,7 @@
       signal-desktop
       keepassxc
       steamcmd
+      calibre
 
 # Web tools
       deno
