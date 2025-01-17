@@ -39,6 +39,7 @@ alias flake="sudo nixos-rebuild switch --flake $DOTFILES_LOC/nix"
 alias sass="npx sass --watch *.scss style.css"
 alias nvim_config="rm -rf ~/workshop/lab/dotfiles/.config/nvim/ && cp -r ~/.config/nvim/ ~/workshop/lab/dotfiles/.config/nvim/"
 alias envim="pushd ~/.config/nvim && nvim . && popd" 
+alias aptu="nix-channel --update && sudo flake"
 
 # QOL alias
 alias nv="nvim"
