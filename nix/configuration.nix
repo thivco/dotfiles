@@ -244,6 +244,10 @@
       thefuck
       webcord
 
+      #usb/mount
+      udiskie
+      udisks2
+
       #Fonts
       jetbrains-mono
       font-awesome
