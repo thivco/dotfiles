@@ -2,7 +2,7 @@
 
 HYPRLAND_CONFIG="$HOME/workshop/lab/dotfiles/hypr/hyprland.conf"
 DVORAK="us dvorak"
-AZERTY="fr"
+AZERTY="en"
 
 get_current_layout() {
   grep "kb_layout" "$HYPRLAND_CONFIG" | awk '{print $3}'

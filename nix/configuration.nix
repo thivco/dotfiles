@@ -55,6 +55,8 @@
   programs.steam.enable = true;
   programs.kdeconnect.enable = true;
   programs.thunar.enable = true;
+  services.tumbler.enable = true;
+# Enables tumbler to get image preview on when using thunar
   programs.xfconf.enable = true;
 
 # Don't put spaces in the specialisation name, it prevents rebuilds
@@ -208,8 +210,11 @@
       ntfs3g
       devenv
       gcc
+      simple-mtpfs
+      zip
 
 # Games
+      lutris
 
 # Tools
       syncthing
