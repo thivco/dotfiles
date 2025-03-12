@@ -53,6 +53,9 @@ alias l='ls -lah --color=auto'
 alias grep='grep --color=auto'
 alias fk='thefuck --alias'
 
+#desktop effects
+alias waybaru="waybar -c ~/workshop/lab/dotfiles/.config/waybar/config -s ~/workshop/lab/dotfiles/.config/waybar/style.css"
+
 function laz() {
 	current_location=$(pwd)
 	dot

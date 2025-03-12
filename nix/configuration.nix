@@ -112,7 +112,7 @@
   };
 
 # Enabling with Pulseaudio as well to check bluetooth integration
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
 
 # Bluetooth configuration
   hardware.bluetooth.enable = true; # enables support for Bluetooth
@@ -237,7 +237,7 @@
       xwayland
       networkmanager
       swaylock
-      plasma-pa
+      kdePackages.plasma-pa
       pavucontrol
       scrcpy
       vlc
@@ -264,7 +264,7 @@
       bash-language-server
       vue-language-server
       dockerfile-language-server-nodejs
-      javascript-typescript-langserver
+#      javascript-typescript-langserver
       ];
 
 # Open ports in the firewall.
