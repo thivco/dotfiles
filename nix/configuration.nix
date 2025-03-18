@@ -1,7 +1,6 @@
 # Hi, this is thibault's config
 
 { config, lib, pkgs, ... }:
-
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -112,7 +111,7 @@
   };
 
 # Enabling with Pulseaudio as well to check bluetooth integration
-  services.pulseaudio.enable = false;
+  hardware.pulseaudio.enable = false;
 
 # Bluetooth configuration
   hardware.bluetooth.enable = true; # enables support for Bluetooth
@@ -248,6 +247,7 @@
       obs-studio
       thefuck
       webcord
+# idk how to install this one yet      tokyo-night-sddm
 
       #usb/mount
       udiskie
