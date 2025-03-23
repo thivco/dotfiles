@@ -1,0 +1,81 @@
+{
+  "layer": "top",
+  "position": "top",
+  "modules-left": [
+    "custom/rofi",
+    "custom/layout"
+  ],
+  "modules-center": [
+    "hyprland/window",
+    "mpris"
+  ],
+  "modules-right": [
+    "clock",
+    "network",
+    "custom/volume",
+    "bluetooth",
+    "custom/weather"
+  ],
+  "clock": {
+    "interval": 1,
+    "format": "{:%H:%M:%S}"
+  },
+  "custom/rofi": {
+    "format": "",  // Lock icon
+    "on-click": "rofi -show drun"
+  },
+  "custom/layout": {
+    "exec": "grep 'kb_layout' ~/.config/hypr/hyprland.conf | awk '{print $3}'",
+    "interval": 1,
+    "format": " {}",  // Keyboard icon
+    "tooltip": "Click to toggle keyboard layout",
+    "on-click": "~/workshop/lab/dotfiles/.config/change_keyboard_layout.sh"
+  },
+  "network": {
+    "format-wifi": "",  // WiFi icon
+    "format-ethernet": "",  // Ethernet icon
+    "format-disconnected": "󰈂",  // Disconnected icon
+    "tooltip-format-disconnected": "Error",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} ",
+    "on-click": "kitty nmtui"
+  },
+  "mpris": {
+    "interval": 1,
+    "format": "{status_icon} {title} - {artist}",
+    "tooltip-format": "Album: {album}\n\n{position} / {length}",
+    "status-icons": {
+      "playing": "",  // Play icon
+      "paused": "",  // Pause icon
+      "stopped": "󰏤"  // Stop icon
+    },
+    "ignored-players": ["firefox"]
+  },
+  "custom/volume": {
+    "exec": "pamixer --get-volume-human",
+    "interval": 1,
+    "format": " {}",  // Volume icon
+    "tooltip": "Volume",
+    "on-click": "pavucontrol"
+  },
+  "bluetooth": {
+    "format-on": "",  // Bluetooth on icon
+    "format-off": "BT-off",
+    "format-disabled": "󰂲",  // Bluetooth disabled icon
+    "format-connected-battery": "{device_battery_percentage}% 󰂯",
+    "format-alt": "{device_alias} 󰂯",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\n{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_address}\n{device_battery_percentage}%",
+    "on-click-right": "blueman-manager",
+    "interval": 5
+  },
+  "custom/weather": {
+    "format": " {}",  // Weather icon
+    "interval": 300,
+    "exec": "curl -s 'https://wttr.in/Paris?format=%C+%t'",
+    "on-click": "kitty curl wttr.in/Paris"
+  }
+}
+

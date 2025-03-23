@@ -1,0 +1,148 @@
+/* Base styling for the entire bar */
+* {
+  font-family: "JetBrainsMono Nerd Font", sans-serif;
+  font-size: 14px;
+  border: none;
+  border-radius: 0;
+}
+
+window#waybar {
+  background-color: #18181b; /* zinc-900 */
+  color: #ffffff;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+
+#waybar.empty, #waybar.solo {
+  background-color: transparent;
+}
+
+/* Common module styling */
+#clock,
+#network,
+#custom-volume,
+#bluetooth,
+#custom-weather,
+#hyprland-window,
+#mpris,
+#custom-rofi,
+#custom-layout {
+  padding: 0 10px;
+  margin: 4px 3px;
+  border-radius: 6px;
+  background-color: #27272a; /* zinc-800 */
+  color: #ffffff;
+}
+
+/* Left modules */
+#custom-rofi {
+  color: #c4b5fd; /* violet-300 */
+  font-size: 16px;
+  padding: 0 12px;
+  margin-left: 6px;
+}
+
+#custom-rofi:hover {
+  background-color: #7c3aed; /* violet-600 */
+  color: #ffffff;
+}
+
+#custom-layout {
+  color: #d4d4d8; /* zinc-300 */
+  font-weight: bold;
+}
+
+/* Center modules */
+#hyprland-window {
+  background-color: #27272a; /* zinc-800 */
+  color: #ffffff;
+  padding: 0 12px;
+  font-weight: 500;
+  min-width: 200px;
+}
+
+#mpris {
+  background-color: #27272a; /* zinc-800 */
+  color: #67e8f9; /* cyan-300 */
+  padding: 0 12px;
+  min-width: 200px;
+}
+
+#mpris.playing {
+  border-bottom: 2px solid #67e8f9; /* cyan-300 */
+}
+
+#mpris.paused {
+  border-bottom: 2px solid #94a3b8; /* slate-400 */
+  color: #94a3b8; /* slate-400 */
+}
+
+/* Right modules */
+#clock {
+  color: #ffffff;
+  font-weight: bold;
+  margin-right: 6px;
+}
+
+#network {
+  color: #4ade80; /* green-400 */
+  font-size: 16px;
+}
+
+#network.disconnected {
+  color: #f87171; /* red-400 */
+}
+
+#custom-volume {
+  color: #fb923c; /* orange-400 */
+}
+
+#bluetooth {
+  color: #60a5fa; /* blue-400 */
+  font-size: 16px;
+}
+
+#bluetooth.disabled,
+#bluetooth.off {
+  color: #71717a; /* zinc-500 */
+}
+
+#custom-weather {
+  color: #67e8f9; /* cyan-300 */
+}
+
+/* Hover effects for interactive modules */
+#network:hover,
+#bluetooth:hover,
+#custom-volume:hover,
+#custom-weather:hover {
+  background-color: #3f3f46; /* zinc-700 */
+}
+
+/* Tooltip styling */
+tooltip {
+  background-color: #18181b; /* zinc-900 */
+  border: 1px solid #3f3f46; /* zinc-700 */
+  border-radius: 6px;
+}
+
+tooltip label {
+  color: #ffffff;
+}
+
+/* Animation for status changes */
+@keyframes blink {
+  to {
+    background-color: #3f3f46; /* zinc-700 */
+    color: #ffffff;
+  }
+}
+
+#network.disconnected,
+#bluetooth.disabled {
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
