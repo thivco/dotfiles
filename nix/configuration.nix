@@ -77,6 +77,7 @@
 
 # Enable SDDM
   services.xserver.enable = true;
+  services.xserver.videoDrivers = [ "amdgpu" ];
   services.displayManager.sddm.enable = true;
 
 # Keyboard
@@ -96,6 +97,11 @@
 
 # Installing Nautilus
   services.gvfs.enable = true;
+
+# AMD drivers related
+
+systemd.packages = with pkgs; [ lact ];
+systemd.services.lactd.wantedBy = ["multi-user.target"];
 
 # Enable sound using Pipewire
 
@@ -183,6 +189,7 @@
       dunst
       swww
       libnotify
+      lact
 
 # Virtualization
       looking-glass-client

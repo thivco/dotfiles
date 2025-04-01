@@ -1,13 +1,13 @@
 - [x] Waybar
-- [/] Alacritty config
+- [x] Alacritty config (switched to kitty)
 - [x] File manager with icons
 - [x] Pywal to edit colors (rand with hyprpaper, or something less aggressive ?)
 - [x] Hyprpaper
 - [ ] swww with scripts instead of hyprpaper
 - [x] Notifications waylandnc je crois (using dunst instead)
-- [/] Sway
+- [x] Sway (Hyprland)
 - [ ] Create something more practical to install all tools on non-nix distros
-- [-] EWW Bar and widgets
+- [x] EWW Bar and widgets (Waybar for now)
 - [x] Hyprlock or better lock
 - [X] Passthrough : Access VM through RDP, launch at boot, add sound, remove stuttering
 - [ ] Passthrough : Remaining stuff (Some stutter, audio, binds and SUPER key)
@@ -17,7 +17,7 @@
 - [ ] Change SDDM to hyprlock on boot, remove occasionnal TTY boot
 - [ ] Modularize
 - [x] Home manager
-- [-] Set the bashrc with the aliases in home manager
+- [x] Set the bashrc with the aliases in home manager (a good ol bashrc the old fashioned way)
 - [x] Create new aliases to rebuild home manager and flake
 - [ ] Split the config file into multiple flakes
 - [x] waybar : add wofi power menu
