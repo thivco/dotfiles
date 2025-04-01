@@ -1,13 +1,13 @@
-- [ ] Waybar
+- [x] Waybar
 - [/] Alacritty config
-- [ ] File manager with icons
-- [ ] Pywal to edit colors (rand with hyprpaper, or something less aggressive ?)
+- [x] File manager with icons
+- [x] Pywal to edit colors (rand with hyprpaper, or something less aggressive ?)
 - [x] Hyprpaper
 - [ ] swww with scripts instead of hyprpaper
-- [ ] Notifications waylandnc je crois
+- [x] Notifications waylandnc je crois (using dunst instead)
 - [/] Sway
 - [ ] Create something more practical to install all tools on non-nix distros
-- [ ] EWW Bar and widgets
+- [-] EWW Bar and widgets
 - [x] Hyprlock or better lock
 - [X] Passthrough : Access VM through RDP, launch at boot, add sound, remove stuttering
 - [ ] Passthrough : Remaining stuff (Some stutter, audio, binds and SUPER key)
@@ -20,4 +20,6 @@
 - [-] Set the bashrc with the aliases in home manager
 - [x] Create new aliases to rebuild home manager and flake
 - [ ] Split the config file into multiple flakes
-- [ ] waybar : add wofi power menu
+- [x] waybar : add wofi power menu
+- [ ] waybar : throrough theming
+- [ ] create custom config for dunst (notifications)
