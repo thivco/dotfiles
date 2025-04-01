@@ -1,0 +1,304 @@
+/* Base styling for the entire bar */
+* {
+  font-family: "Cinzel", "IM Fell English", serif;
+  font-size: 13px;
+  border: none;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
+}
+
+window#waybar {
+  background-color: #0a0a0a; /* Darker than modules */
+  background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23444444' fill-opacity='0.15'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  color: #f0f0f0; /* Almost white */
+  border-bottom: 2px solid #444444; /* Dark grey trim */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  padding: 4px 0; /* Control spacing instead of height */
+}
+
+#waybar.empty, #waybar.solo {
+  background-color: transparent;
+}
+
+/* Common module styling - Uniform height boxes */
+#clock,
+#network,
+#custom-volume,
+#bluetooth,
+#custom-weather,
+#hyprland-window,
+#mpris,
+#custom-rofi,
+#custom-layout {
+  margin: 4px 3px;
+  padding: 6px 12px; /* Control size with padding */
+  border: 1px solid #444444; /* Dark grey border */
+  border-radius: 0;
+  background-color: #1a1a1a; /* Dark grey background - lighter than bar */
+  color: #f0f0f0; /* Almost white text */
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+  /* Victorian corner ornaments */
+  background-image: 
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1c0 3.5 3.5 4 4 4s.5-3.5 4-4c-3.5 0-4-3.5-4-4s-.5 3.5-4 4z' stroke='%23444444' fill='none' stroke-width='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 1c0 3.5-3.5 4-4 4s-.5-3.5-4-4c3.5 0 4-3.5 4-4s.5 3.5 4 4z' stroke='%23444444' fill='none' stroke-width='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 15c0-3.5 3.5-4 4-4s.5 3.5 4 4c-3.5 0-4 3.5-4 4s-.5-3.5-4-4z' stroke='%23444444' fill='none' stroke-width='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 15c0-3.5-3.5-4-4-4s-.5 3.5-4 4c3.5 0 4 3.5 4 4s.5-3.5 4-4z' stroke='%23444444' fill='none' stroke-width='1'/%3E%3C/svg%3E");
+  background-position: 
+    top left,
+    top right,
+    bottom left,
+    bottom right;
+  background-repeat: no-repeat;
+  background-size: 12px;
+}
+
+/* Left modules */
+#custom-rofi {
+  color: #cccccc; /* Light grey */
+  font-size: 16px;
+  margin-left: 6px;
+  background-color: #1a1a1a; /* Dark grey */
+  border: 1px solid #444444; /* Dark grey border */
+  /* Victorian ornament for rofi button */
+  background-image: 
+    url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5-9h10v2H7v-2z' fill='%23444444' fill-opacity='0.3'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1c0 3.5 3.5 4 4 4s.5-3.5 4-4c-3.5 0-4-3.5-4-4s-.5 3.5-4 4z' stroke='%23444444' fill='none' stroke-width='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 1c0 3.5-3.5 4-4 4s-.5-3.5-4-4c3.5 0 4-3.5 4-4s.5 3.5 4 4z' stroke='%23444444' fill='none' stroke-width='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 15c0-3.5 3.5-4 4-4s.5 3.5 4 4c-3.5 0-4 3.5-4 4s-.5-3.5-4-4z' stroke='%23444444' fill='none' stroke-width='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 15c0-3.5-3.5-4-4-4s-.5 3.5-4 4c3.5 0 4 3.5 4 4s.5-3.5 4-4z' stroke='%23444444' fill='none' stroke-width='1'/%3E%3C/svg%3E");
+  background-position: 
+    center,
+    top left,
+    top right,
+    bottom left,
+    bottom right;
+  background-repeat: no-repeat;
+  background-size: 24px, 12px, 12px, 12px, 12px;
+}
+
+#custom-rofi:hover {
+  background-color: #2a2a2a; /* Lighter grey */
+  border-color: #cccccc; /* Light grey border on hover */
+}
+
+#custom-layout {
+  color: #f0f0f0; /* Almost white */
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Center modules - Full width */
+#hyprland-window {
+  background-color: #1a1a1a; /* Dark grey */
+  color: #f0f0f0; /* Almost white */
+  font-weight: 500;
+  min-width: 200px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #444444; /* Dark grey border */
+  letter-spacing: 1px;
+  /* Victorian divider ornament */
+  background-image: 
+    url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 10 L100 10 M0 10 L50 10 M50 5 L50 15' stroke='%23444444' stroke-opacity='0.3' stroke-width='1'/%3E%3Ccircle cx='50' cy='10' r='3' fill='%23444444' fill-opacity='0.3'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1c0 3.5 3.5 4 4 4s.5-3.5 4-4c-3.5 0-4-3.5-4-4s-.5 3.5-4 4z' stroke='%23444444' fill='none' stroke-width='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 1c0 3.5-3.5 4-4 4s-.5-3.5-4-4c3.5 0 4-3.5 4-4s.5 3.5 4 4z' stroke='%23444444' fill='none' stroke-width='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 15c0-3.5 3.5-4 4-4s.5 3.5 4 4c-3.5 0-4 3.5-4 4s-.5-3.5-4-4z' stroke='%23444444' fill='none' stroke-width='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 15c0-3.5-3.5-4-4-4s-.5 3.5-4 4c3.5 0 4 3.5 4 4s.5-3.5 4-4z' stroke='%23444444' fill='none' stroke-width='1'/%3E%3C/svg%3E");
+  background-position: 
+    center,
+    top left,
+    top right,
+    bottom left,
+    bottom right;
+  background-repeat: no-repeat;
+  background-size: 100% 20px, 12px, 12px, 12px, 12px;
+}
+
+#mpris {
+  background-color: #1a1a1a; /* Dark grey */
+  color: #cccccc; /* Light grey */
+  min-width: 200px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #444444; /* Dark grey border */
+  /* Victorian music ornament */
+  background-image: 
+    url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z' fill='%23444444' fill-opacity='0.2'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1c0 3.5 3.5 4 4 4s.5-3.5 4-4c-3.5 0-4-3.5-4-4s-.5 3.5-4 4z' stroke='%23444444' fill='none' stroke-width='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 1c0 3.5-3.5 4-4 4s-.5-3.5-4-4c3.5 0 4-3.5 4-4s.5 3.5 4 4z' stroke='%23444444' fill='none' stroke-width='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 15c0-3.5 3.5-4 4-4s.5 3.5 4 4c-3.5 0-4 3.5-4 4s-.5-3.5-4-4z' stroke='%23444444' fill='none' stroke-width='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 15c0-3.5-3.5-4-4-4s-.5 3.5-4 4c3.5 0 4 3.5 4 4s.5-3.5 4-4z' stroke='%23444444' fill='none' stroke-width='1'/%3E%3C/svg%3E");
+  background-position: 
+    right 5px
+    top left
+    top right
+    bottom left
+    bottom right;
+  background-repeat: no-repeat;
+  background-size: 20px, 12px, 12px, 12px, 12px;
+}
+
+#mpris.playing {
+  border-bottom: 2px solid #cccccc; /* Light grey border */
+  box-shadow: 0 0 5px rgba(204, 204, 204, 0.5); /* Light grey glow */
+}
+
+#mpris.paused {
+  border-bottom: 2px solid #666666; /* Medium grey */
+  color: #666666; /* Medium grey */
+}
+
+/* Right modules */
+#clock {
+  color: #f0f0f0; /* Almost white */
+  font-weight: bold;
+  margin-right: 6px;
+  background-color: #1a1a1a; /* Dark grey */
+  letter-spacing: 1px;
+  /* Victorian clock ornament */
+  background-image: 
+    url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z' fill='%23444444' fill-opacity='0.2'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1c0 3.5 3.5 4 4 4s.5-3.5 4-4c-3.5 0-4-3.5-4-4s-.5 3.5-4 4z' stroke='%23444444' fill='none' stroke-width='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 1c0 3.5-3.5 4-4 4s-.5-3.5-4-4c3.5 0 4-3.5 4-4s.5 3.5 4 4z' stroke='%23444444' fill='none' stroke-width='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 15c0-3.5 3.5-4 4-4s.5 3.5 4 4c-3.5 0-4 3.5-4 4s-.5-3.5-4-4z' stroke='%23444444' fill='none' stroke-width='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 15c0-3.5-3.5-4-4-4s-.5 3.5-4 4c3.5 0 4 3.5 4 4s.5-3.5 4-4z' stroke='%23444444' fill='none' stroke-width='1'/%3E%3C/svg%3E");
+  background-position: 
+    left 5px center,
+    top left,
+    top right,
+    bottom left,
+    bottom right;
+  background-repeat: no-repeat;
+  background-size: 20px, 12px, 12px, 12px, 12px;
+}
+
+#network {
+  color: #a0a0a0; /* Medium light grey */
+  font-size: 16px;
+  /* Victorian network ornament */
+  background-image: 
+    url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z' fill='%23444444' fill-opacity='0.2'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1c0 3.5 3.5 4 4 4s.5-3.5 4-4c-3.5 0-4-3.5-4-4s-.5 3.5-4 4z' stroke='%23444444' fill='none' stroke-width='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 1c0 3.5-3.5 4-4 4s-.5-3.5-4-4c3.5 0 4-3.5 4-4s.5 3.5 4 4z' stroke='%23444444' fill='none' stroke-width='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 15c0-3.5 3.5-4 4-4s.5 3.5 4 4c-3.5 0-4 3.5-4 4s-.5-3.5-4-4z' stroke='%23444444' fill='none' stroke-width='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 15c0-3.5-3.5-4-4-4s-.5 3.5-4 4c3.5 0 4 3.5 4 4s.5-3.5 4-4z' stroke='%23444444' fill='none' stroke-width='1'/%3E%3C/svg%3E");
+  background-position: 
+    right 5px center,
+    top left,
+    top right,
+    bottom left,
+    bottom right;
+  background-repeat: no-repeat;
+  background-size: 20px, 12px, 12px, 12px, 12px;
+}
+
+#network.disconnected {
+  color: #8b0000; /* Blood red */
+}
+
+#custom-volume {
+  color: #cccccc; /* Light grey */
+}
+
+#bluetooth {
+  color: #a0a0a0; /* Medium light grey */
+  font-size: 16px;
+}
+
+#bluetooth.disabled,
+#bluetooth.off {
+  color: #666666; /* Medium grey */
+}
+
+#custom-weather {
+  color: #cccccc; /* Light grey */
+  /* Victorian weather ornament */
+  background-image: 
+    url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z' fill='%23444444' fill-opacity='0.2'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1c0 3.5 3.5 4 4 4s.5-3.5 4-4c-3.5 0-4-3.5-4-4s-.5 3.5-4 4z' stroke='%23444444' fill='none' stroke-width='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 1c0 3.5-3.5 4-4 4s-.5-3.5-4-4c3.5 0 4-3.5 4-4s.5 3.5 4 4z' stroke='%23444444' fill='none' stroke-width='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 15c0-3.5 3.5-4 4-4s.5 3.5 4 4c-3.5 0-4 3.5-4 4s-.5-3.5-4-4z' stroke='%23444444' fill='none' stroke-width='1'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 15c0-3.5-3.5-4-4-4s-.5 3.5-4 4c3.5 0 4 3.5 4 4s.5-3.5 4-4z' stroke='%23444444' fill='none' stroke-width='1'/%3E%3C/svg%3E");
+  background-position: 
+    left 5px center,
+    top left,
+    top right,
+    bottom left,
+    bottom right;
+  background-repeat: no-repeat;
+  background-size: 20px, 12px, 12px, 12px, 12px;
+}
+
+/* Hover effects for interactive modules */
+#network:hover,
+#bluetooth:hover,
+#custom-volume:hover,
+#custom-weather:hover {
+  background-color: #2a2a2a; /* Lighter grey */
+  box-shadow: 0 0 8px rgba(204, 204, 204, 0.5); /* Light grey glow */
+  border-color: #cccccc; /* Light grey border on hover */
+}
+
+/* Tooltip styling */
+tooltip {
+  background-color: #1a1a1a; /* Dark grey */
+  border: 1px solid #444444; /* Dark grey border */
+  border-radius: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+  /* Victorian border ornament */
+  background-image: 
+    url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0 L100 0 L100 100 L0 100 Z' fill='none' stroke='%23444444' stroke-opacity='0.3' stroke-width='2' stroke-dasharray='5,5'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+}
+
+tooltip label {
+  color: #f0f0f0; /* Almost white */
+  font-family: "Cinzel", "IM Fell English", serif;
+}
+
+/* Animation for status changes */
+@keyframes ornate-pulse {
+  0% {
+    background-color: #1a1a1a; /* Dark grey */
+    color: #8b0000; /* Blood red */
+    border-color: #444444;
+  }
+  50% {
+    background-color: #2a1a1a; /* Slightly lighter */
+    color: #f0f0f0; /* Almost white */
+    border-color: #8b0000; /* Blood red */
+  }
+  100% {
+    background-color: #1a1a1a; /* Dark grey */
+    color: #8b0000; /* Blood red */
+    border-color: #444444;
+  }
+}
+
+#network.disconnected,
+#bluetooth.disabled {
+  animation-name: ornate-pulse;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* Full width layout */
+#waybar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#modules-left {
+  margin-left: 0;
+}
+
+#modules-center {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+#modules-right {
+  margin-right: 0;
+}

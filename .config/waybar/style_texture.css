@@ -1,0 +1,238 @@
+/* Base styling for the entire bar */
+* {
+  font-family: "Cinzel", "IM Fell English", serif;
+  font-size: 13px;
+  border: none;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
+}
+
+window#waybar {
+  background-color: #121212; /* Almost black */
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeBlend mode='screen'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-blend-mode: overlay;
+  color: #f0f0f0; /* Almost white */
+  border-bottom: 2px solid #444444; /* Dark grey trim */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  height: 36px; /* Fixed height for the bar */
+}
+
+#waybar.empty, #waybar.solo {
+  background-color: transparent;
+}
+
+/* Common module styling - Uniform height boxes */
+#clock,
+#network,
+#custom-volume,
+#bluetooth,
+#custom-weather,
+#hyprland-window,
+#mpris,
+#custom-rofi,
+#custom-layout {
+  margin: 4px 3px;
+  padding: 0 12px;
+  height: 28px; /* Uniform height */
+  line-height: 28px; /* Center text vertically */
+  border: 1px solid #444444; /* Dark grey border */
+  border-radius: 0;
+  background: linear-gradient(to bottom, #1e1e1e, #141414); /* Subtle gradient */
+  color: #f0f0f0; /* Almost white text */
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+  position: relative;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeBlend mode='overlay'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-blend-mode: overlay;
+  background-size: 100px 100px;
+}
+
+/* Steampunk rivets on modules */
+#clock::before, #clock::after,
+#network::before, #network::after,
+#custom-volume::before, #custom-volume::after,
+#bluetooth::before, #bluetooth::after,
+#custom-weather::before, #custom-weather::after,
+#hyprland-window::before, #hyprland-window::after,
+#mpris::before, #mpris::after,
+#custom-rofi::before, #custom-rofi::after,
+#custom-layout::before, #custom-layout::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, #cccccc 30%, #666666 70%); /* Silver to grey gradient */
+  border-radius: 50%;
+  top: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+#clock::before, #network::before, #custom-volume::before, 
+#bluetooth::before, #custom-weather::before, #hyprland-window::before, 
+#mpris::before, #custom-rofi::before, #custom-layout::before {
+  left: 3px;
+}
+
+#clock::after, #network::after, #custom-volume::after, 
+#bluetooth::after, #custom-weather::after, #hyprland-window::after, 
+#mpris::after, #custom-rofi::after, #custom-layout::after {
+  right: 3px;
+}
+
+/* Left modules */
+#custom-rofi {
+  color: #cccccc; /* Light grey */
+  font-size: 16px;
+  margin-left: 6px;
+  background: linear-gradient(to bottom, #1e1e1e, #141414); /* Subtle gradient */
+  border: 1px solid #444444; /* Dark grey border */
+}
+
+#custom-rofi:hover {
+  background: linear-gradient(to bottom, #2a2a2a, #1a1a1a); /* Lighter gradient */
+  border-color: #cccccc; /* Light grey border on hover */
+}
+
+#custom-layout {
+  color: #f0f0f0; /* Almost white */
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Center modules - Full width */
+#hyprland-window {
+  background: linear-gradient(to bottom, #1e1e1e, #141414); /* Subtle gradient */
+  color: #f0f0f0; /* Almost white */
+  font-weight: 500;
+  min-width: 200px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #444444; /* Dark grey border */
+  letter-spacing: 1px;
+}
+
+#mpris {
+  background: linear-gradient(to bottom, #1e1e1e, #141414); /* Subtle gradient */
+  color: #cccccc; /* Light grey */
+  min-width: 200px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #444444; /* Dark grey border */
+}
+
+#mpris.playing {
+  border-bottom: 2px solid #cccccc; /* Light grey border */
+  box-shadow: 0 0 5px rgba(204, 204, 204, 0.5); /* Light grey glow */
+}
+
+#mpris.paused {
+  border-bottom: 2px solid #666666; /* Medium grey */
+  color: #666666; /* Medium grey */
+}
+
+/* Right modules */
+#clock {
+  color: #f0f0f0; /* Almost white */
+  font-weight: bold;
+  margin-right: 6px;
+  background: linear-gradient(to bottom, #1e1e1e, #141414); /* Subtle gradient */
+  letter-spacing: 1px;
+}
+
+#network {
+  color: #a0a0a0; /* Medium light grey */
+  font-size: 16px;
+}
+
+#network.disconnected {
+  color: #8b0000; /* Blood red */
+}
+
+#custom-volume {
+  color: #cccccc; /* Light grey */
+}
+
+#bluetooth {
+  color: #a0a0a0; /* Medium light grey */
+  font-size: 16px;
+}
+
+#bluetooth.disabled,
+#bluetooth.off {
+  color: #666666; /* Medium grey */
+}
+
+#custom-weather {
+  color: #cccccc; /* Light grey */
+}
+
+/* Hover effects for interactive modules */
+#network:hover,
+#bluetooth:hover,
+#custom-volume:hover,
+#custom-weather:hover {
+  background: linear-gradient(to bottom, #2a2a2a, #1a1a1a); /* Lighter gradient */
+  box-shadow: 0 0 8px rgba(204, 204, 204, 0.5); /* Light grey glow */
+  border-color: #cccccc; /* Light grey border on hover */
+}
+
+/* Tooltip styling */
+tooltip {
+  background: linear-gradient(to bottom, #1e1e1e, #141414); /* Subtle gradient */
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeBlend mode='overlay'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-blend-mode: overlay;
+  border: 1px solid #444444; /* Dark grey border */
+  border-radius: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+tooltip label {
+  color: #f0f0f0; /* Almost white */
+  font-family: "Cinzel", "IM Fell English", serif;
+}
+
+/* Animation for status changes */
+@keyframes rough-pulse {
+  0% {
+    background-color: #1a1a1a; /* Dark grey */
+    color: #8b0000; /* Blood red */
+    background-position: 0 0;
+  }
+  50% {
+    background-color: #2a1a1a; /* Slightly lighter */
+    color: #f0f0f0; /* Almost white */
+    background-position: 5px 5px;
+  }
+  100% {
+    background-color: #1a1a1a; /* Dark grey */
+    color: #8b0000; /* Blood red */
+    background-position: 0 0;
+  }
+}
+
+#network.disconnected,
+#bluetooth.disabled {
+  animation-name: rough-pulse;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* Full width layout */
+#waybar {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#modules-left {
+  margin-left: 0;
+}
+
+#modules-center {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+#modules-right {
+  margin-right: 0;
+}

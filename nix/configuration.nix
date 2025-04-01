@@ -180,7 +180,9 @@
       cliphist
       wl-clipboard
       hyprcursor
+      dunst
       swww
+      libnotify
 
 # Virtualization
       looking-glass-client
@@ -201,6 +203,7 @@
       btop
       htop
       ripgrep
+
 #neovim
       fzf
       bat
@@ -213,6 +216,7 @@
       zip
 
 # Games
+      wine
       lutris
 
 # Tools
@@ -247,6 +251,7 @@
       obs-studio
       thefuck
       webcord
+      mako
 # idk how to install this one yet      tokyo-night-sddm
 
       #usb/mount

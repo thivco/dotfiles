@@ -30,9 +30,9 @@ nixpkgs.config.allowUnfree = true;
 # The home.packages option allows you to install Nix packages into your
 # environment.
 
-home.packages = with pkgs, inputs; [
+home.packages = with pkgs; [
   #GUI tools
-  rose-pine-hyprcursor.packages.${pkgs.system}.default
+  #rose-pine-hyprcursor.packages.${pkgs.system}.default
   wofi
   postman
   google-chrome
