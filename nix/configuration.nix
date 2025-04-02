@@ -5,7 +5,7 @@
   imports =
     [ # Include the results of the hardware scan.
     ./passthrough.nix
-      ./hardware-configuration.nix
+    ./hardware-configuration.nix
     ];
 
 # Here we go... FLAKES ENABLED !
@@ -91,7 +91,7 @@
 # Fonts
   fonts.packages = with pkgs; [
     fira-code
-    iosevka
+      iosevka
 #    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "JetBrainsMono" "ComicShannsMono" "Iosevka"]; })
   ];
 
@@ -100,8 +100,8 @@
 
 # AMD drivers related
 
-systemd.packages = with pkgs; [ lact ];
-systemd.services.lactd.wantedBy = ["multi-user.target"];
+  systemd.packages = with pkgs; [ lact ];
+  systemd.services.lactd.wantedBy = ["multi-user.target"];
 
 # Enable sound using Pipewire
 
@@ -157,7 +157,7 @@ systemd.services.lactd.wantedBy = ["multi-user.target"];
       openssh.authorizedKeys.keys = ["AAAAC3NzaC1lZDI1NTE5AAAAIDAcczjaWc2NHGIBFxArYGkivl4lzC27N5IXlXoiZD0N"];
     packages = with pkgs; [
       firefox
-	tree
+        tree
     ];
   };
 
@@ -167,8 +167,8 @@ systemd.services.lactd.wantedBy = ["multi-user.target"];
 
   environment.systemPackages = with pkgs; [
     (waybar.overrideAttrs (oldAttrs: {
-			   mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true"];
-			   })
+                           mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true"];
+                           })
     )
 # terminal
       kitty
@@ -260,12 +260,13 @@ systemd.services.lactd.wantedBy = ["multi-user.target"];
       webcord
       mako
 # idk how to install this one yet      tokyo-night-sddm
+      swtpm
 
-      #usb/mount
+#usb/mount
       udiskie
       udisks2
 
-      #Fonts
+#Fonts
       jetbrains-mono
       font-awesome
 

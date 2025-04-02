@@ -5,6 +5,10 @@ NOTES_LOCATION="$HOME/sync/notes/notes/fleeting/"
 
 echo "Test with concat : ${FILE_NAME}.md"
 
+if [[ -z "${FILE_NAME}" ]]; then
+  FILE_NAME="untitled"
+fi
+
 if [ -e "${NOTES_LOCATION}/${FILE_NAME}.md" ]; then
   echo "We're in the if, ${FILE_NAME}"
   COUNTER=1
@@ -15,7 +19,6 @@ if [ -e "${NOTES_LOCATION}/${FILE_NAME}.md" ]; then
   done
   FILE_NAME="$NEW_FILE_NAME"
 fi
-
 
 echo "You entered: $FILE_NAME"
 
