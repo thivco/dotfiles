@@ -19,4 +19,13 @@ fi
 
 echo "You entered: $FILE_NAME"
 
-nvim "${NOTES_LOCATION}/${FILE_NAME}.md"
+#the following lines work, but it's not very... config like. The kitty with a certain title is a good idea, need to add a rule in the hyprland config file
+#nvim "${NOTES_LOCATION}/${FILE_NAME}.md"
+kitty --title "fleeting_note" -e nvim "${NOTES_LOCATION}/${FILE_NAME}.md" &
+
+sleep 0.5  
+hyprctl dispatch focuswindow title:"fleeting_note"
+hyprctl dispatch togglefloating
+
+hyprctl dispatch movewindowpixel 500 300  # Move the window to position (500, 300)
+hyprctl dispatch resizewindowpixel 1800 600  # Resize the window to 800x600 pixels
