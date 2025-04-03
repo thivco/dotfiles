@@ -1,4 +1,0 @@
-[*.{js,ts,jsx,tsx,lua,bash,vue,nix}]
-indent_style = space
-indent_size = 2
-
