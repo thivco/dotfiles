@@ -150,10 +150,11 @@
 #   useXkbConfig = true; # use xkb.options in tty.
 # };
 
+
 # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.thib = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enables ‘sudo’ for the user.
+    extraGroups = [ "wheel" "disk"]; # Enables ‘sudo’ for the user.
       openssh.authorizedKeys.keys = ["AAAAC3NzaC1lZDI1NTE5AAAAIDAcczjaWc2NHGIBFxArYGkivl4lzC27N5IXlXoiZD0N"];
     packages = with pkgs; [
       firefox
