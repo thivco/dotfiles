@@ -15,6 +15,8 @@ vim.keymap.set("v", "<space>x", ":lua<CR>")
 
 --oil nvim 
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+vim.keymap.set('n', '<Space><Space>e', ':Oil --float<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<Space><Space>o', ':Oil --float .<CR>', { noremap = true, silent = true })
 require("oil").setup()
 
 require('nvim-autopairs').setup()
