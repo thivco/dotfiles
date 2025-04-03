@@ -61,7 +61,7 @@
   "bluetooth": {
     "format-on": "",  // Bluetooth on icon
     "format-off": "BT-off",
-    "format-disabled": "󰂲",  // Bluetooth disabled icon
+    "format-disabled": "OFF",  // Bluetooth disabled icon
     "format-connected-battery": "{device_battery_percentage}% 󰂯",
     "format-alt": "{device_alias} 󰂯",
     "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",

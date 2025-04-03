@@ -46,7 +46,7 @@ alias nv="nvim"
 alias vi="nvim"
 alias gc="git commit -am"
 alias gp="git push"
-alias cat="bat"
+alias cat="bat --theme=TwoDark"
 alias icat="kitten icat"
 alias ls="eza -lAh"
 alias l='ls -lah --color=auto'

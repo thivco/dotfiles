@@ -182,6 +182,7 @@
       hyprpaper
       pywal
       grim
+      grimblast
       slurp
       cliphist
       wl-clipboard
@@ -277,6 +278,7 @@
       bash-language-server
       vue-language-server
       dockerfile-language-server-nodejs
+      superhtml
 #      javascript-typescript-langserver
       ];
 

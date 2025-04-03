@@ -1,11 +1,8 @@
 return {
   {
-
-
-
     "neovim/nvim-lspconfig",
     dependencies = {
-         'saghen/blink.cmp', 
+      'saghen/blink.cmp', 
       {
         "folke/lazydev.nvim",
         ft = "lua", -- only load on lua files
@@ -16,17 +13,16 @@ return {
         },
       },
     },
-
-      -- List of language servers to configure
-      opts = { servers = {
-        lua_ls = {},
-        ts_ls = {},
-        vls = {},
-        bashls = {},
-      }
-    },
-
-    config = function(_, opts)
+    -- List of language servers to configure
+    opts = { servers = {
+      lua_ls = {},
+      ts_ls = {},
+      vls = {},
+      bashls = {},
+      superhtml = {},
+    }
+  },
+  config = function(_, opts)
     local lspconfig = require('lspconfig')
     for server, config in pairs(opts.servers) do
       -- passing config.capabilities to blink.cmp merges with the capabilities in your
@@ -35,5 +31,5 @@ return {
       lspconfig[server].setup(config)
     end
   end
-  }
+}
 }
