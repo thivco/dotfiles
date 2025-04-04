@@ -1,118 +1,81 @@
 {
-    "layer": "top",
+  "layer": "top",
+    "position" : "top",
     "modules-left": [
-        "custom/launcher",
-        "cpu",
-        "memory",
-        "custom/media",
-        "tray"
+      "custom/rofi",
+    "custom/layout"
     ],
     "modules-center": [
-        "river/tags"
+      "hyprland/window",
+    "mpris"
     ],
     "modules-right": [
-        "custom/wallpaper",
-        "pulseaudio",
-        "clock",
-        "custom/power"
+      "clock",
+    "network",
+    "custom/volume",
+    "bluetooth",
+    "custom/weather"
     ],
-    "pulseaudio": {
-        "tooltip": false,
-        "scroll-step": 5,
-        "format": "{icon} {volume}%",
-        "format-muted": "{icon} {volume}%",
-        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-        "format-icons": {
-            "default": [
-                "",
-                "",
-                ""
-            ]
-        }
+    "clock": {
+      "interval": 1,
+      "format": "{:%H:%M:%S}"
     },
-    "river/tags": {
-        "num-tags": 6
+    "custom/rofi": {
+      "format": "󱄅",
+      "on-click": "rofi -show drun"
+    },
+    "custom/layout":{
+      "exec": "grep 'kb_layout' ~/.config/hypr/hyprland.conf | awk '{print $3}'",
+      "interval": 1,
+      "format": "{}",
+      "tooltip": "Click to toggle keyboard layout",
+      "on-click": "~/workshop/lab/dotfiles/.config/change_keyboard_layout.sh"
     },
     "network": {
-        "tooltip": false,
-        "format-wifi": "  {essid}",
-        "format-ethernet": ""
+      "format-wifi": "",
+      "format-ethernet": "󰈀",
+      "format-disconnected": "󰈂",
+      "tooltip-format-disconnected": "Error",
+      "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+      "tooltip-format-ethernet": "{ifname} 🖧",
+      "on-click": "kitty nmtui"
     },
-    "backlight": {
-        "tooltip": false,
-        "format": " {}%",
-        "interval": 1,
-        "on-scroll-up": "light -A 5",
-        "on-scroll-down": "light -U 5"
+    "mpris": {
+      "interval": 1,
+      "format": "{status_icon} {title} - {artist}",
+      "tooltip-format": "Album: {album}\n\n{position} / {length}",
+      "status-icons": {
+	"playing": "",
+	"paused": "",
+	"stopped": "󱓻"
+      },
+      "ignored-players": ["firefox"]
     },
-    "battery": {
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 20
-        },
-        "format": "{icon}  {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{time} {icon}",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
-        ]
+    "custom/volume":{
+      "exec": "pamixer --get-volume-human",
+      "interval": 1,
+      "format": "{}",
+      "tooltip": "Volume",
+      "on-click" : "pavucontrol"
     },
-    "tray": {
-        "icon-size": 18,
-        "spacing": 10
+    "bluetooth": {
+      "format-on": "󰂯",
+      "format-off": "BT-off",
+      "format-disabled": "󰂲",
+      "format-connected-battery": "{device_battery_percentage}% 󰂯",
+      "format-alt": "{device_alias} 󰂯",
+      "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+      "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+      "tooltip-format-enumerate-connected": "{device_alias}\n{device_address}",
+      "tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_address}\n{device_battery_percentage}%",
+      "on-click-right": "blueman-manager",
+      "interval": 5
     },
-    "clock": {
-        "interval": 60,
-        "format": "{:%H:%M}",
-        "max-length": 25
-    },
-    "cpu": {
-        "interval": 15,
-        "format": " {}%",
-        "max-length": 10
-    },
-    "memory": {
-        "interval": 30,
-        "format": " {}%",
-        "max-length": 10
-    },
-    "custom/media": {
-        "interval": 30,
-        "format": "{icon} {}",
-        "return-type": "json",
-        "max-length": 20,
-        "format-icons": {
-            "spotify": " ",
-            "default": " "
-        },
-        "escape": true,
-        "exec": "$HOME/.config/system_scripts/mediaplayer.py 2> /dev/null",
-        "on-click": "playerctl play-pause"
-    },
-    "custom/launcher": {
-        "format": " ",
-        "on-click": "rofi -show drun",
-        "on-click-right": "killall rofi"
-    },
-    "custom/power": {
-        "format": " ",
-        "on-click": "bash ~/.config/rofi/leave/leave.sh"
-    },
-    "custom/updates": {
-        "format": "{} Update(s)",
-        "exec": "checkupdates | wc -l",
-        "exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
-        "interval": 15,
-        "on-click": "alacritty -e paru -Syu && notify-send 'The system has been updated' "
-    },
-    "custom/wallpaper": {
-        "format": " ",
-        "on-click": "bash ~/.config/system_scripts/pkill_bc"
+    "custom/weather": {
+      "format": "{}",
+      "interval": 300,
+      "exec": "curl -s 'https://wttr.in/Paris?format=%C+%t'", 
+      "on-click": "kitty curl wttr.in/Paris"
     }
 }
+

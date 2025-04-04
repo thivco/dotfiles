@@ -16,6 +16,7 @@ PS1='[\u@\h \W]\$ '
 
 # Env variables ?
 DOTFILES_LOC=~/workshop/lab/dotfiles
+XDG_CONFIG_HOME=~/.config/
 
 # Create a dedicated virt bash script to run at boot
 
