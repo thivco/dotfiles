@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-CURRENT_DATE=$(date | awk '{print $4}')
-#notify-send $CURRENT_DATE
-echo "Hey, ${CURRENT_DATE}"

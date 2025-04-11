@@ -1,6 +1,6 @@
 # Hi, this is thibault's config
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, zen-browser, ... }:
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -212,6 +212,7 @@
       btop
       htop
       ripgrep
+      tldr
 
 #neovim
       fzf
@@ -246,6 +247,7 @@
 
 # Misc
       xrdp
+      #zen-browser.packages."$(system)".default
       xwayland
       networkmanager
       swaylock
@@ -280,6 +282,7 @@
       vue-language-server
       dockerfile-language-server-nodejs
       superhtml
+      vscode-langservers-extracted
 #      javascript-typescript-langserver
       ];
 

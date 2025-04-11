@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, zen-browser, ... }:
 
 {
 # Home Manager needs a bit of information about you and the paths it should
@@ -33,19 +33,24 @@ nixpkgs.config.allowUnfree = true;
 home.packages = with pkgs; [
   #GUI tools
   #rose-pine-hyprcursor.packages.${pkgs.system}.default
+  nwg-look
   wofi
   postman
   google-chrome
+  
   #CLI tools
   fastfetch
   pywal
   eza
   playerctl
+  nmap
+  openvpn
+  gobuster
+
   #hyprland tools
   hyprlock
   hypridle
   waycorner
-  gnome.adwaita-icon-theme
 ];
 
 # Home Manager is pretty good at managing dotfiles. The primary way to manage

@@ -49,8 +49,6 @@ in { pkgs, lib, config, ... }: {
       onBoot = "ignore";
       onShutdown = "shutdown";
 
-      qemuOvmf = true;
-      qemuSwtpm = true;
 
       extraConfig = ''
 	user="${user}"
@@ -58,6 +56,7 @@ in { pkgs, lib, config, ... }: {
 
       qemu = {
 	ovmf.enable = true ;
+	swtpm.enable = true;
 	verbatimConfig = ''
 	  namespaces = []
 	  user = "+${builtins.toString config.users.users.${user}.uid}"

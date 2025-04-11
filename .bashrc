@@ -1,7 +1,7 @@
 #
 # ~/.bashrc
 #
-#wal -i ~/workshop/lab/dotfiles/wallpaper/polaris_fatalism.jpg -q
+#wal -i $DOTFILES_LOC/wallpaper/polaris_fatalism.jpg -q
 (wal -r &)
 #(bash /home/thib/workshop/lab/dotfiles/.config/set_wallpaper.sh &)
 
@@ -21,23 +21,24 @@ source "$(fzf-share)/completion.bash"
 PS1='[\u@\h \W]\$ '
 
 # Env variables ?
-DOTFILES_LOC=~/workshop/lab/dotfiles
+DOTFILES_LOC="$HOME/workshop/lab/dotfiles/"
 
 # Create a dedicated virt bash script to run at boot
 
 # Aliases to access various directories
-alias dot="cd ~/workshop/lab/dotfiles"
+alias dot="cd $DOTFILES_LOC"
 alias lab="cd ~/workshop/lab"
 alias ws="cd ~/workshop"
 
 # Aliases to edit config files
-alias ebash="nvim ~/workshop/lab/dotfiles/.bashrc && source ~/workshop/lab/dotfiles/.bashrc"
-alias ehc="nvim ~/workshop/lab/dotfiles/hypr/hyprland.conf"
-alias enix="nvim ~/workshop/lab/dotfiles/nix/configuration.nix"
-alias hm="nvim $DOTFILES_LOC/nix/home.nix && home-manager switch --flake $DOTFILES_LOC/nix"
+alias ebash="nvim $DOTFILES_LOC/.bashrc && source $DOTFILES_LOC/.bashrc"
+alias ehc="nvim $DOTFILES_LOC/hypr/hyprland.conf"
+alias enix="nvim $DOTFILES_LOC/nix/configuration.nix"
+alias eflake="nvim $DOTFILES_LOC/nix/flake.nix"
+alias ehm="nvim $DOTFILES_LOC/nix/home.nix" 
 alias flake="sudo nixos-rebuild switch --flake $DOTFILES_LOC/nix"
 alias sass="npx sass --watch *.scss style.css"
-alias nvim_config="cp -r ~/.config/nvim/ ~/workshop/lab/dotfiles/.config/"
+alias nvim_config="cp -r ~/.config/nvim/ $DOTFILES_LOC/.config/"
 alias envim="pushd ~/.config/nvim && nvim . && popd" 
 alias aptu="nix-channel --update && sudo flake"
 
@@ -54,7 +55,7 @@ alias grep='grep --color=auto'
 alias fk='thefuck --alias'
 
 #desktop effects
-alias waybaru="waybar -c ~/workshop/lab/dotfiles/.config/waybar/config -s ~/workshop/lab/dotfiles/.config/waybar/style.css"
+alias waybaru="waybar -c $DOTFILES_LOC/.config/waybar/config -s $DOTFILES_LOC/.config/waybar/style.css"
 
 function laz() {
 	current_location=$(pwd)
@@ -69,7 +70,7 @@ function laz() {
 
 function nixbuild() {
 	#set -e
-	pushd ~/workshop/lab/dotfiles
+	pushd $DOTFILES_LOC
 	enix
 	local msg="$1"
 	git diff -U0 *.nix
