@@ -20,6 +20,8 @@ source "$(fzf-share)/completion.bash"
 #alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
+clear
+
 # Env variables ?
 DOTFILES_LOC="$HOME/workshop/lab/dotfiles/"
 
@@ -49,10 +51,8 @@ alias gc="git commit -am"
 alias gp="git push"
 alias cat="bat --theme=TwoDark"
 alias icat="kitten icat"
-alias ls="eza -lAh"
-alias l='ls -lah --color=auto'
+alias l='eza -lAh --color=auto'
 alias grep='grep --color=auto'
-alias fk='thefuck --alias'
 
 #desktop effects
 alias waybaru="waybar -c $DOTFILES_LOC/.config/waybar/config -s $DOTFILES_LOC/.config/waybar/style.css"
@@ -85,4 +85,3 @@ function nixbuild() {
 
 alias wayboar=waybar
 
-clear

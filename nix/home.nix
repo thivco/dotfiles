@@ -45,6 +45,7 @@ home.packages = with pkgs; [
   nmap
   openvpn
   gobuster
+  hellwal
 
   #hyprland tools
   hyprlock
