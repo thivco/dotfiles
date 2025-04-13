@@ -33,9 +33,10 @@ alias lab="cd ~/workshop/lab"
 alias ws="cd ~/workshop"
 
 # Aliases to edit config files
+
 alias ebash="nvim $DOTFILES_LOC/.bashrc && source $DOTFILES_LOC/.bashrc"
 alias ehc="nvim $DOTFILES_LOC/hypr/hyprland.conf"
-alias enix="nvim $DOTFILES_LOC/nix/configuration.nix"
+alias enix="cd $DOTFILES_LOC/nix/ && nvim -c 'Oil --float'"
 alias eflake="nvim $DOTFILES_LOC/nix/flake.nix"
 alias ehm="nvim $DOTFILES_LOC/nix/home.nix" 
 alias flake="sudo nixos-rebuild switch --flake $DOTFILES_LOC/nix"

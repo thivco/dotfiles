@@ -1,14 +1,10 @@
 { config, pkgs, lib, ... }:
 
 {
-
   environment.systemPackages = with pkgs;
 
   [
-    (waybar.overrideAttrs (oldAttrs: {
-                           mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true"];
-                           })
-    )
+
 # terminal
       kitty
       starship
@@ -79,8 +75,8 @@
 
 # Web tools
       deno
-      atlas #MongoDB tool
-      mongosh
+      #atlas #MongoDB tool
+      #mongosh
       nodejs
 
 # Misc
