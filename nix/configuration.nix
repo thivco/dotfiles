@@ -30,7 +30,6 @@
 #
 # Test installing font thank you mr llm
 
-
   security.acme = {
     acceptTerms = true;
     defaults.email = "foo@bar.com";

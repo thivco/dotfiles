@@ -8,6 +8,7 @@
 # terminal
       kitty
       starship
+      burpsuite
       alacritty
 
 # Linux tools
