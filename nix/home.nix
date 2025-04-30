@@ -33,10 +33,12 @@ home.packages = with pkgs; [
   #GUI tools
   #rose-pine-hyprcursor.packages.${pkgs.system}.default
   nwg-look
+  vlc
   wofi
   postman
   google-chrome
   gpt4all
+  mpv
   mission-center
   
   #CLI tools

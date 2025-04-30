@@ -76,7 +76,7 @@ function nixbuild() {
 	local msg="$1"
 	git diff -U0 *.nix
 	echo "NixOS Rebuilding..."
-	sudo nixos-rebuild switch &>nixos-switch.log || (
+	sudo nixos-rebuild switch --flake /etc/nixos/flake.nix &>nixos-switch.log || (
 	cat nixos-switch.log | grep --color error && false)
 	#gen=$($msg || nixos-rebuild list-generations | grep current)
 	#[[ $msg != "" ]] && $gen="$msg" || $gen=nixos-rebuild list-generation | grep current
@@ -84,5 +84,16 @@ function nixbuild() {
 	popd
 }
 
+function open_video_with_mpv_ultrawide(){
+  local video="$1"
+  
+  local command_line="mpv ${video}" 
+  if [ $2 = "w" ]; then
+   command_line="${command_line} --vf=crop=in_w:in_w/2.39" 
+  fi
+  ${command_line}
+}
+
+alias uwide='open_video_with_mpv_ultrawide'
 alias wayboar=waybar
 

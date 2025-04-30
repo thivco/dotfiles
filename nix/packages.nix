@@ -90,7 +90,6 @@
       kdePackages.plasma-pa
       pavucontrol
       scrcpy
-      vlc
       glib
       pamixer
       freerdp
