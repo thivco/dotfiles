@@ -36,6 +36,8 @@ home.packages = with pkgs; [
   wofi
   postman
   google-chrome
+  gpt4all
+  mission-center
   
   #CLI tools
   fastfetch

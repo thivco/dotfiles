@@ -48,6 +48,7 @@
       htop
       ripgrep
       tldr
+      ffmpeg
 
 #neovim
       fzf
