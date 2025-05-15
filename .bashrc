@@ -2,7 +2,8 @@
 # ~/.bashrc
 #
 #wal -i $DOTFILES_LOC/wallpaper/polaris_fatalism.jpg -q
-(wal -r &)
+#(wal -r &)
+(cat /home/thib/.cache/wal/sequences)
 #(bash /home/thib/workshop/lab/dotfiles/.config/set_wallpaper.sh &)
 
 if [[ $(tty) == "/dev/tty1" ]]; then
@@ -20,7 +21,7 @@ source "$(fzf-share)/completion.bash"
 #alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
-clear
+#clear
 
 # Env variables ?
 DOTFILES_LOC="$HOME/workshop/lab/dotfiles/"
@@ -45,14 +46,24 @@ alias nvim_config="cp -r ~/.config/nvim/ $DOTFILES_LOC/.config/"
 alias envim="pushd ~/.config/nvim && nvim . && popd" 
 alias aptu="nix-channel --update && sudo flake"
 
-# QOL alias
+# vim alias
 alias nv="nvim"
 alias vi="nvim"
-alias gc="git commit -am"
+alias vim="nvim"
+
+# git
+alias ga="git add"
+alias gc="git commit" 
+alias gs="git status --short"
 alias gp="git push"
+alias gu="git pull"
+alias gco="git checkout"
+alias gcl="git clone"
+alias gl="git log --all --graph --pretty=format:'%C(magenta)%h %C(white) %an %ar%C(auto) %D%n%s%n'"
+#cli tools
 alias cat="bat --theme=TwoDark"
 alias icat="kitten icat"
-alias l='eza -lAh --color=auto'
+alias ls='eza -lAh --color=auto'
 alias grep='grep --color=auto'
 
 #desktop effects
