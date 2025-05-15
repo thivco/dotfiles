@@ -1,0 +1,30 @@
+[user]
+	email = thibault.vivier@epitech.eu
+	name = thivco
+
+[url "git@github.com:thivco/"]
+  insteadOf = "thib:"
+
+[init]
+  defaultBranch = main
+
+[status]
+  branch = true
+  showStash = true
+  showUntrackedFiles = all
+
+[diff]
+  context = 3
+  renames = copies
+  interHunkContext = 10
+
+
+[color "diff"]
+  meta = black
+  frag = magenta
+  context = white
+  whitespace = yellow reverse
+  old = red
+
+[log]
+  abbrevCommit = true
