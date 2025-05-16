@@ -5,8 +5,8 @@
   imports =
     [ # Include the results of the hardware scan.
     ./passthrough.nix
-    ./hardware-configuration.nix
-    ./packages.nix
+      ./hardware-configuration.nix
+      ./packages.nix
     ];
 
 # Here we go... FLAKES ENABLED !
@@ -122,14 +122,34 @@
 # Bluetooth configuration
   hardware.bluetooth.enable = true; # enables support for Bluetooth
     hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-  hardware.enableAllFirmware = true;
+    hardware.enableAllFirmware = true;
 
-  #Enable the BT tui
+#Enable the BT tui
   services.blueman.enable = true;
 
   services.udev.packages = with pkgs; [
     steamPackages.steam
   ];
+
+
+  services.udev.extraRules = ''
+    SUBSYSTEM=="input", GROUP="input", MODE="0660"
+    KERNEL=="uinput", MODE="0660", GROUP="input", OPTIONS+="static_node=uinput"
+    '';
+
+environment.etc."bluetooth/main.conf".text = lib.mkForce ''
+    [Policy]
+    AutoEnable=true
+
+    [General]
+    Enable=Source,Sink,MediaControl,Socket,HID
+    FastConnectable=true
+  '';
+
+    environment.etc."bluetooth/input.conf".text = lib.mkForce ''
+    [General]
+    IdleTimeout=0
+  '';
 
 # Use the systemd-boot EFI boot loader.
   boot.loader.efi.canTouchEfiVariables = true;
