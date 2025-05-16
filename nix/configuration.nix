@@ -122,7 +122,14 @@
 # Bluetooth configuration
   hardware.bluetooth.enable = true; # enables support for Bluetooth
     hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-    services.blueman.enable = true;
+  hardware.enableAllFirmware = true;
+
+  #Enable the BT tui
+  services.blueman.enable = true;
+
+  services.udev.packages = with pkgs; [
+    steamPackages.steam
+  ];
 
 # Use the systemd-boot EFI boot loader.
   boot.loader.efi.canTouchEfiVariables = true;
