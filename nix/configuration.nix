@@ -128,7 +128,7 @@
   services.blueman.enable = true;
 
   services.udev.packages = with pkgs; [
-    steamPackages.steam
+    steam-unwrapped
   ];
 
 
@@ -137,19 +137,19 @@
     KERNEL=="uinput", MODE="0660", GROUP="input", OPTIONS+="static_node=uinput"
     '';
 
-environment.etc."bluetooth/main.conf".text = lib.mkForce ''
+  environment.etc."bluetooth/main.conf".text = lib.mkForce ''
     [Policy]
     AutoEnable=true
 
-    [General]
-    Enable=Source,Sink,MediaControl,Socket,HID
-    FastConnectable=true
-  '';
+      [General]
+      Enable=Source,Sink,MediaControl,Socket,HID
+        FastConnectable=true
+        '';
 
-    environment.etc."bluetooth/input.conf".text = lib.mkForce ''
+  environment.etc."bluetooth/input.conf".text = lib.mkForce ''
     [General]
     IdleTimeout=0
-  '';
+      '';
 
 # Use the systemd-boot EFI boot loader.
   boot.loader.efi.canTouchEfiVariables = true;

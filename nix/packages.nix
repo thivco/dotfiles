@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ zen-browser, config, pkgs, lib, ... }:
 
 {
   environment.systemPackages = with pkgs;
