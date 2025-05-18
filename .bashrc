@@ -37,7 +37,7 @@ alias ws="cd ~/workshop"
 
 alias ebash="nvim $DOTFILES_LOC/.bashrc && source $DOTFILES_LOC/.bashrc"
 alias ehc="nvim $DOTFILES_LOC/hypr/hyprland.conf"
-alias enix="cd $DOTFILES_LOC/nix/ && nvim -c 'Oil --float'"
+alias enix="pushd $DOTFILES_LOC/nix/ && nvim -c 'Oil --float' && popd"
 alias eflake="nvim $DOTFILES_LOC/nix/flake.nix"
 alias ehm="nvim $DOTFILES_LOC/nix/home.nix" 
 alias flake="sudo nixos-rebuild switch --flake $DOTFILES_LOC/nix"
@@ -77,7 +77,7 @@ function laz() {
 	git add .
 	git commit -m "$message"
 	git push
-         	cd $current_location
+        cd $current_location
 }
 
 function nixbuild() {
