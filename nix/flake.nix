@@ -31,6 +31,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.thib = import ./home.nix;
+            home-manager.extraSpecialArgs = { inherit inputs; system = "x86_64-linux";};
           }
       ];
     };

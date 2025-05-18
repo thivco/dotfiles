@@ -1,4 +1,4 @@
-{ config, pkgs, zen-browser, ... }:
+{ config, pkgs, system, inputs, zen-browser, ... }:
 
 {
 # Home Manager needs a bit of information about you and the paths it should
@@ -40,7 +40,8 @@ home.packages = with pkgs; [
   gpt4all
   mpv
   mission-center
-  
+  inputs.zen-browser.packages."${system}".default
+
   #CLI tools
   fastfetch
   pywal

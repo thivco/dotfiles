@@ -120,9 +120,22 @@
   services.pulseaudio.enable = false;
 
 # Bluetooth configuration
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
-    hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-    hardware.enableAllFirmware = true;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Name = "NixBluetooth";
+        ControllerMode = "dual";
+        FastConnectable = "true";
+        Experimental = "true";
+      };
+      Policy = {
+        AutoEnable = "true";
+      };
+    };
+  };
+  hardware.enableAllFirmware = true;
 
 #Enable the BT tui
   services.blueman.enable = true;
