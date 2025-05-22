@@ -41,6 +41,7 @@ home.packages = with pkgs; [
   mpv
   mission-center
   inputs.zen-browser.packages."${system}".default
+  firmwareLinuxNonfree
 
   #CLI tools
   fastfetch

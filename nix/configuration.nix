@@ -137,6 +137,10 @@
   };
   hardware.enableAllFirmware = true;
 
+  # Disable onboard BT
+  boot.blacklistedKernelModules = [ "rtw89_8852ce" ];
+
+
 #Enable the BT tui
   services.blueman.enable = true;
 

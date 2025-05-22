@@ -27,6 +27,7 @@
       swww
       libnotify
       lact
+      xmlstarlet
 
 # Virtualization
       looking-glass-client
@@ -49,6 +50,7 @@
       ripgrep
       tldr
       ffmpeg
+      usbutils
 
 #neovim
       fzf
