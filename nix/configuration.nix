@@ -78,7 +78,17 @@
 # Enable SDDM
   services.xserver.enable = true;
   services.xserver.videoDrivers = [ "amdgpu" ];
-  services.displayManager.sddm.enable = true;
+  services.xserver.displayManager.sddm = {
+    enable = true;
+    autoNumlock = true;
+    wayland.enable = true;
+    settings = {
+      General = {
+	DisplayServer = "wayland";
+	MinimumVT = 1; # Force SDDM on tty1
+      };
+    };
+  };
 
 # Keyboard
   services.xserver.xkb = {
@@ -125,19 +135,19 @@
     powerOnBoot = true;
     settings = {
       General = {
-        Name = "NixBluetooth";
-        ControllerMode = "dual";
-        FastConnectable = "true";
-        Experimental = "true";
+	Name = "NixBluetooth";
+	ControllerMode = "dual";
+	FastConnectable = "true";
+	Experimental = "true";
       };
       Policy = {
-        AutoEnable = "true";
+	AutoEnable = "true";
       };
     };
   };
   hardware.enableAllFirmware = true;
 
-  # Disable onboard BT
+# Disable onboard BT
   boot.blacklistedKernelModules = [ "rtw89_8852ce" ];
 
 
@@ -160,8 +170,8 @@
 
       [General]
       Enable=Source,Sink,MediaControl,Socket,HID
-        FastConnectable=true
-        '';
+	FastConnectable=true
+	'';
 
   environment.etc."bluetooth/input.conf".text = lib.mkForce ''
     [General]
@@ -202,7 +212,7 @@
       openssh.authorizedKeys.keys = ["AAAAC3NzaC1lZDI1NTE5AAAAIDAcczjaWc2NHGIBFxArYGkivl4lzC27N5IXlXoiZD0N"];
     packages = with pkgs; [
       firefox
-        tree
+	tree
     ];
   };
 
