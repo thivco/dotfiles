@@ -4,9 +4,9 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-    ./passthrough.nix
       ./hardware-configuration.nix
       ./packages.nix
+      ./passthrough.nix
     ];
 
 # Here we go... FLAKES ENABLED !
@@ -59,8 +59,8 @@
   programs.xfconf.enable = true;
 
 # Don't put spaces in the specialisation name, it prevents rebuilds
-  specialisation."Windows_Mode".configuration = {
-    system.nixos.tags = [ "with-vfio" ];
+  specialisation.win_mode.configuration = {
+    boot.kernelParams=["loglevel=2"];
     vfio.enable = true;
   };
 
@@ -78,14 +78,15 @@
 # Enable SDDM
   services.xserver.enable = true;
   services.xserver.videoDrivers = [ "amdgpu" ];
+#  services.xserver.videoDrivers = lib.mkIf (!config.vfio.enable) [ "amdgpu" ];
   services.xserver.displayManager.sddm = {
     enable = true;
     autoNumlock = true;
     wayland.enable = true;
     settings = {
       General = {
-	DisplayServer = "wayland";
-	MinimumVT = 1; # Force SDDM on tty1
+        DisplayServer = "wayland";
+        MinimumVT = 1; # Force SDDM on tty1
       };
     };
   };
@@ -168,9 +169,10 @@
     [Policy]
     AutoEnable=true
 
-      [General]
-      Enable=Source,Sink,MediaControl,Socket,HID
-	FastConnectable=true
+    [General]
+    Enable=Source,Sink,MediaControl,Socket,HID
+	  FastConnectable=true
+    Experimental=true
 	'';
 
   environment.etc."bluetooth/input.conf".text = lib.mkForce ''

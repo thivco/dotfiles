@@ -63,7 +63,7 @@ alias gl="git log --all --graph --pretty=format:'%C(magenta)%h %C(white) %an %ar
 #cli tools
 alias cat="bat --theme=TwoDark"
 alias icat="kitten icat"
-alias ls='eza -lAh --color=auto'
+#alias ls='eza -lAh --color=auto':
 alias grep='grep --color=auto'
 
 #desktop effects

@@ -6,28 +6,31 @@ gpuIDs = [
   "1002:ab30" # Audio
 ];
 in { pkgs, lib, config, ... }: {
-  options.vfio.enable = with lib; 
-  mkEnableOption "TEST __ GPU Detachable";
-
+  
+  options.vfio.enable = with lib;
+    mkEnableOption "Configure the machine for VFIO";
   config = let cfg = config.vfio;
   in {
-    boot = {
-      initrd.kernelModules = [
-	"vfio"
-	  "vfio_pci"
-	  "vfio_iommu_type1"
-	  "amdgpu"
+    boot.initrd.kernelModules = [ 
+        "vfio"
+          "vfio_pci"
+          "vfio_iommu_type1"
+          
+          "amdgpu"
+          #adding it last so that vfio claims the GPU first
       ];
 
-      kernelParams = [
-# enable IOMMU
-	"amd_iommu=on"
-	  "iommu=pt"
-	  "loglevel=3"
-      ] ++ lib.optional cfg.enable
-# isolate the GPU
-      ("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs);
-    };
+#      initrd.kernelModulesBlacklist = lib.mkIf cfg.enable [ "amdgpu" ];
+
+      boot.kernelParams = [
+        "amd_iommu=on"
+          "iommu=pt"
+          "loglevel=3"
+          "vfio-pci.ids=1002:744c,1002:ab30"
+#      ] ++ [ "vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs];
+];
+      boot.blacklistedKernelModules = [ "amdgpu" ];
+
 
     hardware.graphics.enable = true;
     virtualisation.spiceUSBRedirection.enable = true;
@@ -40,8 +43,8 @@ in { pkgs, lib, config, ... }: {
 
     environment.systemPackages = with pkgs; [
       virt-manager
-	qemu
-	pciutils
+        qemu
+        pciutils
     ];
 
     virtualisation.libvirtd = {
@@ -51,24 +54,24 @@ in { pkgs, lib, config, ... }: {
 
 
       extraConfig = ''
-	user="${user}"
-	'';
+        user="${user}"
+        '';
 
       qemu = {
-	ovmf.enable = true ;
-	swtpm.enable = true;
-	verbatimConfig = ''
-	  namespaces = []
-	  user = "+${builtins.toString config.users.users.${user}.uid}"
-	  '';
-	package = pkgs.qemu_kvm;
-	runAsRoot = false;
+        ovmf.enable = true ;
+        swtpm.enable = true;
+        verbatimConfig = ''
+          namespaces = []
+          user = "+${builtins.toString config.users.users.${user}.uid}"
+          '';
+        package = pkgs.qemu_kvm;
+        runAsRoot = false;
       };
 
 
-};
+    };
 
-users.groups.libvirtd.members = [ "thib" "root" ];
-
+    users.users.thib.extraGroups = [ "libvirtd" "kvm" ];
+    users.groups.libvirtd.members = [ "thib" "root" ];
 };
 }

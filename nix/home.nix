@@ -16,15 +16,17 @@ programs.direnv.enable = true;
 # Enabling nnn because why not
 programs.nnn.enable = true;
 
-programs.bash = {
-  enable = true;
-  initExtra = "
-  if [ -f $HOME/workshop/lab/dotfiles/.bashrc ];
-  then
-  source $HOME/workshop/lab/dotfiles/.bashrc
-  fi
-";
-};
+# programs.bash = {
+#  enable = true;
+#  initExtra = "
+#  if [ -f $HOME/workshop/lab/dotfiles/.bashrc ];
+#  then
+#  source $HOME/workshop/lab/dotfiles/.bashrc
+#  fi
+#";
+#};
+#
+programs.fish.enable = true;
 
 # The home.packages option allows you to install Nix packages into your
 # environment.
