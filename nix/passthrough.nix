@@ -26,9 +26,10 @@ in { pkgs, lib, config, ... }: {
         "amd_iommu=on"
           "iommu=pt"
           "loglevel=3"
-          "vfio-pci.ids=1002:744c,1002:ab30"
-#      ] ++ [ "vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs];
-];
+#          "vfio-pci.ids=1002:744c,1002:ab30"
+             ] ++ lib.optional cfg.enable
+        # isolate the GPU
+        ("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs);
       boot.blacklistedKernelModules = [ "amdgpu" ];
 
 

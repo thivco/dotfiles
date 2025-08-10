@@ -97,7 +97,7 @@
       freerdp
       lm_sensors
       obs-studio
-      thefuck
+      #thefuck
       webcord
       mako
 # idk how to install this one yet      tokyo-night-sddm
