@@ -38,6 +38,7 @@
 
 # Dev
       vscode
+      windsurf
 #go
       python3
       git

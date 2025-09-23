@@ -30,6 +30,22 @@
 #
 # Test installing font thank you mr llm
 
+  services.sunshine = {
+    enable = true;
+    autoStart = true;
+    capSysAdmin = true;
+    openFirewall = true;
+  };
+
+networking.firewall = {
+  enable = true;
+  allowedTCPPorts = [ 47984 47989 47990 48010 ];
+  allowedUDPPortRanges = [
+    { from = 47998; to = 48000; }
+    { from = 8000; to = 8010; }
+  ];
+};
+
   security.acme = {
     acceptTerms = true;
     defaults.email = "foo@bar.com";
@@ -109,10 +125,16 @@
 # Installing Nautilus
   services.gvfs.enable = true;
 
-# AMD drivers related
 
-  systemd.packages = with pkgs; [ lact ];
-  systemd.services.lactd.wantedBy = ["multi-user.target"];
+systemd.services.lact = {
+    description = "AMDGPU Control Daemon";
+    after = ["multi-user.target"];
+    wantedBy = ["multi-user.target"];
+    serviceConfig = {
+      ExecStart = "${pkgs.lact}/bin/lact daemon";
+    };
+    enable = true;
+  };
 
 # Enable sound using Pipewire
 

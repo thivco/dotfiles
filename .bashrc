@@ -11,8 +11,8 @@ if [[ $(tty) == "/dev/tty1" ]]; then
 fi
 
 eval "$(starship init bash)"
-eval "$(thefuck --alias)"
-eval "$(thefuck --alias fk)"
+#eval "$(thefuck --alias)"
+#eval "$(thefuck --alias fk)"
 source "$(fzf-share)/key-bindings.bash"
 source "$(fzf-share)/completion.bash"
 # If not running interactively, don't do anything
