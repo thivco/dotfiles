@@ -30,6 +30,8 @@
 #
 # Test installing font thank you mr llm
 
+# Sunshine config for streaming
+
   services.sunshine = {
     enable = true;
     autoStart = true;
@@ -45,6 +47,9 @@ networking.firewall = {
     { from = 8000; to = 8010; }
   ];
 };
+
+# Tailscale vpn for home networking
+services.tailscale.enable = true;
 
   security.acme = {
     acceptTerms = true;

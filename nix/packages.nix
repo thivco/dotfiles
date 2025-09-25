@@ -113,6 +113,8 @@
       font-awesome
 
 # Language server protocol
+      phpPackages.php-codesniffer
+      intelephense
       nodePackages.typescript
       nodePackages.typescript-language-server
       lua-language-server
