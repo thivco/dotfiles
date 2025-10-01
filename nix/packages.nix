@@ -77,6 +77,7 @@
       keepassxc
       steamcmd
       calibre
+      zathura
 
 # Web tools
       deno

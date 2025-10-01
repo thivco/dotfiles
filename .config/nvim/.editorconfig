@@ -1,4 +1,4 @@
-[*.{js,ts,jsx,tsx,lua,bash,vue,nix}]
+[*.{php,js,ts,jsx,tsx,py,lua,bash,vue,nix}]
 indent_style = space
 indent_size = 2
 

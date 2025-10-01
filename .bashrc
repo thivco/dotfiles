@@ -25,7 +25,7 @@ PS1='[\u@\h \W]\$ '
 
 # Env variables ?
 DOTFILES_LOC="$HOME/workshop/lab/dotfiles/"
-
+export XDG_CONFIG_HOME="$DOTFILES_LOC/.config/"
 # Create a dedicated virt bash script to run at boot
 
 # Aliases to access various directories
