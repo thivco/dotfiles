@@ -108,3 +108,4 @@ function open_video_with_mpv_ultrawide(){
 alias uwide='open_video_with_mpv_ultrawide'
 alias wayboar=waybar
 
+alias unhype="pkill -USR1 hyprlock"

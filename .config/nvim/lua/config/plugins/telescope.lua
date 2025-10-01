@@ -24,7 +24,5 @@ return { {
     vim.keymap.set('n', '<space>fd', builtin.find_files)
     vim.keymap.set('n', '<space>fz', builtin.live_grep)
   end,
-
-
 }
 }
