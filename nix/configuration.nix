@@ -60,6 +60,8 @@ services.tailscale.enable = true;
   virtualisation.waydroid.enable = true;
   virtualisation.lxd.enable = true;
 
+#QMK for keyboard customization
+  hardware.keyboard.qmk.enable = true;
 
 # Trying to enable XDG Portal
   xdg.portal.enable = true;
@@ -107,7 +109,7 @@ services.tailscale.enable = true;
     settings = {
       General = {
         DisplayServer = "wayland";
-        MinimumVT = 1; # Force SDDM on tty1
+        MinimumVT = 7; # Force SDDM on tty1
       };
     };
   };

@@ -24,8 +24,8 @@ PS1='[\u@\h \W]\$ '
 #clear
 
 # Env variables ?
+NVIM_APPNAME=nvim
 DOTFILES_LOC="$HOME/workshop/lab/dotfiles/"
-export XDG_CONFIG_HOME="$DOTFILES_LOC/.config/"
 # Create a dedicated virt bash script to run at boot
 
 # Aliases to access various directories
@@ -43,7 +43,8 @@ alias ehm="nvim $DOTFILES_LOC/nix/home.nix"
 alias flake="sudo nixos-rebuild switch --flake $DOTFILES_LOC/nix"
 alias sass="npx sass --watch *.scss style.css"
 alias nvim_config="cp -r ~/.config/nvim/ $DOTFILES_LOC/.config/"
-alias envim="pushd ~/.config/nvim && nvim . && popd" 
+#alias envim="pushd ~/workshop/lab/dotfiles/.config/nvim/ && nvim && popd" 
+alias envim="pushd ~/workshop/lab/dotfiles/.config/nvim/ && nvim && rm -rf ~/.config/nvim/ && cp -r ~/workshop/lab/dotfiles/.config/nvim/ ~/.config/nvim/ && popd" 
 alias aptu="nix-channel --update && sudo flake"
 
 # vim alias

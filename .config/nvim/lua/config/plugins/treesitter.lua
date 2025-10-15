@@ -2,10 +2,12 @@ return { {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
   config = function()
-    require 'nvim-treesitter.configs'.setup {
-      -- A list of parser names, or "all" (the listed parsers MUST always be installed)
-      ensure_installed = { "typescript", "javascript", "nix", "php", "vue", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "html", "css" },
+    local configs = require("nvim-treesitter.configs")
+    configs.setup({
+      ensure_installed = { "typescript", "javascript", "nix", "php", "vue", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "html", "css", "tsx", "vue" },
       auto_install = true,
+      indent = { enable = true },
+      autotag = { enable = true },
       highlight = {
         enable = true,
         disable = function(lang, buf)
@@ -15,8 +17,7 @@ return { {
             return true
           end
         end,
-      },
-    }
-  end,
-}
-}
+      }
+    })
+  end
+} }

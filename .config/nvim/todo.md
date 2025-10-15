@@ -1,0 +1,2 @@
+- [ ] Diagnostic to display all the times (for error at least)
+- [ ] Code snippets

@@ -7,22 +7,31 @@ return { {
   },
   config = function()
     -- Set up the keybinding for Telescope find_files
+    local actions = require("telescope.actions")
     require('telescope').setup {
+      defaults = {
+        mappings = {
+          i = {
+            ["<C-k>"] = actions.move_selection_previous,
+            ["<C-j>"] = actions.move_selection_next,
+          }
+        }
+      },
       pickers = {
         find_files = {
+          hidden = true,
           theme = "ivy"
         }
       },
       extensions = {
-        fzf = {}
+        fzf = {
+        }
       }
     }
-    --	vim.keymap.set('n', '<space>fd', function()
+    --	map('n', '<space>fd', function()
     --	vim.key	require('telescope.builtin').find_files()
     --	vim.keyend, { noremap = true, silent = true })
-    local builtin = require("telescope.builtin")
-    vim.keymap.set('n', '<space>fd', builtin.find_files)
-    vim.keymap.set('n', '<space>fz', builtin.live_grep)
+    --map('n', '<leader>j', '<Cmd>:wq<CR>')
   end,
 }
 }

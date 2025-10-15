@@ -52,8 +52,7 @@
       tldr
       ffmpeg
       usbutils
-
-#neovim
+      jq
       fzf
       bat
       killall
@@ -104,6 +103,7 @@
       mako
 # idk how to install this one yet      tokyo-night-sddm
       swtpm
+      kdePackages.dolphin
 
 #usb/mount
       udiskie
@@ -112,6 +112,10 @@
 #Fonts
       jetbrains-mono
       font-awesome
+
+#Keyboard
+      qmk
+      via
 
 # Language server protocol
       phpPackages.php-codesniffer
