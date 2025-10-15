@@ -115,6 +115,7 @@
 
 #Keyboard
       qmk
+      kanata
       via
 
 # Language server protocol
