@@ -129,6 +129,7 @@
       dockerfile-language-server-nodejs
       superhtml
       vscode-langservers-extracted
+      emmet-language-server
 #      javascript-typescript-langserver 
       ];
 }

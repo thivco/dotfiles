@@ -46,6 +46,7 @@ alias nvim_config="cp -r ~/.config/nvim/ $DOTFILES_LOC/.config/"
 #alias envim="pushd ~/workshop/lab/dotfiles/.config/nvim/ && nvim && popd" 
 alias envim="pushd ~/workshop/lab/dotfiles/.config/nvim/ && nvim && rm -rf ~/.config/nvim/ && cp -r ~/workshop/lab/dotfiles/.config/nvim/ ~/.config/nvim/ && popd" 
 alias aptu="nix-channel --update && sudo flake"
+alias tsession="bash ~/workshop/lab/dotfiles/.config/scripts/tmux_session_distribution.sh"
 
 # vim alias
 alias nv="nvim"
@@ -94,6 +95,12 @@ function nixbuild() {
 	#[[ $msg != "" ]] && $gen="$msg" || $gen=nixos-rebuild list-generation | grep current
 	git commit -am "$msg"
 	popd
+}
+
+function git_feature_branch(){
+  local feature_name="$1"
+  local commit_message="$2"
+  echo git checkout -b "feature_${feature_name}" && git add . && git commit -m "new branch : ${feature_name}, ${commit_message}" && git push origin "feature_${feature_name}"
 }
 
 function open_video_with_mpv_ultrawide(){

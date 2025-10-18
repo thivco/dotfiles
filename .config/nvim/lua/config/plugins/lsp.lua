@@ -1,6 +1,7 @@
 return {
   {
     "neovim/nvim-lspconfig",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       'saghen/blink.cmp',
       {
@@ -21,6 +22,7 @@ return {
         vls = {},
         bashls = {},
         html = {},
+        emmet = {},
         intelephense = {
           settings = {
             intelephense = {
@@ -64,6 +66,17 @@ return {
         -- lspconfig[server].setup(config)
         -- seems redundant with what's just above
         config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
+
+        vim.diagnostic.config({
+          signs = {
+            text = {
+              [vim.diagnostic.severity.ERROR] = " ",
+              [vim.diagnostic.severity.WARN] = " ",
+              [vim.diagnostic.severity.HINT] = "󰠠 ",
+              [vim.diagnostic.severity.INFO] = " ",
+            },
+          },
+        })
       end
     end
   }
