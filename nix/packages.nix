@@ -77,6 +77,7 @@
       steamcmd
       calibre
       zathura
+      glow
 
 # Web tools
       deno
