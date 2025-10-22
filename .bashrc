@@ -57,7 +57,7 @@ alias vim="nvim"
 alias ga="git add"
 alias gc="git commit" 
 alias gs="git status --short"
-alias gp="git push"
+alias gp="git_push"
 alias gu="git pull"
 alias gco="git checkout"
 alias gcl="git clone"
@@ -100,7 +100,12 @@ function nixbuild() {
 function git_feature_branch(){
   local feature_name="$1"
   local commit_message="$2"
-  echo git checkout -b "feature_${feature_name}" && git add . && git commit -m "new branch : ${feature_name}, ${commit_message}" && git push origin "feature_${feature_name}"
+  echo git checkout -b "feature-${feature_name}" && git add . && git commit -m "new branch : ${feature_name}, ${commit_message}" && git push -u origin "feature-${feature_name}"
+}
+
+git_push(){
+  local commit_message="$1"
+  git add . && git commit -m "${commit_message}" && git push
 }
 
 function open_video_with_mpv_ultrawide(){
@@ -111,6 +116,28 @@ function open_video_with_mpv_ultrawide(){
    command_line="${command_line} --vf=crop=in_w:in_w/2.39" 
   fi
   ${command_line}
+}
+
+function tmux_session_check() 
+{
+  echo "Checking if session exists..."
+selected_name=$1
+selected_path=$2
+  if ! tmux has-session -t "$selected_name"; then
+  tmux new-session -ds "$selected_name" -c "$selected_path"
+  echo "session exists"
+  tmux select-window -t "$selected_name:1"
+fi
+
+
+if [ -e "$selected_path/shell.nix" ]; then
+  echo "nix shell exists, enterring..."
+  nix-shell "$selected_path/shell.nix"
+else
+  echo "no nix shell"
+  echo "Entering the session."
+  tmux attach -t "$selected_name"
+fi
 }
 
 alias uwide='open_video_with_mpv_ultrawide'
