@@ -31,6 +31,7 @@ DOTFILES_LOC="$HOME/workshop/lab/dotfiles/"
 # Aliases to access various directories
 alias dot="cd $DOTFILES_LOC"
 alias lab="cd ~/workshop/lab"
+alias cidem="cd ~/workshop/lab/cidem/&& nix-shell"
 alias ws="cd ~/workshop"
 
 # Aliases to edit config files
