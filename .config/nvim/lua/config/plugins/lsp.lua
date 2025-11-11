@@ -18,8 +18,15 @@ return {
     opts = {
       servers = {
         lua_ls = {},
-        ts_ls = {},
-        vls = {},
+
+        volar = {
+          cmd = { "vue-language-server", "--stdio" },
+          filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
+          init_options = {
+            vue = { hybridMode = true },
+          },
+        },
+
         bashls = {},
         html = {},
         emmet = {},
@@ -58,12 +65,12 @@ return {
         end,
       })
 
+      local lspconfig = require("lspconfig")
       -- DEPRECATED : local lspconfig = require('lspconfig')
       for server, config in pairs(opts.servers) do
         vim.lsp.config(server, config)
         vim.lsp.enable(server)
-
-        -- lspconfig[server].setup(config)
+        lspconfig[server].setup(config)
         -- seems redundant with what's just above
         config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
 

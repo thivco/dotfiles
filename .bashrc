@@ -34,6 +34,7 @@ alias lab="cd ~/workshop/lab"
 alias cidem="cd ~/workshop/lab/cidem/&& nix-shell"
 alias ws="cd ~/workshop"
 
+alias notivi="notify-send 'hi' !"
 # Aliases to edit config files
 
 alias ebash="nvim $DOTFILES_LOC/.bashrc && source $DOTFILES_LOC/.bashrc"

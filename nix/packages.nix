@@ -12,6 +12,7 @@
       alacritty
 
 # Linux tools
+      pulseaudio
       waybar
       pfetch
       rofi
