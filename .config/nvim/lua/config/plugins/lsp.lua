@@ -18,7 +18,6 @@ return {
     opts = {
       servers = {
         lua_ls = {},
-
         volar = {
           cmd = { "vue-language-server", "--stdio" },
           filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
@@ -26,7 +25,6 @@ return {
             vue = { hybridMode = true },
           },
         },
-
         bashls = {},
         html = {},
         emmet = {},
@@ -63,6 +61,11 @@ return {
             })
           end
         end,
+      })
+
+      vim.diagnostic.config({
+        virtual_lines = true,
+        underline = true
       })
 
       local lspconfig = require("lspconfig")
