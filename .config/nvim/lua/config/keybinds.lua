@@ -3,7 +3,7 @@ local builtin = require("telescope.builtin")
 
 
 -- other binds
-vim.keymap.set("n", "<leader><leader>x", "<cmd>source ~/workshop/lab/dotfiles/.config/nvim/<CR>")
+vim.keymap.set("n", "<leader><leader>x", "<cmd>source ~/workshop/lab/dotfiles/.config/nvim/init.lua<CR>")
 vim.keymap.set("n", "<leader>x", ":.lua<CR>")
 vim.keymap.set("v", "<leader>x", ":lua<CR>")
 
@@ -29,3 +29,5 @@ map('n', 'gd', vim.lsp.buf.definition)
 map('n', 'gi', vim.lsp.buf.implementation)
 map('n', 'K', vim.lsp.buf.hover)
 map('n', 'gb', '<C-o>')
+
+-- completion

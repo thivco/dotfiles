@@ -14,7 +14,7 @@ return {
           -- other filetypes...
         },
         format_on_save = {
-          timeout_ms = 400,
+          timeout_ms = 100,
           lsp_fallback = true,
         },
         formatters = {
