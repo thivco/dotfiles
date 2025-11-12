@@ -25,8 +25,23 @@ return {
           end,
           cmd = { "vue-language-server", "--stdio" },
           filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
+          --root_dir = require("lspconfig.util").root_pattern("tsconfig.app.json", "tsconfig.json", "package.json", ".git"),
+
+          root_dir = function(fname)
+            return vim.lsp.config.util.root_pattern("tsconfig.app.json", "tsconfig.json", "package.json", ".git")(fname)
+          end,
+
           init_options = {
             vue = { hybridMode = false },
+            typescript = {
+              tsdk = "/nix/store/hl69bzlr5ijvsvjcc1z24qrkxs4xdlyp-typescript-5.8.3/lib/node_modules/typescript/lib/",
+            },
+          },
+          settings = {
+            volar = {
+              codeLens = { references = true, pugTools = true, scriptSetupTools = true },
+              diagnostics = { enable = true },
+            },
           },
         },
         bashls = {},
@@ -73,11 +88,15 @@ return {
       })
 
       local lspconfig = require("lspconfig")
+      local util = require("lspconfig.util")
       local capabilities = require('blink.cmp').get_lsp_capabilities()
       -- DEPRECATED : local lspconfig = require('lspconfig')
       for server, config in pairs(opts.servers) do
         --vim.lsp.config(server, config)
         --vim.lsp.enable(server)
+        if server == "volar" then
+          config.root_dir = util.root_pattern("tsconfig.json", "package.json", ".git")
+        end
         lspconfig[server].setup(config)
         -- seems redundant with what's just above
         config.capabilities = vim.tbl_deep_extend("force", capabilities, config.capabilities or {})
