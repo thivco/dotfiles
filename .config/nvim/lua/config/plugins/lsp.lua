@@ -91,6 +91,19 @@ return {
       local util = require("lspconfig.util")
       local capabilities = require('blink.cmp').get_lsp_capabilities()
       -- DEPRECATED : local lspconfig = require('lspconfig')
+
+      --      eslint config if needed, it's nice but it's just the same as the lsp
+      --      lspconfig.eslint.setup({
+      --        on_attach = function(client, bufnr)
+      --          -- optional: auto-fix on save
+      --          vim.api.nvim_create_autocmd("BufWritePre", {
+      --            buffer = bufnr,
+      --            command = "EslintFixAll"
+      --          })
+      --        end,
+      --      })
+
+
       for server, config in pairs(opts.servers) do
         --vim.lsp.config(server, config)
         --vim.lsp.enable(server)
