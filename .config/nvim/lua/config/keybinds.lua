@@ -23,3 +23,9 @@ map('n', '<leader>do', ':DevdocsOpen<CR>')
 map('n', '<leader>fd', builtin.find_files) -- File finder
 map('n', '<leader>fz', builtin.live_grep)  -- Fuzzy find in files
 map("n", "<leader>fl", builtin.oldfiles)   -- Check recently opened files
+
+-- Navigation
+map('n', 'gd', vim.lsp.buf.definition)
+map('n', 'gi', vim.lsp.buf.implementation)
+map('n', 'K', vim.lsp.buf.hover)
+map('n', 'gb', '<C-o>')

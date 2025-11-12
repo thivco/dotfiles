@@ -3,6 +3,7 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
+      'artemave/workspace-diagnostics.nvim',
       'saghen/blink.cmp',
       {
         "folke/lazydev.nvim",
@@ -19,10 +20,13 @@ return {
       servers = {
         lua_ls = {},
         volar = {
+          on_attach = function(client, bufnr)
+            require("workspace-diagnostics").populate_workspace_diagnostics(client, 0)
+          end,
           cmd = { "vue-language-server", "--stdio" },
           filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
           init_options = {
-            vue = { hybridMode = true },
+            vue = { hybridMode = false },
           },
         },
         bashls = {},
@@ -69,13 +73,15 @@ return {
       })
 
       local lspconfig = require("lspconfig")
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
       -- DEPRECATED : local lspconfig = require('lspconfig')
       for server, config in pairs(opts.servers) do
-        vim.lsp.config(server, config)
-        vim.lsp.enable(server)
+        --vim.lsp.config(server, config)
+        --vim.lsp.enable(server)
         lspconfig[server].setup(config)
         -- seems redundant with what's just above
-        config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
+        config.capabilities = vim.tbl_deep_extend("force", capabilities, config.capabilities or {})
+        --config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
 
         vim.diagnostic.config({
           signs = {
