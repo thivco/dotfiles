@@ -20,9 +20,10 @@ map('n', '<leader>di', '<cmd>lua vim.diagnostic.open_float()<CR>')
 map('n', '<leader>do', ':DevdocsOpen<CR>')
 
 -- Telescope
-map('n', '<leader>fd', builtin.find_files) -- File finder
-map('n', '<leader>fz', builtin.live_grep)  -- Fuzzy find in files
-map("n", "<leader>fl", builtin.oldfiles)   -- Check recently opened files
+map('n', '<leader>fd', builtin.find_files)  -- File finder
+map('n', '<leader>fz', builtin.live_grep)   -- Fuzzy find in files
+map("n", "<leader>fl", builtin.oldfiles)    -- Check recently opened files
+map("n", "<leader>ct", builtin.colorscheme) -- Check recently opened files
 
 -- Navigation
 map('n', 'gd', vim.lsp.buf.definition)

@@ -10,7 +10,7 @@ return {
         preset = 'default',
         ['<S-Tab>'] = { 'select_prev', 'fallback' },
         ['<Tab>'] = { 'select_next', 'fallback' },
-        ['<Enter>'] = { 'accept', 'fallback' },
+        ['<Enter>'] = { 'select_and_accept', 'fallback' },
       },
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },

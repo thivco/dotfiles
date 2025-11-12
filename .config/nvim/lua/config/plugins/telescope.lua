@@ -15,8 +15,8 @@ return {
         defaults = {
           mappings = {
             i = {
-              ["<C-k>"] = actions.move_selection_previous,
-              ["<C-j>"] = actions.move_selection_next,
+              ["<S-Tab>"] = actions.move_selection_previous,
+              ["<Tab>"] = actions.move_selection_next,
             }
           }
         },
