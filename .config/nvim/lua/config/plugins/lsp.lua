@@ -110,9 +110,12 @@ return {
         if server == "volar" then
           config.root_dir = util.root_pattern("tsconfig.json", "package.json", ".git")
         end
-        lspconfig[server].setup(config)
         -- seems redundant with what's just above
-        config.capabilities = vim.tbl_deep_extend("force", capabilities, config.capabilities or {})
+        vim.lsp.config[server] = vim.tbl_deep_extend("force", {
+          capabilities = require("blink.cmp").get_lsp_capabilities(),
+        }, config)
+        --lspconfig[server].setup(config)
+        --config.capabilities = vim.tbl_deep_extend("force", capabilities, config.capabilities or {})
         --config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
 
         vim.diagnostic.config({
