@@ -84,7 +84,6 @@ return {
 
       vim.diagnostic.config({
         virtual_lines = true,
-        underline = true
       })
 
       local lspconfig = require("lspconfig")
@@ -111,12 +110,12 @@ return {
           config.root_dir = util.root_pattern("tsconfig.json", "package.json", ".git")
         end
         -- seems redundant with what's just above
-        vim.lsp.config[server] = vim.tbl_deep_extend("force", {
-          capabilities = require("blink.cmp").get_lsp_capabilities(),
-        }, config)
-        --lspconfig[server].setup(config)
+        --vim.lsp.config[server] = vim.tbl_deep_extend("force", {
+        --  capabilities = require("blink.cmp").get_lsp_capabilities(),
+        --}, config)
+        lspconfig[server].setup(config)
         --config.capabilities = vim.tbl_deep_extend("force", capabilities, config.capabilities or {})
-        --config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
+        config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
 
         vim.diagnostic.config({
           signs = {
