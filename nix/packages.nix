@@ -1,22 +1,30 @@
-{ zen-browser, config, pkgs, lib, ... }:
+{
+  zen-browser,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
-  environment.systemPackages = with pkgs;
+  environment.systemPackages =
+    with pkgs;
 
-  [
+    [
 
-# terminal
+      # terminal
       kitty
       starship
       burpsuite
       alacritty
 
-# Linux tools
+      # Linux tools
       pulseaudio
       waybar
       pfetch
       rofi
       hyprpaper
+      waypaper
       pywal
       grim
       grimblast
@@ -29,23 +37,24 @@
       libnotify
       lact
       xmlstarlet
+      mpvpaper
 
-# Virtualization
+      # Virtualization
       looking-glass-client
       xrdp
 
-# Browsing
+      # Browsing
       chromium
 
-# Dev
+      # Dev
       vscode
       windsurf
-#go
+      #go
       python3
       git
       bun
 
-# CLI tools
+      # CLI tools
       vim
       btop
       htop
@@ -64,11 +73,11 @@
       simple-mtpfs
       zip
 
-# Games
+      # Games
       wine
       lutris
 
-# Tools
+      # Tools
       syncthing
       spotify
       obsidian
@@ -80,15 +89,15 @@
       zathura
       glow
 
-# Web tools
+      # Web tools
       deno
       #atlas #MongoDB tool
       #mongosh
       nodejs
 
-# Misc
+      # Misc
       xrdp
-#      zen-browser.packages."$(system)".default
+      #      zen-browser.packages."$(system)".default
       xwayland
       networkmanager
       swaylock
@@ -103,27 +112,28 @@
       #thefuck
       webcord
       mako
-# idk how to install this one yet      tokyo-night-sddm
+      # idk how to install this one yet      tokyo-night-sddm
       swtpm
       kdePackages.dolphin
 
-#usb/mount
+      #usb/mount
       udiskie
       udisks2
 
-#Fonts
+      #Fonts
       jetbrains-mono
       font-awesome
 
-#Keyboard
+      #Keyboard
       qmk
       kanata
       via
 
-# Language server protocol
+      # Language server protocol
       phpPackages.php-codesniffer
       intelephense
       nil
+      hyprls
       nodePackages.typescript
       nodePackages.typescript-language-server
       lua-language-server
@@ -133,8 +143,6 @@
       superhtml
       vscode-langservers-extracted
       emmet-language-server
-#      javascript-typescript-langserver 
-      ];
+      #      javascript-typescript-langserver
+    ];
 }
-
-

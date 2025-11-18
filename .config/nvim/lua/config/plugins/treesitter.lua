@@ -4,6 +4,9 @@ return { {
   lazy = false,
   branch = "master",
   config = function()
+    vim.filetype.add({
+      pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+    })
     local configs = require("nvim-treesitter.configs")
     configs.setup({
       ensure_installed = { "typescript", "javascript", "nix", "php", "vue", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "html", "css", "tsx", "vue", "json" },

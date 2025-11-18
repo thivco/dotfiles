@@ -46,6 +46,7 @@ return {
         },
         bashls = {},
         html = {},
+        hyprls = {},
         emmet = {},
         nil_ls = {},
         intelephense = {

@@ -29,7 +29,7 @@ DOTFILES_LOC="$HOME/workshop/lab/dotfiles/"
 # Create a dedicated virt bash script to run at boot
 
 # Aliases to access various directories
-alias dot="cd $DOTFILES_LOC"
+alias dot="cd $DOTFILES_LOC && $NVIM_APPNAME"
 alias lab="cd ~/workshop/lab"
 alias cidem="cd ~/workshop/lab/cidem/&& nix-shell"
 alias ws="cd ~/workshop"
