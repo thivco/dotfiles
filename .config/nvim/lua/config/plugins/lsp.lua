@@ -47,6 +47,7 @@ return {
         bashls = {},
         html = {},
         emmet = {},
+        nil_ls = {},
         intelephense = {
           settings = {
             intelephense = {

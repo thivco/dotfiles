@@ -123,6 +123,7 @@
 # Language server protocol
       phpPackages.php-codesniffer
       intelephense
+      nil
       nodePackages.typescript
       nodePackages.typescript-language-server
       lua-language-server
