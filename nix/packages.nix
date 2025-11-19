@@ -38,6 +38,7 @@
       lact
       xmlstarlet
       mpvpaper
+      socat
 
       # Virtualization
       looking-glass-client
@@ -112,7 +113,6 @@
       #thefuck
       webcord
       mako
-      # idk how to install this one yet      tokyo-night-sddm
       swtpm
       kdePackages.dolphin
 

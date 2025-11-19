@@ -29,6 +29,13 @@ map("n", "<leader>ct", builtin.colorscheme) -- Check recently opened files
 map('n', 'gd', vim.lsp.buf.definition)
 map('n', 'gi', vim.lsp.buf.implementation)
 map('n', 'K', vim.lsp.buf.hover)
-map('n', 'gb', '<C-o>')
+map('n', '<leader>l', '<C-o>')
 
+-- inlay hints
+
+map("n", "<leader>k", function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+  vim.notify(vim.lsp.inlay_hint.is_enabled() and "Inlay hints enabled" or "inlay hints disabled")
+end
+)
 -- completion
