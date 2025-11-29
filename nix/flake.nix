@@ -2,7 +2,7 @@
   description = "First flake";
 
   inputs = {
-# NixOS official package source, using the nixos unstable branch here
+    # NixOS official package source, using the nixos unstable branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -16,24 +16,36 @@
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
   };
 
-  outputs = { self, nixpkgs, home-manager, zen-browser, ... }@inputs: let
-    lib = nixpkgs.lib;
-  system = "x86_64-linux";
-  pkgs = nixpkgs.legacyPackages.${system};
-  in
-  {
-    nixosConfigurations.nixos = lib.nixosSystem {
-      inherit system;
-      modules = [
-        ./configuration.nix
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      zen-browser,
+      ...
+    }@inputs:
+    let
+      lib = nixpkgs.lib;
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+    {
+      nixosConfigurations.nixos = lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./configuration.nix
+          ./modules/ollama-offline.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.thib = import ./home.nix;
-            home-manager.extraSpecialArgs = { inherit inputs; system = "x86_64-linux";};
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              system = "x86_64-linux";
+            };
           }
-      ];
+        ];
+      };
     };
-  };
 }
