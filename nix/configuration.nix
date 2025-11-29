@@ -1,17 +1,26 @@
 # Hi, this is thibault's config
 
-{ config, lib, pkgs, zen-browser, ... }:
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./packages.nix
-      ./passthrough.nix
-      #      ./kanata.nix
-    ];
+  config,
+  lib,
+  pkgs,
+  zen-browser,
+  ...
+}:
+{
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./packages.nix
+    ./passthrough.nix
+    #      ./kanata.nix
+  ];
 
   # Here we go... FLAKES ENABLED !
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Enable ssh
   services.openssh.enable = true;
@@ -33,6 +42,13 @@
 
   # Sunshine config for streaming
 
+  hardware.opengl.enable = true;
+  hardware.opengl.extraPackages = with pkgs; [
+    rocm-opencl-runtime
+    rocm-device-libs
+    rocm-smi
+  ];
+
   services.sunshine = {
     enable = true;
     autoStart = true;
@@ -42,10 +58,21 @@
 
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 47984 47989 47990 48010 ];
+    allowedTCPPorts = [
+      47984
+      47989
+      47990
+      48010
+    ];
     allowedUDPPortRanges = [
-      { from = 47998; to = 48000; }
-      { from = 8000; to = 8010; }
+      {
+        from = 47998;
+        to = 48000;
+      }
+      {
+        from = 8000;
+        to = 8010;
+      }
     ];
   };
 
@@ -68,7 +95,7 @@
 
   # Enable Hyprland
   programs.hyprland.enable = true;
-  programs.hyprland.xwayland.enable = true; 
+  programs.hyprland.xwayland.enable = true;
 
   # Detect ext drives
   services.udisks2.enable = true;
@@ -83,7 +110,10 @@
 
   # Don't put spaces in the specialisation name, it prevents rebuilds
   specialisation.win_mode.configuration = {
-    boot.kernelParams=["loglevel=2"];
+    boot.kernelParams = [
+      "loglevel=2"
+      "amdgpu.vm_fragment_size=9"
+    ];
     vfio.enable = true;
   };
 
@@ -132,11 +162,10 @@
   # Installing Nautilus
   services.gvfs.enable = true;
 
-
   systemd.services.lact = {
     description = "AMDGPU Control Daemon";
-    after = ["multi-user.target"];
-    wantedBy = ["multi-user.target"];
+    after = [ "multi-user.target" ];
+    wantedBy = [ "multi-user.target" ];
     serviceConfig = {
       ExecStart = "${pkgs.lact}/bin/lact daemon";
     };
@@ -180,14 +209,12 @@
   # Disable onboard BT
   boot.blacklistedKernelModules = [ "rtw89_8852ce" ];
 
-
   #Enable the BT tui
   services.blueman.enable = true;
 
   services.udev.packages = with pkgs; [
     steam-unwrapped
   ];
-
 
   services.udev.extraRules = ''
     SUBSYSTEM=="input", GROUP="input", MODE="0660"
@@ -217,8 +244,8 @@
 
   # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
-  networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.wireless.enable = false; # Enables wireless support via wpa_supplicant.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
@@ -235,12 +262,16 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.thib = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "disk"]; # Enables ‘sudo’ for the user.
-    openssh.authorizedKeys.keys = ["AAAAC3NzaC1lZDI1NTE5AAAAIDAcczjaWc2NHGIBFxArYGkivl4lzC27N5IXlXoiZD0N"];
+    extraGroups = [
+      "wheel"
+      "disk"
+    ]; # Enables ‘sudo’ for the user.
+    openssh.authorizedKeys.keys = [
+      "AAAAC3NzaC1lZDI1NTE5AAAAIDAcczjaWc2NHGIBFxArYGkivl4lzC27N5IXlXoiZD0N"
+    ];
     packages = with pkgs; [
       firefox
       tree
@@ -249,8 +280,6 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-
-
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -282,5 +311,3 @@
   system.stateVersion = "23.11"; # Did you read the comment?
 
 }
-
-

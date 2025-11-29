@@ -121,8 +121,6 @@
       udisks2
 
       #Fonts
-      jetbrains-mono
-      font-awesome
 
       #Keyboard
       qmk

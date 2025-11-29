@@ -29,7 +29,8 @@ map("n", "<leader>ct", builtin.colorscheme) -- Check recently opened files
 map('n', 'gd', vim.lsp.buf.definition)
 map('n', 'gi', vim.lsp.buf.implementation)
 map('n', 'K', vim.lsp.buf.hover)
-map('n', '<leader>l', '<C-o>')
+map('n', '<leader>h', '<C-o>') -- C-^ to properly jump files, but then C-i won't work
+map('n', '<leader>l', '<C-i>')
 
 -- inlay hints
 
