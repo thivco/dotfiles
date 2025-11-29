@@ -13,7 +13,7 @@
     ./hardware-configuration.nix
     ./packages.nix
     ./passthrough.nix
-    #      ./kanata.nix
+    ./modules/kanata.nix
   ];
 
   # Here we go... FLAKES ENABLED !

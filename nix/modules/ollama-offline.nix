@@ -12,7 +12,7 @@
     "amdgpu.vm_fragment_size=9"
   ];
 
-  programs.ollama.enable = true;
+  services.ollama.enable = true;
 
   systemd.services.ollama.serviceConfig = {
     PrivateNetwork = true;
