@@ -42,11 +42,18 @@
 
   # Sunshine config for streaming
 
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
+  # llm handling
   hardware.opengl.enable = true;
   hardware.opengl.extraPackages = with pkgs; [
-    rocm-opencl-runtime
-    rocm-device-libs
-    rocm-smi
+    # rocm-runtime
+    # rocm-device-libs
+    rocmPackages.clr.icd
+    # rocm-smi
   ];
 
   services.sunshine = {
