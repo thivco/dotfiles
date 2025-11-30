@@ -14,6 +14,7 @@
     };
     hyprland.url = "github:hyprwm/hyprland?ref=v0.36.0";
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
+    ollamark.url = "github:knoopx/ollamark";
   };
 
   outputs =
@@ -22,7 +23,7 @@
       nixpkgs,
       home-manager,
       zen-browser,
-      ollamaTools,
+      ollamark,
       ...
     }@inputs:
     let
@@ -35,6 +36,16 @@
         inherit system;
         modules = [
           ./configuration.nix
+          {
+
+            nixpkgs.overlays = [
+              inputs.ollamark.overlays.default
+            ];
+
+            # environment.systemPackages = [
+            #   pkgs.ollamark
+            # ];
+          }
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
