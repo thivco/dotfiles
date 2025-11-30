@@ -40,7 +40,7 @@
            )
 
           (deflayer base
-            @escctrl @a @s @d @f @j @k @l @;
+            @caps @a @s @d @f @j @k @l @;
           )
         '';
       };
