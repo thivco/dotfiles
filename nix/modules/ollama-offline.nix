@@ -1,23 +1,51 @@
-{ config, pkgs, ... }:
-
 {
-  hardware.graphics = {
-    enable = true;
-    extraPackages = with pkgs; [
-      rocmPackages.clr.icd
-    ];
+  description = "Ollama + Ollamark module";
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    # bring the tool in
+    ollamark.url = "github:knoopx/ollamark";
   };
 
-  boot.kernelParams = [
-    "amdgpu.vm_fragment_size=9"
-  ];
+  outputs =
+    {
+      self,
+      nixpkgs,
+      ollamark,
+      ...
+    }:
+    {
+      nixosModules.ollamaModule =
+        { config, pkgs, ... }:
+        {
+          hardware.graphics = {
+            enable = true;
+            extraPackages = with pkgs; [
+              rocmPackages.clr.icd
+            ];
+          };
 
-  services.ollama.enable = true;
+          boot.kernelParams = [
+            "amdgpu.vm_fragment_size=9"
+          ];
 
-  systemd.services.ollama.serviceConfig = {
-    PrivateNetwork = true;
-    RestrictAddressFamilies = [ "AF_UNIX" ];
-  };
+          services.ollama.enable = true;
 
-  environment.variables.OLLAMA_ACCELERATOR = "rocm";
+          nixpkgs.overlays = [
+            ollamark.overlays.default
+          ];
+
+          environment.systemPackages = [
+            pkgs.ollamark
+          ];
+
+          systemd.services.ollama.serviceConfig = {
+            PrivateNetwork = true;
+            RestrictAddressFamilies = [ "AF_UNIX" ];
+          };
+
+          environment.variables.OLLAMA_ACCELERATOR = "rocm";
+        };
+    };
 }

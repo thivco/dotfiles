@@ -1,5 +1,3 @@
-{ inputs, config, pkgs, lib, ... }:
-
 {
   # kanata for home row
   systemd.services.kanata-internalKeyboard.serviceConfig = {
@@ -20,29 +18,29 @@
         ];
         extraDefCfg = "process-unmapped-keys yes";
         config = ''
-      (defsrc
-        caps a o e u h t n s
-      )
- (defvar
-           tap-time 150
-           hold-time 200
+          (defsrc
+            asdf jklm
           )
+          (defvar
+             tap-time 150
+             hold-time 200
+           )
 
-        (defalias
-           escctrl (tap-hold 100 100 esc lctl)
-           a (tap-hold $tap-time $hold-time a lmet)
-           o (tap-hold $tap-time $hold-time o lalt)
-           e (tap-hold $tap-time $hold-time e lsft)
-           u (tap-hold $tap-time $hold-time u lctl)
-           h (tap-hold $tap-time $hold-time h rctl)
-           t (tap-hold $tap-time $hold-time t rsft)
-           n (tap-hold $tap-time $hold-time n ralt)
-           s (tap-hold $tap-time $hold-time s rmet)
+          (defalias
+             escctrl (tap-hold 100 100 caps lctl)
+             a (tap-hold $tap-time $hold-time a lmet)
+             s (tap-hold $tap-time $hold-time s lsft)
+             d (tap-hold $tap-time $hold-time d ralt)
+             f (tap-hold $tap-time $hold-time f rsft)
+             j (tap-hold $tap-time $hold-time j rctl)
+             k (tap-hold $tap-time $hold-time k lmet)
+             l (tap-hold $tap-time $hold-time l lsft)
+             m (tap-hold $tap-time $hold-time m ralt)
+           )
+
+          (deflayer base
+            @escctrl @a @s @d @f @j @k @l @m
           )
-
-    (deflayer base
-    @escctrl @a @o @e @u @h @t @n @s
-    )
         '';
       };
 

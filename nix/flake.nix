@@ -22,6 +22,7 @@
       nixpkgs,
       home-manager,
       zen-browser,
+      ollamaTools,
       ...
     }@inputs:
     let
@@ -34,7 +35,6 @@
         inherit system;
         modules = [
           ./configuration.nix
-          ./modules/ollama-offline.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

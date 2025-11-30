@@ -14,6 +14,7 @@
     ./packages.nix
     ./passthrough.nix
     ./modules/kanata.nix
+    ./modules/ollama-offline.nix
   ];
 
   # Here we go... FLAKES ENABLED !
