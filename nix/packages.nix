@@ -89,6 +89,8 @@
       calibre
       zathura
       glow
+      libsForQt5.qtstyleplugin-kvantum
+      libsForQt5.qt5ct
 
       # Web tools
       deno

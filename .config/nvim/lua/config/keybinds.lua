@@ -6,6 +6,8 @@ local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader><leader>x", "<cmd>source ~/workshop/lab/dotfiles/.config/nvim/init.lua<CR>")
 vim.keymap.set("n", "<leader>x", ":.lua<CR>")
 vim.keymap.set("v", "<leader>x", ":lua<CR>")
+vim.keymap.set("n", "<leader>w", ":write<CR>")
+vim.keymap.set("n", "<leader>q", ":quit<CR>")
 
 --oil nvim
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
@@ -33,7 +35,6 @@ map('n', '<leader>h', '<C-o>') -- C-^ to properly jump files, but then C-i won't
 map('n', '<leader>l', '<C-i>')
 
 -- inlay hints
-
 map("n", "<leader>k", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
   vim.notify(vim.lsp.inlay_hint.is_enabled() and "Inlay hints enabled" or "inlay hints disabled")

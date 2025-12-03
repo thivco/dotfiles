@@ -73,6 +73,7 @@ return {
         hyprls = {},
         emmet = {},
         nil_ls = {},
+        qmlls = {},
         intelephense = {
           settings = {
             intelephense = {

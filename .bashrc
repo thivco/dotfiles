@@ -26,6 +26,9 @@ PS1='[\u@\h \W]\$ '
 # Env variables ?
 NVIM_APPNAME=nvim
 DOTFILES_LOC="$HOME/workshop/lab/dotfiles/"
+EDITOR=nvim
+QT_QPA_PLATFORMTHEME=qt6ct
+QT_QPA_PLATFORM=wayland
 # Create a dedicated virt bash script to run at boot
 
 # Aliases to access various directories

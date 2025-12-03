@@ -52,6 +52,7 @@
     inputs.zen-browser.packages."${system}".default
     inputs.ollamark.packages."${system}".default
     firmwareLinuxNonfree
+    qimgv
 
     #CLI tools
     fastfetch
@@ -67,6 +68,7 @@
     hyprlock
     hypridle
     waycorner
+    quickshell
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
