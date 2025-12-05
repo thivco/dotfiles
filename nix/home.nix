@@ -51,6 +51,8 @@
     mission-center
     inputs.zen-browser.packages."${system}".default
     inputs.ollamark.packages."${system}".default
+    inputs.antigravity-nix.packages.x86_64-linux.default
+
     firmwareLinuxNonfree
     qimgv
 

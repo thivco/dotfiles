@@ -15,6 +15,10 @@
     hyprland.url = "github:hyprwm/hyprland?ref=v0.36.0";
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
     ollamark.url = "github:knoopx/ollamark";
+    antigravity-nix = {
+      url = "github:jacopone/antigravity-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -24,6 +28,7 @@
       home-manager,
       zen-browser,
       ollamark,
+      antigravity-nix,
       ...
     }@inputs:
     let

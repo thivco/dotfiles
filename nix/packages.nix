@@ -39,6 +39,7 @@
       xmlstarlet
       mpvpaper
       socat
+      open-webui
 
       # Virtualization
       looking-glass-client
