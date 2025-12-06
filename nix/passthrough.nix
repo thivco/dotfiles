@@ -67,7 +67,6 @@ in
         '';
 
         qemu = {
-          ovmf.enable = true;
           swtpm.enable = true;
           verbatimConfig = ''
             namespaces = []

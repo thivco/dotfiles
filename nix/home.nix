@@ -46,7 +46,7 @@
     wofi
     postman
     google-chrome
-    gpt4all
+    # gpt4all
     mpv
     mission-center
     inputs.zen-browser.packages."${system}".default
@@ -54,7 +54,7 @@
     inputs.antigravity-nix.packages.x86_64-linux.default
     mongodb-compass
 
-    firmwareLinuxNonfree
+    linux-firmware
     qimgv
 
     #CLI tools

@@ -140,7 +140,7 @@
       lua-language-server
       bash-language-server
       vue-language-server
-      dockerfile-language-server-nodejs
+      dockerfile-language-server
       superhtml
       vscode-langservers-extracted
       emmet-language-server

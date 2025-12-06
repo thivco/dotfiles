@@ -48,15 +48,6 @@
     enable32Bit = true;
   };
 
-  # llm handling
-  hardware.opengl.enable = true;
-  hardware.opengl.extraPackages = with pkgs; [
-    # rocm-runtime
-    # rocm-device-libs
-    rocmPackages.clr.icd
-    # rocm-smi
-  ];
-
   services.sunshine = {
     enable = true;
     autoStart = true;
@@ -94,7 +85,6 @@
 
   #testing emulation
   virtualisation.waydroid.enable = true;
-  virtualisation.lxd.enable = true;
 
   #QMK for keyboard customization
   hardware.keyboard.qmk.enable = true;
@@ -140,7 +130,7 @@
   services.xserver.enable = true;
   services.xserver.videoDrivers = [ "amdgpu" ];
   #  services.xserver.videoDrivers = lib.mkIf (!config.vfio.enable) [ "amdgpu" ];
-  services.xserver.displayManager.sddm = {
+  services.displayManager.sddm = {
     enable = true;
     autoNumlock = true;
     wayland.enable = true;
