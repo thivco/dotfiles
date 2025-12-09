@@ -55,6 +55,7 @@
       python3
       git
       bun
+      typst
 
       # CLI tools
       vim
@@ -131,6 +132,7 @@
       via
 
       # Language server protocol
+      vtsls
       phpPackages.php-codesniffer
       intelephense
       nil

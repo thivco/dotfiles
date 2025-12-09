@@ -15,65 +15,26 @@ return {
         },
       },
     },
+
     -- List of language servers to configure
     opts = {
       servers = {
-        lua_ls = {},
-        volar = {
-          on_attach = function(client, bufnr)
-            require("workspace-diagnostics").populate_workspace_diagnostics(client, 0)
-          end,
-          cmd = { "vue-language-server", "--stdio" },
-          filetypes = { "vue", "javascript", "typescript", "javascriptreact", "typescriptreact" },
-          --root_dir = require("lspconfig.util").root_pattern("tsconfig.app.json", "tsconfig.json", "package.json", ".git"),
-
-          root_dir = function(fname)
-            return vim.lsp.config.util.root_pattern("tsconfig.app.json", "tsconfig.json", "package.json", ".git")(fname)
-          end,
-
-          init_options = {
-            vue = { hybridMode = false },
-            typescript = {
-              tsdk = "/nix/store/hl69bzlr5ijvsvjcc1z24qrkxs4xdlyp-typescript-5.8.3/lib/node_modules/typescript/lib/",
-            },
-          },
+        lua_ls = {
+          filetypes = { "lua" },
           settings = {
-            typescript = {
-              inlayHints = {
-                includeInlayParameterNameHints = "all",
-                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayVariableTypeHints = true,
-                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
-              },
-            },
-            javascript = {
-              inlayHints = {
-                includeInlayParameterNameHints = "all",
-                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayVariableTypeHints = true,
-                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
-              },
-            },
-            volar = {
-              codeLens = { references = true, pugTools = true, scriptSetupTools = true },
-              diagnostics = { enable = true },
+            Lua = {
+              diagnostics = { globals = { "vim" } },
             },
           },
         },
-        bashls = {},
-        html = {},
-        hyprls = {},
+
+        bashls = {
+          filetypes = { "sh" },
+        },
+        hyprls = { filetypes = { "conf" } },
         emmet = {},
-        nil_ls = {},
-        qmlls = {},
+        nil_ls = { filetypes = { "nix" } },
+        qmlls = { filetypes = { "qml" } },
         intelephense = {
           settings = {
             intelephense = {
@@ -86,6 +47,17 @@ return {
           filetypes = { "php" },
           root_markers = { ".git", "composer.json" },
         },
+        html = {},
+        cssls = {
+          filetypes = {
+            "css",
+            "scss",
+            "less",
+            -- "vue"
+          },
+        },
+
+
       }
     },
     config = function(_, opts)
@@ -109,14 +81,9 @@ return {
         end,
       })
 
-      vim.diagnostic.config({
-        virtual_lines = true,
-      })
-
-      local lspconfig = require("lspconfig")
-      local util = require("lspconfig.util")
-      local capabilities = require('blink.cmp').get_lsp_capabilities()
-      -- DEPRECATED : local lspconfig = require('lspconfig')
+      -- vim.diagnostic.config({
+      -- virtual_lines = true,
+      -- })
 
       --      eslint config if needed, it's nice but it's just the same as the lsp
       --      lspconfig.eslint.setup({
@@ -131,30 +98,33 @@ return {
 
 
       for server, config in pairs(opts.servers) do
-        --vim.lsp.config(server, config)
-        --vim.lsp.enable(server)
-        if server == "volar" then
-          config.root_dir = util.root_pattern("tsconfig.json", "package.json", ".git")
-        end
-        -- seems redundant with what's just above
-        --vim.lsp.config[server] = vim.tbl_deep_extend("force", {
-        --  capabilities = require("blink.cmp").get_lsp_capabilities(),
-        --}, config)
-        lspconfig[server].setup(config)
-        --config.capabilities = vim.tbl_deep_extend("force", capabilities, config.capabilities or {})
-        config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
-
-        vim.diagnostic.config({
-          signs = {
-            text = {
-              [vim.diagnostic.severity.ERROR] = " ",
-              [vim.diagnostic.severity.WARN] = " ",
-              [vim.diagnostic.severity.HINT] = "󰠠 ",
-              [vim.diagnostic.severity.INFO] = " ",
-            },
-          },
-        })
+        vim.lsp.config[server] = config
+        vim.lsp.enable(server)
+        -- if server == "volar" then
+        --   config.root_dir = util.root_pattern("tsconfig.json", "package.json", ".git")
+        -- end
+        -- config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
       end
+
+      local vue_ls          = require("config.lsp.vue_ls")
+      local vtsls           = require("config.lsp.vtsls")
+
+      vim.lsp.config.vtsls  = vtsls
+      vim.lsp.config.vue_ls = vue_ls
+
+      vim.lsp.enable({ "vtsls" })
+      vim.lsp.enable({ "vue_ls" })
+
+      vim.diagnostic.config({
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = " ",
+            [vim.diagnostic.severity.WARN] = " ",
+            [vim.diagnostic.severity.HINT] = "󰠠 ",
+            [vim.diagnostic.severity.INFO] = " ",
+          },
+        },
+      })
     end
   }
 }

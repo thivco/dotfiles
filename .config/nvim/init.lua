@@ -11,6 +11,8 @@ set.relativenumber = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+vim.lsp.set_log_level("debug")
+
 -- imports
 require("config.lazy")
 require("config.keybinds")
