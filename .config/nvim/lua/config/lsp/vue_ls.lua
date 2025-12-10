@@ -9,7 +9,6 @@ return {
     }
   },
   settings = {
-    -- vue = { useWorkspaceTsdk = true },
     emmet = {
       showExpandedAbbreviation = "never",
     },

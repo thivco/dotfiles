@@ -81,9 +81,9 @@ return {
         end,
       })
 
-      -- vim.diagnostic.config({
-      -- virtual_lines = true,
-      -- })
+      vim.diagnostic.config({
+        virtual_lines = true,
+      })
 
       --      eslint config if needed, it's nice but it's just the same as the lsp
       --      lspconfig.eslint.setup({
@@ -100,14 +100,12 @@ return {
       for server, config in pairs(opts.servers) do
         vim.lsp.config[server] = config
         vim.lsp.enable(server)
-        -- if server == "volar" then
-        --   config.root_dir = util.root_pattern("tsconfig.json", "package.json", ".git")
-        -- end
-        -- config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
       end
 
       local vue_ls          = require("config.lsp.vue_ls")
       local vtsls           = require("config.lsp.vtsls")
+
+      --todo : put all the lsp configs in separate files, loop on the files instead of the opts.servers
 
       vim.lsp.config.vtsls  = vtsls
       vim.lsp.config.vue_ls = vue_ls

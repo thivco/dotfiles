@@ -1,3 +1,4 @@
+--dynamic path parsing, because who knows
 local function get_vue_language_server_path()
   local handle = io.popen("readlink -f $(which vue-language-server)")
   if not handle then
@@ -27,6 +28,8 @@ return {
     "typescript.tsx",
     "vue"
   },
+
+  root_markers = { "tsconfig.app.json", "tsconfig.json", "package.json", ".git" },
   settings = {
     vtsls = {
       autoUseWorkspaceTsdk = true,

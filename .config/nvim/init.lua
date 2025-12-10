@@ -11,10 +11,12 @@ set.relativenumber = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-vim.lsp.set_log_level("debug")
+-- vim.lsp.set_log_level("debug")
 
 -- imports
 require("config.lazy")
+require("config.mini_diagnostics").setup();
+-- require("config.highligths").setup();
 require("config.keybinds")
 require('nvim-autopairs').setup()
 
