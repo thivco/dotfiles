@@ -32,26 +32,26 @@
   #";
   #};
   #
-  programs.fish.enable = false;
+  programs.fish.enable = true;
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
 
   home.packages = with pkgs; [
     #GUI tools
-    #rose-pine-hyprcursor.packages.${pkgs.system}.default
     nwg-look
     vlc
     wofi
     postman
     google-chrome
-    # gpt4all
     mpv
     mission-center
     inputs.zen-browser.packages."${system}".default
     inputs.ollamark.packages."${system}".default
     inputs.antigravity-nix.packages.x86_64-linux.default
     mongodb-compass
+    digikam
+    darktable
 
     linux-firmware
     qimgv

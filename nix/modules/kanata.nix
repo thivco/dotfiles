@@ -29,14 +29,14 @@
 
           (defalias
              caps (tap-hold 100 100 esc lctl)
-             a (tap-hold $tap-time $hold-time a lmet)
+             a (tap-hold $tap-time $hold-time a lctl)
              s (tap-hold $tap-time $hold-time s lsft)
-             d (tap-hold $tap-time $hold-time d lctl)
+             d (tap-hold $tap-time $hold-time d lmet)
              f (tap-hold $tap-time $hold-time f lalt)
              j (tap-hold $tap-time $hold-time j ralt)
-             k (tap-hold $tap-time $hold-time k rctl)
+             k (tap-hold $tap-time $hold-time k rmet)
              l (tap-hold $tap-time $hold-time l lsft)
-             ; (tap-hold $tap-time $hold-time ; rmet)
+             ; (tap-hold $tap-time $hold-time ; rctl)
            )
 
           (deflayer base

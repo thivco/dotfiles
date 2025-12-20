@@ -47,7 +47,7 @@ return {
           filetypes = { "php" },
           root_markers = { ".git", "composer.json" },
         },
-        html = {},
+        html = { filetypes = { "html" } },
         cssls = {
           filetypes = {
             "css",

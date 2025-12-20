@@ -99,6 +99,11 @@
   services.udisks2.enable = true;
   boot.supportedFilesystems = [ "ntfs" ];
 
+  # Enable CRON service
+  services.cron = {
+    enable = true;
+  };
+
   programs.steam.enable = true;
   programs.kdeconnect.enable = true;
   programs.thunar.enable = true;
