@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   # kanata for home row
   systemd.services.kanata-internalKeyboard.serviceConfig = {
@@ -47,4 +49,34 @@
 
     };
   };
+
+  security.sudo.extraRules = [
+    {
+      users = [ "thib" ];
+      commands = [
+        {
+          command = "${pkgs.systemd}/bin/systemctl start kanata-internalKeyboard.service";
+          options = [ "NOPASSWD" ];
+        }
+        {
+          command = "${pkgs.systemd}/bin/systemctl stop kanata-internalKeyboard.service";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+    }
+  ];
+
+  environment.systemPackages = with pkgs; [
+    (writeShellScriptBin "kanata-toggle" ''
+      if systemctl is-active --quiet kanata-internalKeyboard.service; then
+          # systemctl stop kanata-internalKeyboard.service
+          ${pkgs.systemd}/bin/systemctl stop kanata-internalKeyboard.service
+          ${pkgs.libnotify}/bin/notify-send "Kanata" "Disabled for gaming" -t 2000
+      else
+          # systemctl start kanata-internalKeyboard.service
+          ${pkgs.systemd}/bin/systemctl start kanata-internalKeyboard.service
+          ${pkgs.libnotify}/bin/notify-send "Kanata" "Enabled" -t 2000
+      fi
+    '')
+  ];
 }

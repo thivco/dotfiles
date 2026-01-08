@@ -32,7 +32,19 @@
 
   # Enable nginx
   # Or disable it because of this dumb certificate issue which I will conveniently ignore
-  services.nginx.enable = false;
+  # It's re-enabled because I wanted to try it locally.
+  # The config below returns the following html when using curl localhost, enabling the default config. Curious how it compares to the http.server syntax
+  # services.nginx = {
+  #   enable = true;
+  #   virtualHosts.localhost = {
+  #     locations."/" = {
+  #       return = "200 '<html><body>It works</body></html>'";
+  #       extraConfig = ''
+  #         default_type text/html;
+  #       '';
+  #     };
+  #   };
+  # };
   #  services.nginx.virtualHosts."local.host" = {
   #    addSSL = true;
   #    enableACME = true;
@@ -54,6 +66,40 @@
     capSysAdmin = true;
     openFirewall = true;
   };
+
+  networking.extraHosts = ''
+    127.0.0.1 cidem.org
+    127.0.0.1 admin.cidem.org
+    127.0.0.1 internal_test.org
+    127.0.0.1 admin.internal_test.org
+    127.0.0.1 api.cidem.org
+  '';
+
+  # This is for local https on my project
+  # security.pki.certificateFiles = [ /etc/ssl/certs/internal_test.crt ];
+  security.pki.certificateFiles = [
+    (builtins.toFile "internal_test.crt" ''
+            -----BEGIN CERTIFICATE-----
+      MIIDGTCCAgGgAwIBAgIUHqbfDE7nsL2ZUr82VWplE6c4UVEwDQYJKoZIhvcNAQEL
+      BQAwHDEaMBgGA1UEAwwRaW50ZXJuYWxfdGVzdC5vcmcwHhcNMjUxMjI1MjMxMjA0
+      WhcNMjYxMjI1MjMxMjA0WjAcMRowGAYDVQQDDBFpbnRlcm5hbF90ZXN0Lm9yZzCC
+      ASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAN+6sfvTe9zb84sGnNq8Xa8r
+      oxwWGXnY0hCFB6Tyx3+oHmysFlgVH5T+bNVd6HwvdpLun8YnnsS0XtV00pTjTzrl
+      u/yRI5jOEYwEPLLxqX31b7Jqv9EHSJJKzKG8Mcc+LZZWREYCAtjkInrE7EXe8H4m
+      fY3n8HtSNOxbSFmz+3HKg8Beylfve43AqsiXkhAsP6RayZ8dmoeSgr9yyECe/4+m
+      BGRJy//ZP4VJPOa2wUxrAgcLrccJWj+D97q85EZIFoaXn9dJf5xbYQFIXBK+R4C1
+      iIlt5LIXMQPbYfBkqchPV2zwnshzlwgc+qHuKFNpwqDMwmZ0Pi2cl55whzWd0DsC
+      AwEAAaNTMFEwHQYDVR0OBBYEFERUDa6xRpakgyuvf3Ef7tYnD36VMB8GA1UdIwQY
+      MBaAFERUDa6xRpakgyuvf3Ef7tYnD36VMA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZI
+      hvcNAQELBQADggEBAAU1ZMMMEJxxAR9tS1F1NrSvuc0GxORz/b/Pa1YU13eMVLLV
+      LCt0AY4EuCtfdqY8W4MXkHwxDk3ZM/pHHKonPGtZE60mIun+ISTsbRJ3RRj2yq1J
+      xsA1FwxXMLJ5XeJ2OY+zco2lOtjVPtcXBFs8u7khiRiboITSs35PX1ObAgp2WhUd
+      d64dGuBvCLu5iEPrPKNd25hXdRQMt2kmllg5nV+lD4sIDSUbSMqzQGTB1WijRmAh
+      bfbYHoVKtUHr0CsfaPq1EHN2WiWL0qb9uSNwH4nnxc2wtFhU+RveIKKbCXFueVuH
+      Dzft+CGE79FkhsPivG4hjiAW/rUbeRX0ENem2RY=
+      -----END CERTIFICATE-----
+    '')
+  ];
 
   networking.firewall = {
     enable = true;

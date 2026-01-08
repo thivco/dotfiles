@@ -36,13 +36,14 @@ alias dot="cd $DOTFILES_LOC"
 alias lab="cd ~/workshop/lab"
 alias cidem="cd ~/workshop/lab/cidem/&& nix-shell"
 alias ws="cd ~/workshop"
+alias ddev="docker compose down --remove-orphans && docker compose -f docker-compose.dev.yml up -d"
 
 alias notivi="notify-send 'hi' !"
 # Aliases to edit config files
 
 alias ebash="$NVIM_APPNAME $DOTFILES_LOC/.bashrc && source $DOTFILES_LOC/.bashrc"
 alias ehc="$NVIM_APPNAME $DOTFILES_LOC/hypr/hyprland.conf"
-alias enix="pushd $DOTFILES_LOC/nix/ && $NVIM_APPNAME -c 'Oil --float' && popd"
+alias enix="pushd $DOTFILES_LOC/nix/ && $NVIM_APPNAME"
 alias eflake="$NVIM_APPNAME $DOTFILES_LOC/nix/flake.nix"
 alias ehm="$NVIM_APPNAME $DOTFILES_LOC/nix/home.nix" 
 alias flake="sudo nixos-rebuild switch --flake $DOTFILES_LOC/nix"
@@ -52,7 +53,8 @@ alias nvim_config="cp -r ~/.config/nvim/ $DOTFILES_LOC/.config/"
 alias envim="pushd ~/workshop/lab/dotfiles/.config/nvim/ && $NVIM_APPNAME && rm -rf ~/.config/nvim/ && cp -r ~/workshop/lab/dotfiles/.config/nvim/ ~/.config/nvim/ && popd" 
 alias aptu="nix-channel --update && sudo flake"
 alias tsession="bash ~/workshop/lab/dotfiles/.config/scripts/tmux_session_distribution.sh"
-alias dore="docker compose down && docker compose up -d --build"
+alias dore="docker compose down && docker compose -f docker-compose.dev.yml up -d --build"
+
 
 # vim alias
 alias nv="nvim"

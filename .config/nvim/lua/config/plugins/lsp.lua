@@ -31,7 +31,9 @@ return {
         bashls = {
           filetypes = { "sh" },
         },
-        hyprls = { filetypes = { "conf" } },
+        hyprls = {
+          -- filetypes = { "conf" }
+        },
         emmet = {},
         nil_ls = { filetypes = { "nix" } },
         qmlls = { filetypes = { "qml" } },
