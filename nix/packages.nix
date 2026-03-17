@@ -17,6 +17,8 @@
       starship
       burpsuite
       alacritty
+      man-pages
+      man-pages-posix
 
       # Linux tools
       pulseaudio
@@ -58,6 +60,7 @@
       typst
 
       # CLI tools
+      clang-tools
       vim
       btop
       htop
@@ -115,7 +118,6 @@
       lm_sensors
       obs-studio
       #thefuck
-      webcord
       mako
       swtpm
       kdePackages.dolphin
@@ -123,6 +125,7 @@
       #usb/mount
       udiskie
       udisks2
+      wrangler
 
       #Fonts
 
@@ -146,6 +149,8 @@
       superhtml
       vscode-langservers-extracted
       emmet-language-server
+      cmake-language-server
+
       #      javascript-typescript-langserver
     ];
 }

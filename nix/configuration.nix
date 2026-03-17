@@ -68,11 +68,8 @@
   };
 
   networking.extraHosts = ''
-    127.0.0.1 cidem.org
-    127.0.0.1 admin.cidem.org
     127.0.0.1 internal_test.org
     127.0.0.1 admin.internal_test.org
-    127.0.0.1 api.cidem.org
   '';
 
   # This is for local https on my project
@@ -100,6 +97,100 @@
       -----END CERTIFICATE-----
     '')
   ];
+
+  # users.users.github-runner = {
+  #   isSystemUser = true;
+  #   group = "github-runner";
+  #   extraGroups = [ "docker" ];
+  #   home = "/var/lib/github-runner/";
+  #   createHome = true;
+  # };
+  # users.groups.github-runner = { };
+
+  services.github-runners.cidem-runner = {
+    enable = true;
+    name = "cidem-runner-5";
+    url = "https://github.com/cidemmaintenance-ops/cidem";
+    tokenFile = "/etc/github-runner-token";
+    workDir = "/var/tmp/github-runner-work";
+    package = pkgs.github-runner;
+
+    user = "github-runner";
+
+    serviceOverrides = {
+      Environment = [ "HOME=/var/lib/github-runner" ];
+      SupplementaryGroups = [ "docker" ];
+      After = [ "docker.service" ];
+      Requires = [ "docker.service" ];
+      DynamicUser = false;
+      ProtectSystem = "off";
+      ProtectHome = "no";
+      ReadWritePaths = [
+        "/var/lib/github-runner"
+        "/var/tmp/github-runner-work"
+      ];
+      User = "github-runner";
+      Group = "github-runner";
+    };
+
+    extraPackages = with pkgs; [
+      docker
+      git
+      nodejs
+      openssh
+      rsync
+    ];
+  };
+
+  systemd.tmpfiles.rules = [
+    "d /var/lib/github-runner 0755 github-runner github-runner -"
+    "d /var/log/github-runner 0755 root root -"
+    "d /var/tmp/github-runner-work 1777 root root -"
+    "d /var/tmp/github-runner-work 0755 github-runner github-runner -"
+  ];
+
+  users.users.github-runner = {
+    isSystemUser = true;
+    group = "github-runner";
+    extraGroups = [ "docker" ];
+    home = "/var/lib/github-runner";
+    createHome = true;
+  };
+
+  users.groups.github-runner = { };
+
+  # Github runner for CIDEM. Amazing !
+  # services.github-runners.cidem-runner = {
+  #   enable = true;
+  #   name = "cidem-runner-3";
+  #   url = "https://github.com/thivco/cidem";
+  #   tokenFile = "/etc/github-runner-token";
+  #   workDir = "/var/tmp/github-runner-work";
+  #   # workDir = "/var/lib/github-runner/work";
+  #
+  #   serviceOverrides = {
+  #     SupplementaryGroups = [ "docker" ];
+  #     After = [ "docker.service" ];
+  #     Requires = [ "docker.service" ];
+  #     Environment = [
+  #       "HOME=%S/github-runner/cidem-runner"
+  #     ];
+  #   };
+  #
+  #   extraPackages = with pkgs; [
+  #     docker
+  #     git
+  #     nodejs
+  #     openssh
+  #   ];
+  # };
+  #
+  # # This is getting out of hand...
+  # systemd.tmpfiles.rules = [
+  #   "d /var/lib/github-runner 0755 root root -"
+  #   "d /var/log/github-runner 0755 root root -"
+  #   "d /var/tmp/github-runner-work 1777 root root -"
+  # ];
 
   networking.firewall = {
     enable = true;
@@ -129,9 +220,7 @@
     defaults.email = "foo@bar.com";
   };
 
-  #testing emulation
-  virtualisation.waydroid.enable = true;
-
+  virtualisation.docker.enable = true;
   #QMK for keyboard customization
   hardware.keyboard.qmk.enable = true;
   # Trying to enable XDG Portal
@@ -293,7 +382,6 @@
 
   # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
-  networking.wireless.enable = false; # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
@@ -315,6 +403,7 @@
   users.users.thib = {
     isNormalUser = true;
     extraGroups = [
+      "docker"
       "wheel"
       "disk"
     ]; # Enables ‘sudo’ for the user.

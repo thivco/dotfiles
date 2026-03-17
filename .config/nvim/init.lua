@@ -19,6 +19,7 @@ require("config.mini_diagnostics").setup();
 -- require("config.highligths").setup();
 require("config.keybinds")
 require('nvim-autopairs').setup()
+vim.cmd("colorscheme kanagawa")
 
 -- Hyprlang LSP
 vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {

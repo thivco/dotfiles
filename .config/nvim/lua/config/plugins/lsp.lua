@@ -37,6 +37,22 @@ return {
         emmet = {},
         nil_ls = { filetypes = { "nix" } },
         qmlls = { filetypes = { "qml" } },
+        clangd = {
+          filetypes = { "c" },
+          root_markers = {
+            "compile_commands.json",
+            "compile_flags.txt",
+            ".git",
+          },
+          cmd = {
+            "clangd",
+            "--background-index",
+            "--clang-tidy",
+            "--completion-style=detailed",
+          },
+        },
+
+
         intelephense = {
           settings = {
             intelephense = {

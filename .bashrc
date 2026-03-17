@@ -36,14 +36,14 @@ alias dot="cd $DOTFILES_LOC"
 alias lab="cd ~/workshop/lab"
 alias cidem="cd ~/workshop/lab/cidem/&& nix-shell"
 alias ws="cd ~/workshop"
-alias ddev="docker compose down --remove-orphans && docker compose -f docker-compose.dev.yml up -d"
+alias ddev="docker compose down --remove-orphans && docker compose -f docker-compose.dev.yml up -d --build"
 
 alias notivi="notify-send 'hi' !"
 # Aliases to edit config files
 
 alias ebash="$NVIM_APPNAME $DOTFILES_LOC/.bashrc && source $DOTFILES_LOC/.bashrc"
 alias ehc="$NVIM_APPNAME $DOTFILES_LOC/hypr/hyprland.conf"
-alias enix="pushd $DOTFILES_LOC/nix/ && $NVIM_APPNAME"
+alias enix="cd $DOTFILES_LOC/nix/ && $NVIM_APPNAME"
 alias eflake="$NVIM_APPNAME $DOTFILES_LOC/nix/flake.nix"
 alias ehm="$NVIM_APPNAME $DOTFILES_LOC/nix/home.nix" 
 alias flake="sudo nixos-rebuild switch --flake $DOTFILES_LOC/nix"
@@ -80,30 +80,30 @@ alias grep='grep --color=auto'
 alias waybaru="waybar -c $DOTFILES_LOC/.config/waybar/config -s $DOTFILES_LOC/.config/waybar/style.css"
 
 function laz() {
-	current_location=$(pwd)
-	dot
-	local message="$1"
-	echo "Commit Message: $message"
-	git add .
-	git commit -m "$message"
-	git push
-        cd $current_location
+  current_location=$(pwd)
+  dot
+  local message="$1"
+  echo "Commit Message: $message"
+  git add .
+  git commit -m "$message"
+  git push
+  cd $current_location
 }
 
 function nixbuild() {
-	#set -e
-	pushd $DOTFILES_LOC
-	enix
-	local msg="$1"
-	git diff -U0 *.nix
-	echo "NixOS Rebuilding..."
-	sudo nixos-rebuild switch --flake /etc/nixos/flake.nix &>nixos-switch.log || (
-	cat nixos-switch.log | grep --color error && false)
-	#gen=$($msg || nixos-rebuild list-generations | grep current)
-	#[[ $msg != "" ]] && $gen="$msg" || $gen=nixos-rebuild list-generation | grep current
-	git commit -am "$msg"
-	popd
-}
+  #set -e
+  pushd $DOTFILES_LOC
+  enix
+  local msg="$1"
+  git diff -U0 *.nix
+  echo "NixOS Rebuilding..."
+  sudo nixos-rebuild switch --flake /etc/nixos/flake.nix &>nixos-switch.log || (
+    cat nixos-switch.log | grep --color error && false)
+    #gen=$($msg || nixos-rebuild list-generations | grep current)
+    #[[ $msg != "" ]] && $gen="$msg" || $gen=nixos-rebuild list-generation | grep current
+    git commit -am "$msg"
+    popd
+  }
 
 function git_feature_branch(){
   local feature_name="$1"
@@ -118,10 +118,10 @@ git_push(){
 
 function open_video_with_mpv_ultrawide(){
   local video="$1"
-  
+
   local command_line="mpv ${video}" 
   if [ $2 = "w" ]; then
-   command_line="${command_line} --vf=crop=in_w:in_w/2.39" 
+    command_line="${command_line} --vf=crop=in_w:in_w/2.39" 
   fi
   ${command_line}
 }
@@ -129,23 +129,31 @@ function open_video_with_mpv_ultrawide(){
 function tmux_session_check() 
 {
   echo "Checking if session exists..."
-selected_name=$1
-selected_path=$2
+  selected_name=$1
+  selected_path=$2
   if ! tmux has-session -t "$selected_name"; then
-  tmux new-session -ds "$selected_name" -c "$selected_path"
-  echo "session exists"
-  tmux select-window -t "$selected_name:1"
-fi
+    tmux new-session -ds "$selected_name" -c "$selected_path"
+    echo "session exists"
+    tmux select-window -t "$selected_name:1"
+  fi
 
 
-if [ -e "$selected_path/shell.nix" ]; then
-  echo "nix shell exists, enterring..."
-  nix-shell "$selected_path/shell.nix"
-else
-  echo "no nix shell"
-  echo "Entering the session."
-  tmux attach -t "$selected_name"
-fi
+  if [ -e "$selected_path/shell.nix" ]; then
+    echo "nix shell exists, enterring..."
+    nix-shell "$selected_path/shell.nix"
+  else
+    echo "no nix shell"
+    echo "Entering the session."
+    tmux attach -t "$selected_name"
+  fi
+}
+
+function dc() {
+    new_directory="$*";
+    if [ $# -eq 0 ]; then
+        new_directory=${HOME};
+    fi;
+    builtin cd "${new_directory}" && ls -lhF --time-style=long-iso --color=auto --ignore=lost+found
 }
 
 alias uwide='open_video_with_mpv_ultrawide'
