@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   # kanata for home row
@@ -45,6 +45,8 @@
             @caps @a @s @d @f @j @k @l @;
           )
         '';
+        # after = [ "graphical-session.target" ];
+        # wantedBy = lib.mkForce [ "graphical-session.target" ];
       };
 
     };

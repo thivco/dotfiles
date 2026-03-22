@@ -138,6 +138,7 @@
       git
       nodejs
       openssh
+      curl
       rsync
     ];
   };
@@ -220,7 +221,11 @@
     defaults.email = "foo@bar.com";
   };
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = false;
+  };
+
   #QMK for keyboard customization
   hardware.keyboard.qmk.enable = true;
   # Trying to enable XDG Portal
@@ -257,6 +262,7 @@
 
   # Enable memtest to test memory at boot
   boot.loader.systemd-boot.memtest86.enable = true;
+  boot.loader.timeout = 3;
 
   # Allows Unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -298,7 +304,7 @@
   ];
 
   # Installing Nautilus
-  services.gvfs.enable = true;
+  services.gvfs.enable = false;
 
   systemd.services.lact = {
     description = "AMDGPU Control Daemon";
@@ -383,6 +389,11 @@
   # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+
+  #Fixes for boot time
+  systemd.services.NetworkManager-wait-online.enable = false;
+  systemd.services.ollama.wantedBy = lib.mkForce [ "multi-user.target" ];
+  systemd.services.ollama.after = [ "graphical-session.target" ];
 
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
