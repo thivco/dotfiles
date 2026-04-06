@@ -150,6 +150,7 @@
       vscode-langservers-extracted
       emmet-language-server
       cmake-language-server
+      openclaw
 
       #      javascript-typescript-langserver
     ];

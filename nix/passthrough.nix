@@ -31,14 +31,14 @@ in
 
       #      initrd.kernelModulesBlacklist = lib.mkIf cfg.enable [ "amdgpu" ];
 
-      boot.kernelParams =
-        [
-          "amd_iommu=on"
-          "iommu=pt"
-          "loglevel=3"
-          #          "vfio-pci.ids=1002:744c,1002:ab30"
-        ]
-        ++ lib.optional cfg.enable
+      boot.kernelParams = [
+        "amd_iommu=on"
+        "iommu=pt"
+        "loglevel=3"
+        #          "vfio-pci.ids=1002:744c,1002:ab30"
+      ]
+      ++
+        lib.optional cfg.enable
           # isolate the GPU
           ("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs);
       boot.blacklistedKernelModules = [ "amdgpu" ];
@@ -81,6 +81,7 @@ in
       users.users.thib.extraGroups = [
         "libvirtd"
         "kvm"
+        "disk"
       ];
       users.groups.libvirtd.members = [
         "thib"

@@ -269,6 +269,7 @@
 
   # Allows insecure packages
   nixpkgs.config.permittedInsecurePackages = [
+    "openclaw-2026.3.12"
     "electron-25.9.0"
   ];
 
