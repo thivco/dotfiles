@@ -151,6 +151,10 @@
       emmet-language-server
       cmake-language-server
       openclaw
+      basedpyright
+      ruff
+      gcc
+      gnumake
 
       #      javascript-typescript-langserver
     ];

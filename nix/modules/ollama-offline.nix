@@ -18,6 +18,7 @@
 
   services.ollama = {
     enable = true;
+    package = pkgs.ollama-rocm;
     # after = [ "graphical-session.target" ];
     # wantedBy = lib.mkForce [ "multi-user.target" ];
   };

@@ -10,6 +10,11 @@ if [[ $(tty) == "/dev/tty1" ]]; then
   exec Hyprland
 fi
 
+export CLAUDE_CODE_USE_OPENAI=1
+# export OPENAI_API_KEY="ollama"
+export OPENAI_MODEL=qwen3.5
+export OPENAI_BASE_URL="http://localhost:11434/v1"
+
 eval "$(starship init bash)"
 #eval "$(thefuck --alias)"
 #eval "$(thefuck --alias fk)"
@@ -37,6 +42,7 @@ alias lab="cd ~/workshop/lab"
 alias cidem="cd ~/workshop/lab/cidem/&& nix-shell"
 alias ws="cd ~/workshop"
 alias ddev="docker compose down --remove-orphans && docker compose -f docker-compose.dev.yml up -d --build"
+alias 42="cd ~/workshop/fortytwo/ && tmux"
 
 alias notivi="notify-send 'hi' !"
 # Aliases to edit config files
@@ -78,6 +84,27 @@ alias grep='grep --color=auto'
 
 #desktop effects
 alias waybaru="waybar -c $DOTFILES_LOC/.config/waybar/config -s $DOTFILES_LOC/.config/waybar/style.css"
+# vibing
+# alias vibe="ollama serve > /dev/null 2>&1 & sleep 2 && cd ~/workshop/tools/openclaude && bun run dev --no-clear"
+function vibe() {
+  ollama serve > /dev/null 2>&1 &
+  local OLLAMA_PID=$!
+
+  sleep 2
+
+  cd ~/workshop/tools/openclaude || exit
+  nohup bun run dev --no-clear 
+  # 2>&1 | tail -f /dev/null &
+
+  local BUN_PID=$!
+
+  export OLLAMA_PID BUN_PID
+  PIDS="OLLAMA_PID=$OLLAMA_PID,BUN_PID=$BUN_PID"
+
+  echo "Services started. PIDS: $PIDS"
+}
+alias kvibe='pkill -f "ollama serve" && pkill -f "bun run dev"'
+
 
 function laz() {
   current_location=$(pwd)
@@ -149,11 +176,11 @@ function tmux_session_check()
 }
 
 function dc() {
-    new_directory="$*";
-    if [ $# -eq 0 ]; then
-        new_directory=${HOME};
-    fi;
-    builtin cd "${new_directory}" && ls -lhF --time-style=long-iso --color=auto --ignore=lost+found
+  new_directory="$*";
+  if [ $# -eq 0 ]; then
+    new_directory=${HOME};
+  fi;
+  builtin cd "${new_directory}" && ls -lhF --time-style=long-iso --color=auto --ignore=lost+found
 }
 
 alias uwide='open_video_with_mpv_ultrawide'

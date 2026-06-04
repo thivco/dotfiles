@@ -79,29 +79,42 @@ return {
       }
     },
     config = function(_, opts)
+      local has_blink, blink    = pcall(require, "blink.cmp")
+      local capabilities        = has_blink and blink.get_lsp_capabilities() or {}
+
+      opts.servers.vtsls        = require("config.lsp.vtsls")
+      opts.servers.vue_ls       = require("config.lsp.vue_ls")
+      opts.servers.basedpyright = require("config.lsp.basedpyright")
+      opts.servers.ruff         = require("config.lsp.ruff")
+
+      for server, config in pairs(opts.servers) do
+        local base_config = vim.lsp.config[server] or {}
+
+        config.capabilities = vim.tbl_deep_extend("force", capabilities, config.capabilities or {})
+
+        vim.lsp.config[server] = vim.tbl_deep_extend("force", base_config, config)
+        vim.lsp.enable(server)
+      end
       -- auto format on save
-      vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('my.lsp', {}),
-        callback = function(args)
-          local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-          if not client then return end
+      -- vim.api.nvim_create_autocmd('LspAttach', {
+      --   group = vim.api.nvim_create_augroup('my.lsp', {}),
+      --   callback = function(args)
+      --     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+      --     if not client then return end
+      --
+      --     if not client:supports_method('textDocument/willSaveWaitUntil')
+      --         and client:supports_method('textDocument/formatting') then
+      --       vim.api.nvim_create_autocmd('BufWritePre', {
+      --         group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
+      --         buffer = args.buf,
+      --         callback = function()
+      --           vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 100 })
+      --         end,
+      --       })
+      --     end
+      --   end,
+      -- })
 
-          if not client:supports_method('textDocument/willSaveWaitUntil')
-              and client:supports_method('textDocument/formatting') then
-            vim.api.nvim_create_autocmd('BufWritePre', {
-              group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
-              buffer = args.buf,
-              callback = function()
-                vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 100 })
-              end,
-            })
-          end
-        end,
-      })
-
-      vim.diagnostic.config({
-        virtual_lines = true,
-      })
 
       --      eslint config if needed, it's nice but it's just the same as the lsp
       --      lspconfig.eslint.setup({
@@ -115,23 +128,30 @@ return {
       --      })
 
 
-      for server, config in pairs(opts.servers) do
-        vim.lsp.config[server] = config
-        vim.lsp.enable(server)
-      end
-
-      local vue_ls          = require("config.lsp.vue_ls")
-      local vtsls           = require("config.lsp.vtsls")
-
-      --todo : put all the lsp configs in separate files, loop on the files instead of the opts.servers
-
-      vim.lsp.config.vtsls  = vtsls
-      vim.lsp.config.vue_ls = vue_ls
-
-      vim.lsp.enable({ "vtsls" })
-      vim.lsp.enable({ "vue_ls" })
+      -- for server, config in pairs(opts.servers) do
+      --   vim.lsp.config[server] = config
+      --   vim.lsp.enable(server)
+      -- end
+      --
+      -- local vue_ls                = require("config.lsp.vue_ls")
+      -- local vtsls                 = require("config.lsp.vtsls")
+      -- local basedpyright          = require("config.lsp.basedpyright")
+      -- local ruff                  = require("config.lsp.ruff")
+      --
+      -- --todo : put all the lsp configs in separate files, loop on the files instead of the opts.servers
+      --
+      -- vim.lsp.config.vtsls        = vtsls
+      -- vim.lsp.config.vue_ls       = vue_ls
+      -- vim.lsp.config.basedpyright = basedpyright
+      -- vim.lsp.config.ruff         = ruff
+      --
+      -- vim.lsp.enable({ "vtsls" })
+      -- vim.lsp.enable({ "vue_ls" })
+      -- vim.lsp.enable({ "basedpyright" })
+      -- vim.lsp.enable({ "ruff" })
 
       vim.diagnostic.config({
+        virtual_lines = true,
         signs = {
           text = {
             [vim.diagnostic.severity.ERROR] = " ",

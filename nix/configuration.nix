@@ -70,6 +70,7 @@
   networking.extraHosts = ''
     127.0.0.1 internal_test.org
     127.0.0.1 admin.internal_test.org
+    127.0.0.1 tvivier.42.fr
   '';
 
   # This is for local https on my project
@@ -225,6 +226,10 @@
     enable = true;
     enableOnBoot = false;
   };
+
+  virtualisation.virtualbox.host.enable = true;
+  # users.extraGroups.vboxusers.member = [ "user-with-access-to-virtualbox" ];
+  users.extraGroups.vboxusers.members = [ "thib" ];
 
   #QMK for keyboard customization
   hardware.keyboard.qmk.enable = true;
