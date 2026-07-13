@@ -79,13 +79,11 @@ return {
       }
     },
     config = function(_, opts)
-      local has_blink, blink    = pcall(require, "blink.cmp")
-      local capabilities        = has_blink and blink.get_lsp_capabilities() or {}
+      local has_blink, blink = pcall(require, "blink.cmp")
+      local capabilities     = has_blink and blink.get_lsp_capabilities() or {}
 
-      opts.servers.vtsls        = require("config.lsp.vtsls")
-      opts.servers.vue_ls       = require("config.lsp.vue_ls")
-      opts.servers.basedpyright = require("config.lsp.basedpyright")
-      opts.servers.ruff         = require("config.lsp.ruff")
+      opts.servers.vtsls     = require("config.lsp.vtsls")
+      opts.servers.vue_ls    = require("config.lsp.vue_ls")
 
       for server, config in pairs(opts.servers) do
         local base_config = vim.lsp.config[server] or {}

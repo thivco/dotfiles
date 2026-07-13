@@ -273,10 +273,10 @@
   nixpkgs.config.allowUnfree = true;
 
   # Allows insecure packages
-  nixpkgs.config.permittedInsecurePackages = [
-    "openclaw-2026.3.12"
-    "electron-25.9.0"
-  ];
+  # nixpkgs.config.permittedInsecurePackages = [
+  #   "openclaw-2026.3.12"
+  #   "electron-25.9.0"
+  # ];
 
   # Enable SDDM
   services.xserver.enable = true;

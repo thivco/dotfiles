@@ -57,7 +57,7 @@ alias sass="npx sass --watch *.scss style.css"
 alias nvim_config="cp -r ~/.config/nvim/ $DOTFILES_LOC/.config/"
 #alias envim="pushd ~/workshop/lab/dotfiles/.config/nvim/ && $NVIM_APPNAME && popd" 
 alias envim="pushd ~/workshop/lab/dotfiles/.config/nvim/ && $NVIM_APPNAME && rm -rf ~/.config/nvim/ && cp -r ~/workshop/lab/dotfiles/.config/nvim/ ~/.config/nvim/ && popd" 
-alias aptu="nix-channel --update && sudo flake"
+alias aptu="nix-channel --update"
 alias tsession="bash ~/workshop/lab/dotfiles/.config/scripts/tmux_session_distribution.sh"
 alias dore="docker compose down && docker compose -f docker-compose.dev.yml up -d --build"
 

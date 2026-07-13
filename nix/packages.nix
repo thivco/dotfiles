@@ -140,8 +140,8 @@
       intelephense
       nil
       hyprls
-      nodePackages.typescript
-      nodePackages.typescript-language-server
+      typescript
+      typescript-language-server
       lua-language-server
       bash-language-server
       vue-language-server
@@ -150,7 +150,7 @@
       vscode-langservers-extracted
       emmet-language-server
       cmake-language-server
-      openclaw
+      # openclaw
       basedpyright
       ruff
       gcc

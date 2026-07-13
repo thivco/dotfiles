@@ -13,6 +13,17 @@ vim.g.maplocalleader = "\\"
 
 -- vim.lsp.set_log_level("debug")
 
+-- removed for python column tab issue : did not work tho
+vim.opt.smartindent = false
+vim.opt.cindent = false
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "python",
+  callback = function()
+    -- Stop the colon from triggering indentation re-evaluation
+    vim.opt_local.indentkeys:remove(":")
+  end,
+})
+
 -- imports
 require("config.lazy")
 require("config.mini_diagnostics").setup();
