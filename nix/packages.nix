@@ -151,8 +151,12 @@
       emmet-language-server
       cmake-language-server
       # openclaw
-      basedpyright
-      ruff
+      pyright
+      mypy
+      python3Packages.flake8
+      python3Packages.autopep8
+      # basedpyright
+      # ruff
       gcc
       gnumake
 

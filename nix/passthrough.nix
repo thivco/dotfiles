@@ -12,80 +12,77 @@ in
   config,
   ...
 }:
+let
+  cfg = config.vfio;
+in
 {
 
   options.vfio.enable = with lib; mkEnableOption "Configure the machine for VFIO";
-  config =
-    let
-      cfg = config.vfio;
-    in
-    {
-      boot.initrd.kernelModules = [
-        "vfio"
-        "vfio_pci"
-        "vfio_iommu_type1"
+  config = lib.mkIf cfg.enable {
+    boot.initrd.kernelModules = [
+      "vfio"
+      "vfio_pci"
+      "vfio_iommu_type1"
 
-        "amdgpu"
-        #adding it last so that vfio claims the GPU first
-      ];
+      "amdgpu"
+      #adding it last so that vfio claims the GPU first
+    ];
 
-      #      initrd.kernelModulesBlacklist = lib.mkIf cfg.enable [ "amdgpu" ];
+    #      initrd.kernelModulesBlacklist = lib.mkIf cfg.enable [ "amdgpu" ];
 
-      boot.kernelParams = [
+    boot.kernelParams =
+      [
         "amd_iommu=on"
         "iommu=pt"
         "loglevel=3"
         #          "vfio-pci.ids=1002:744c,1002:ab30"
       ]
-      ++
-        lib.optional cfg.enable
-          # isolate the GPU
-          ("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs);
-      boot.blacklistedKernelModules = [ "amdgpu" ];
+        # isolate the GPU
+        ("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs);
 
-      virtualisation.spiceUSBRedirection.enable = true;
+    boot.blacklistedKernelModules = [ "amdgpu" ];
 
-      # Creates the shared memory file
+    virtualisation.spiceUSBRedirection.enable = true;
 
-      systemd.tmpfiles.rules = [
-        "f /dev/shm/looking-glass 0660 thib qemu-libvirtd -"
-      ];
+    systemd.tmpfiles.rules = [
+      "f /dev/shm/looking-glass 0660 thib qemu-libvirtd -"
+    ];
 
-      environment.systemPackages = with pkgs; [
-        virt-manager
-        qemu
-        pciutils
-      ];
+    environment.systemPackages = with pkgs; [
+      virt-manager
+      qemu
+      pciutils
+    ];
 
-      virtualisation.libvirtd = {
-        enable = true;
-        onBoot = "ignore";
-        onShutdown = "shutdown";
+    virtualisation.libvirtd = {
+      enable = true;
+      onBoot = "ignore";
+      onShutdown = "shutdown";
 
-        extraConfig = ''
-          user="${user}"
+      extraConfig = ''
+        user="${user}"
+      '';
+
+      qemu = {
+        swtpm.enable = true;
+        verbatimConfig = ''
+          namespaces = []
+          user = "+${builtins.toString config.users.users.${user}.uid}"
         '';
-
-        qemu = {
-          swtpm.enable = true;
-          verbatimConfig = ''
-            namespaces = []
-            user = "+${builtins.toString config.users.users.${user}.uid}"
-          '';
-          package = pkgs.qemu_kvm;
-          runAsRoot = false;
-        };
-
+        package = pkgs.qemu_kvm;
+        runAsRoot = false;
       };
 
-      users.users.thib.extraGroups = [
-        "libvirtd"
-        "kvm"
-        "disk"
-      ];
-      users.groups.libvirtd.members = [
-        "thib"
-        "root"
-      ];
     };
+
+    users.users.thib.extraGroups = [
+      "libvirtd"
+      "kvm"
+      "disk"
+    ];
+    users.groups.libvirtd.members = [
+      "thib"
+      "root"
+    ];
+  };
 }

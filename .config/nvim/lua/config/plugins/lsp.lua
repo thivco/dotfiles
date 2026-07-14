@@ -84,6 +84,7 @@ return {
 
       opts.servers.vtsls     = require("config.lsp.vtsls")
       opts.servers.vue_ls    = require("config.lsp.vue_ls")
+      opts.servers.pyright   = require("config.lsp.pyright")
 
       for server, config in pairs(opts.servers) do
         local base_config = vim.lsp.config[server] or {}

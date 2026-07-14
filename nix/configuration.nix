@@ -312,15 +312,16 @@
   # Installing Nautilus
   services.gvfs.enable = false;
 
-  systemd.services.lact = {
-    description = "AMDGPU Control Daemon";
-    after = [ "multi-user.target" ];
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.lact}/bin/lact daemon";
-    };
-    enable = true;
-  };
+  # disabled because of AMDGPU startup issue, and because it never detects my gpu
+  # systemd.services.lact = {
+  #   description = "AMDGPU Control Daemon";
+  #   after = [ "multi-user.target" ];
+  #   wantedBy = [ "multi-user.target" ];
+  #   serviceConfig = {
+  #     ExecStart = "${pkgs.lact}/bin/lact daemon";
+  #   };
+  #   enable = true;
+  # };
 
   # Enable sound using Pipewire
 
