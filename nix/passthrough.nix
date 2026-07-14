@@ -23,22 +23,20 @@ in
       "vfio"
       "vfio_pci"
       "vfio_iommu_type1"
-
       "amdgpu"
       #adding it last so that vfio claims the GPU first
     ];
 
     #      initrd.kernelModulesBlacklist = lib.mkIf cfg.enable [ "amdgpu" ];
 
-    boot.kernelParams =
-      [
-        "amd_iommu=on"
-        "iommu=pt"
-        "loglevel=3"
-        #          "vfio-pci.ids=1002:744c,1002:ab30"
-      ]
-        # isolate the GPU
-        ("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs);
+    boot.kernelParams = [
+      "amd_iommu=on"
+      "iommu=pt"
+      "loglevel=3"
+      ("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs)
+      #          "vfio-pci.ids=1002:744c,1002:ab30"
+    ];
+    # isolate the GPU
 
     boot.blacklistedKernelModules = [ "amdgpu" ];
 
