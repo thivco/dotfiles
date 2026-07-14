@@ -32,7 +32,6 @@
   #";
   #};
   #
-  programs.fish.enable = true;
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -95,7 +94,8 @@
   #  /etc/profiles/per-user/thib/etc/profile.d/hm-session-vars.sh
   #
 
-  programs.neovim.enable = true;
+  #No, I will use package only
+  # programs.neovim.enable = true;
 
   #programs.neovim = {
   #  enable = true;

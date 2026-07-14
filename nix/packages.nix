@@ -15,6 +15,7 @@
       # terminal
       kitty
       starship
+      neovim
       burpsuite
       alacritty
       man-pages
