@@ -11,7 +11,8 @@ return {
           javascript = { "prettierd", "prettier", stop_after_first = true },
           typescript = { "prettierd", "prettier", stop_after_first = true },
           -- python = { "ruff_organize_imports", "ruff_format" },
-          python = { "autopep8" },
+          -- python = { "autopep8" },
+          python = { "black", "isort" },
         },
         format_on_save = {
           timeout_ms = 1000,

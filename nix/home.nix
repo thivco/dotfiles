@@ -96,6 +96,7 @@
 
   #No, I will use package only
   # programs.neovim.enable = true;
+   programs.neovim.plugins = [ pkgs.vimPlugins.nvim-treesitter.withAllGrammars ];
 
   #programs.neovim = {
   #  enable = true;

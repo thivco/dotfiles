@@ -16,6 +16,8 @@ export OPENAI_MODEL=qwen3.5
 export OPENAI_BASE_URL="http://localhost:11434/v1"
 
 eval "$(starship init bash)"
+#entering a devenv dir automatically activates devenv
+eval "$(devenv hook bash)"
 #eval "$(thefuck --alias)"
 #eval "$(thefuck --alias fk)"
 source "$(fzf-share)/key-bindings.bash"

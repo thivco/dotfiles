@@ -610,83 +610,83 @@ diagnostics.hover = function(window)
   end
 
   local beacon_config = vim.tbl_extend("force",
-    get_beacon_config("default", {}, true),
-    get_beacon_config(level, {}, true) or {}
-  );
+  get_beacon_config("default", {}, true),
+  get_beacon_config(level, {}, true) or {}
+);
 
-  local H = vim.api.nvim_win_text_height(diagnostics.window, { start_row = 0, end_row = -1 }).all;
+local H = vim.api.nvim_win_text_height(diagnostics.window, { start_row = 0, end_row = -1 }).all;
 
-  local _, relative, anchor, row, col = diagnostics.__win_args(window, W, H);
+local _, relative, anchor, row, col = diagnostics.__win_args(window, W, H);
 
-  local win_config = {
-    relative = relative or "cursor",
+local win_config = {
+  relative = relative or "cursor",
 
-    row = row or 0,
-    col = col or 0,
-    width = W,
-    height = H,
+  row = row or 0,
+  col = col or 0,
+  width = W,
+  height = H,
 
-    anchor = anchor,
-    border = "none",
+  anchor = anchor,
+  border = "none",
 
-    style = "minimal",
-    hide = false,
-  };
+  style = "minimal",
+  hide = false,
+};
 
-  vim.api.nvim_win_set_config(diagnostics.window, win_config);
-  vim.api.nvim_win_set_cursor(diagnostics.window, { cursor_y, 0 });
+vim.api.nvim_win_set_config(diagnostics.window, win_config);
+vim.api.nvim_win_set_cursor(diagnostics.window, { cursor_y, 0 });
 
-  -- Update quadrant state.
-  diagnostics.update_quad(diagnostics.quad, true);
+-- Update quadrant state.
+diagnostics.update_quad(diagnostics.quad, true);
 
-  -- Set necessary options.
-  vim.wo[diagnostics.window].signcolumn = "no";
-  vim.wo[diagnostics.window].statuscolumn = "%!v:lua.fancy_diagnostics_statuscolumn()";
+-- Set necessary options.
+vim.wo[diagnostics.window].signcolumn = "no";
+vim.wo[diagnostics.window].statuscolumn = "%!v:lua.fancy_diagnostics_statuscolumn()";
 
-  vim.wo[diagnostics.window].conceallevel = 3;
-  vim.wo[diagnostics.window].concealcursor = "ncv";
+vim.wo[diagnostics.window].conceallevel = 3;
+vim.wo[diagnostics.window].concealcursor = "ncv";
 
-  vim.wo[diagnostics.window].winhl = "FloatBorder:@comment,Normal:Normal";
+vim.wo[diagnostics.window].winhl = "FloatBorder:@comment,Normal:Normal";
 
-  diagnostics.__integration(window, beacon_config);
+diagnostics.__integration(window, beacon_config);
 
-  ---|fS
+---|fS
 
 
-  vim.api.nvim_buf_set_keymap(diagnostics.buffer, "n", "<CR>", "", {
-    desc = "Go to diagnostic location",
-    callback = function()
-      ---|fS
+vim.api.nvim_buf_set_keymap(diagnostics.buffer, "n", "<CR>", "", {
+  desc = "Go to diagnostic location",
+  callback = function()
+    ---|fS
 
-      ---@type [ integer, integer ] Selected item.
-      local _cursor = vim.api.nvim_win_get_cursor(diagnostics.window);
-      ---@type [ integer, integer ]? Diagnostic location.
-      local location = ranges[_cursor[1]];
+    ---@type [ integer, integer ] Selected item.
+    local _cursor = vim.api.nvim_win_get_cursor(diagnostics.window);
+    ---@type [ integer, integer ]? Diagnostic location.
+    local location = ranges[_cursor[1]];
 
-      if location then
-        location[1] = location[1] + 1;
+    if location then
+      location[1] = location[1] + 1;
 
-        vim.api.nvim_win_set_cursor(window, location);
-        vim.api.nvim_set_current_win(window);
+      vim.api.nvim_win_set_cursor(window, location);
+      vim.api.nvim_set_current_win(window);
 
-        diagnostics.close();
-      end
-
-      ---|fE
-    end
-  });
-
-  vim.api.nvim_buf_set_keymap(diagnostics.buffer, "n", "q", "", {
-    desc = "Exit diagnostics window",
-    callback = function()
-      pcall(vim.api.nvim_set_current_win, window);
       diagnostics.close();
     end
-  });
 
-  ---|fE
+    ---|fE
+  end
+});
 
-  ---|fE
+vim.api.nvim_buf_set_keymap(diagnostics.buffer, "n", "q", "", {
+  desc = "Exit diagnostics window",
+  callback = function()
+    pcall(vim.api.nvim_set_current_win, window);
+    diagnostics.close();
+  end
+});
+
+---|fE
+
+---|fE
 end
 
 --- Configuration for the diagnostics module.

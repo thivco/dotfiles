@@ -43,7 +43,7 @@ in
     virtualisation.spiceUSBRedirection.enable = true;
 
     systemd.tmpfiles.rules = [
-      "f /dev/shm/looking-glass 0660 thib qemu-libvirtd -"
+      "f /dev/shm/looking-glass 0660 thib libvirtd -"
     ];
 
     environment.systemPackages = with pkgs; [
