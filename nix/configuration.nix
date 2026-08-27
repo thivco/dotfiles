@@ -265,6 +265,7 @@
     vfio.enable = true;
   };
 
+
   # Enable memtest to test memory at boot
   boot.loader.systemd-boot.memtest86.enable = true;
   boot.loader.timeout = 3;

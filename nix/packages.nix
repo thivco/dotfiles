@@ -137,6 +137,7 @@
 
       # Language server protocol
       vtsls
+      rust-analyzer
       phpPackages.php-codesniffer
       intelephense
       nil

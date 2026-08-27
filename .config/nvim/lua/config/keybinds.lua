@@ -34,10 +34,10 @@ map('n', 'K', vim.lsp.buf.hover)
 map('n', '<leader>h', '<C-o>') -- C-^ to properly jump files, but then C-i won't work
 map('n', '<leader>l', '<C-i>')
 
--- inlay hints
+-- Inlay hints
 map("n", "<leader>k", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-  vim.notify(vim.lsp.inlay_hint.is_enabled() and "Inlay hints enabled" or "inlay hints disabled")
+  vim.notify(vim.lsp.inlay_hint.is_enabled() and "Inlay hints enabled" or "Inlay hints disabled")
 end
 )
 -- completion
