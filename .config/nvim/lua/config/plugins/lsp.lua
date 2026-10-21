@@ -38,7 +38,7 @@ return {
         nil_ls = { filetypes = { "nix" } },
         qmlls = { filetypes = { "qml" } },
         clangd = {
-          filetypes = { "c" },
+          filetypes = { "c", "h" },
           root_markers = {
             "compile_commands.json",
             "compile_flags.txt",

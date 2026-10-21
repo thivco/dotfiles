@@ -13,6 +13,8 @@ return {
           -- python = { "ruff_organize_imports", "ruff_format" },
           -- python = { "autopep8" },
           python = { "black", "isort" },
+          rust = { "rustfmt", lsp_format = "fallback" },
+
         },
         format_on_save = {
           timeout_ms = 1000,
