@@ -37,20 +37,6 @@ return {
         emmet = {},
         nil_ls = { filetypes = { "nix" } },
         qmlls = { filetypes = { "qml" } },
-        clangd = {
-          filetypes = { "c", "h" },
-          root_markers = {
-            "compile_commands.json",
-            "compile_flags.txt",
-            ".git",
-          },
-          cmd = {
-            "clangd",
-            "--background-index",
-            "--clang-tidy",
-            "--completion-style=detailed",
-          },
-        },
 
 
         intelephense = {
@@ -82,10 +68,20 @@ return {
       local has_blink, blink = pcall(require, "blink.cmp")
       local capabilities     = has_blink and blink.get_lsp_capabilities() or {}
 
-      opts.servers.vtsls     = require("config.lsp.vtsls")
-      opts.servers.vue_ls    = require("config.lsp.vue_ls")
-      opts.servers.pyright   = require("config.lsp.pyright")
-      opts.servers.rust      = require("config.lsp.rust")
+      -- opts.servers.vtsls     = require("config.lsp.vtsls")
+      -- opts.servers.vue_ls    = require("config.lsp.vue_ls")
+      -- opts.servers.pyright   = require("config.lsp.pyright")
+      -- opts.servers.rust      = require("config.lsp.rust")
+
+      for _, path in ipairs(vim.api.nvim_get_runtime_file("lua/config/lsp/*.lua", true)) do
+        local name = vim.fn.fnamemodify(path, ":t:r")
+        local ok, cfg = pcall(require, "config.lsp." .. name)
+        if ok then
+          opts.servers[name] = cfg
+        else
+          vim.notify("LSP config '" .. name .. "' failed: " .. tostring(cfg), vim.log.levels.ERROR)
+        end
+      end
 
       for server, config in pairs(opts.servers) do
         local base_config = vim.lsp.config[server] or {}
@@ -95,60 +91,6 @@ return {
         vim.lsp.config[server] = vim.tbl_deep_extend("force", base_config, config)
         vim.lsp.enable(server)
       end
-      -- auto format on save
-      -- vim.api.nvim_create_autocmd('LspAttach', {
-      --   group = vim.api.nvim_create_augroup('my.lsp', {}),
-      --   callback = function(args)
-      --     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-      --     if not client then return end
-      --
-      --     if not client:supports_method('textDocument/willSaveWaitUntil')
-      --         and client:supports_method('textDocument/formatting') then
-      --       vim.api.nvim_create_autocmd('BufWritePre', {
-      --         group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
-      --         buffer = args.buf,
-      --         callback = function()
-      --           vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 100 })
-      --         end,
-      --       })
-      --     end
-      --   end,
-      -- })
-
-
-      --      eslint config if needed, it's nice but it's just the same as the lsp
-      --      lspconfig.eslint.setup({
-      --        on_attach = function(client, bufnr)
-      --          -- optional: auto-fix on save
-      --          vim.api.nvim_create_autocmd("BufWritePre", {
-      --            buffer = bufnr,
-      --            command = "EslintFixAll"
-      --          })
-      --        end,
-      --      })
-
-
-      -- for server, config in pairs(opts.servers) do
-      --   vim.lsp.config[server] = config
-      --   vim.lsp.enable(server)
-      -- end
-      --
-      -- local vue_ls                = require("config.lsp.vue_ls")
-      -- local vtsls                 = require("config.lsp.vtsls")
-      -- local basedpyright          = require("config.lsp.basedpyright")
-      -- local ruff                  = require("config.lsp.ruff")
-      --
-      -- --todo : put all the lsp configs in separate files, loop on the files instead of the opts.servers
-      --
-      -- vim.lsp.config.vtsls        = vtsls
-      -- vim.lsp.config.vue_ls       = vue_ls
-      -- vim.lsp.config.basedpyright = basedpyright
-      -- vim.lsp.config.ruff         = ruff
-      --
-      -- vim.lsp.enable({ "vtsls" })
-      -- vim.lsp.enable({ "vue_ls" })
-      -- vim.lsp.enable({ "basedpyright" })
-      -- vim.lsp.enable({ "ruff" })
 
       vim.diagnostic.config({
         virtual_lines = true,
