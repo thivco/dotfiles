@@ -2,14 +2,14 @@ print("SVERIGE")
 local set = vim.opt
 --using set instead of calling the vim.opt every time
 
-set.shiftwidth = 4
+-- set.shiftwidth = 4
 set.tabstop = 4
-set.expandtab = true
-set.smartindent = true
+-- set.expandtab = true
+-- set.smartindent = true
 set.cursorline = true
 set.number = true
 set.relativenumber = true
-set.softtabstop = 4
+-- set.softtabstop = 4
 
 -- declaring leader key
 vim.g.mapleader = " "
@@ -19,15 +19,16 @@ vim.g.maplocalleader = "\\"
 
 -- removed for python column tab issue : did not work tho
 -- vim.opt.smartindent = false
-vim.opt.cindent = false
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "python",
-  callback = function()
-    -- Stop the colon from triggering indentation re-evaluation
-    -- vim.opt_local.indentkeys:remove(":")
-    vim.opt_local.indentkeys = "0{,0},0),0],!,^F,o,O"
-  end,
-})
+
+-- vim.opt.cindent = false
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "python",
+--   callback = function()
+--     -- Stop the colon from triggering indentation re-evaluation
+--     -- vim.opt_local.indentkeys:remove(":")
+--     vim.opt_local.indentkeys = "0{,0},0),0],!,^F,o,O"
+--   end,
+-- })
 
 -- imports
 require("config.lazy")

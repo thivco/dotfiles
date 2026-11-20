@@ -55,7 +55,6 @@
       vscode
       windsurf
       #go
-      python3
       git
       bun
       typst
@@ -161,6 +160,9 @@
       # ruff
       gcc
       gnumake
+
+      # vibe
+      lmstudio
 
       #      javascript-typescript-langserver
     ];
