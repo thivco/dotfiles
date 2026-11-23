@@ -265,7 +265,6 @@
     vfio.enable = true;
   };
 
-
   # Enable memtest to test memory at boot
   boot.loader.systemd-boot.memtest86.enable = true;
   boot.loader.timeout = 3;
@@ -283,17 +282,18 @@
   services.xserver.enable = true;
   services.xserver.videoDrivers = [ "amdgpu" ];
   #  services.xserver.videoDrivers = lib.mkIf (!config.vfio.enable) [ "amdgpu" ];
-  services.displayManager.sddm = {
-    enable = true;
-    autoNumlock = true;
-    wayland.enable = true;
-    settings = {
-      General = {
-        DisplayServer = "wayland";
-        MinimumVT = 7; # Force SDDM on tty1
-      };
-    };
-  };
+  services.xserver.displayManager.gdm.enable = true;
+  # services.displayManager.sddm = {
+  #   enable = true;
+  #   autoNumlock = true;
+  #   wayland.enable = true;
+  #   settings = {
+  #     General = {
+  #       DisplayServer = "wayland";
+  #       MinimumVT = 7; # Force SDDM on tty1
+  #     };
+  #   };
+  # };
 
   # Keyboard
   services.xserver.xkb = {
