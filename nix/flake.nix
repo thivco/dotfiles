@@ -46,10 +46,6 @@
             nixpkgs.overlays = [
               inputs.ollamark.overlays.default
             ];
-
-            # environment.systemPackages = [
-            #   pkgs.ollamark
-            # ];
           }
           home-manager.nixosModules.home-manager
           {
