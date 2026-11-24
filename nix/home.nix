@@ -46,7 +46,7 @@
     mpv
     mission-center
     inputs.zen-browser.packages."${system}".default
-    inputs.ollamark.packages."${system}".default
+    # inputs.ollamark.packages."${system}".default
     inputs.antigravity-nix.packages.x86_64-linux.default
     mongodb-compass
     digikam
@@ -96,7 +96,7 @@
 
   #No, I will use package only
   # programs.neovim.enable = true;
-   programs.neovim.plugins = [ pkgs.vimPlugins.nvim-treesitter.withAllGrammars ];
+  programs.neovim.plugins = [ pkgs.vimPlugins.nvim-treesitter.withAllGrammars ];
 
   #programs.neovim = {
   #  enable = true;

@@ -14,7 +14,7 @@
     ./packages.nix
     ./passthrough.nix
     ./modules/kanata.nix
-    ./modules/ollama-offline.nix
+    # ./modules/ollama-offline.nix
   ];
 
   # Here we go... FLAKES ENABLED !
@@ -60,6 +60,10 @@
     enable32Bit = true;
   };
 
+  services.ollama = {
+    enable = true;
+    package = pkgs.ollama-rocm;
+  };
   services.sunshine = {
     enable = true;
     autoStart = true;
@@ -400,8 +404,6 @@
 
   #Fixes for boot time
   systemd.services.NetworkManager-wait-online.enable = false;
-  systemd.services.ollama.wantedBy = lib.mkForce [ "multi-user.target" ];
-  systemd.services.ollama.after = [ "graphical-session.target" ];
 
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";

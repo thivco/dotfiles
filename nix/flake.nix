@@ -14,7 +14,7 @@
     };
     hyprland.url = "github:hyprwm/hyprland?ref=v0.36.0";
     rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
-    ollamark.url = "github:knoopx/ollamark";
+    # ollamark.url = "github:knoopx/ollamark";
     antigravity-nix = {
       url = "github:jacopone/antigravity-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,7 +27,7 @@
       nixpkgs,
       home-manager,
       zen-browser,
-      ollamark,
+      # ollamark,
       antigravity-nix,
       ...
     }@inputs:
@@ -43,9 +43,9 @@
           ./configuration.nix
           {
 
-            nixpkgs.overlays = [
-              inputs.ollamark.overlays.default
-            ];
+            # nixpkgs.overlays = [
+            #   inputs.ollamark.overlays.default
+            # ];
           }
           home-manager.nixosModules.home-manager
           {

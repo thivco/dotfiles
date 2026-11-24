@@ -36,7 +36,7 @@
       wl-clipboard
       hyprcursor
       dunst
-      swww
+      awww
       libnotify
       lact
       xmlstarlet

@@ -19,9 +19,9 @@ return {
             "prettier",
             stop_after_first = true
           },
-          --python = {"ruff_organize_imports", "ruff_format"},
-          --python = {"autopep8"},
-          python = { "black", "isort" },
+          python = { "ruff_organize_imports", "ruff_format" },
+          -- python = { "autopep8" },
+          -- python = { "black", "isort" },
           rust = { "rustfmt", lsp_format = "fallback" },
           -- c = { "clang-format" },
           c = { "c_formatter_42" },
@@ -32,7 +32,7 @@ return {
         {
           timeout_ms = 1000,
           lsp_format = "fallback",
-          --lsp_fallback = true,
+          lsp_fallback = true,
         },
         formatters =
         {
